@@ -1,0 +1,19 @@
+/* components/userselectcard/index.wxss */
+
+.container {
+    height: 144rpx;
+    margin-left: var(--margin-12);
+    margin-right: var(--margin-12);
+    margin-top: var(--margin-8);
+    margin-bottom: var(--margin-12);
+
+    background: var(--blue-linear);
+    box-shadow: var(--box-shadow-small);
+    border-radius: var(--radius-8);
+}
+
+view[class^="circle"]{
+    width: 40rpx;
+    height: 40rpx;
+    background-color: rebeccapurple;
+}
