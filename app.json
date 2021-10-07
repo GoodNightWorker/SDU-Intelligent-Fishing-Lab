@@ -4,7 +4,8 @@
     "pages/logs/logs"
   ],
   "usingComponents": {
-    "userSelectCard": "/components/userselectcard/index"
+    "userSelectCard": "/components/userselectcard/index",
+    "loading": "/components/loading/index"
   },
   "window":{
     "backgroundTextStyle":"light",
