@@ -1,0 +1,4 @@
+<!--components/userselectcard/index.wxml-->
+<view class="container">
+    <view class="circle1"/>
+</view>
