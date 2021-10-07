@@ -1,0 +1,23 @@
+{
+  "name": "sdu-intelligent-fishing-lab",
+  "version": "1.0.0",
+  "description": "SDU物联网应用系统设计实验课题，智慧实验室的项目前端部分",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab/issues"
+  },
+  "homepage": "https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab#readme",
+  "dependencies": {
+    "wx-promise-pro": "^3.2.4",
+    "wx-updata": "^0.0.13"
+  }
+}

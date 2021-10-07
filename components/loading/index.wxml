@@ -1,0 +1,5 @@
+<!--components/loading/index.wxml-->
+
+<ul class="strip-loading">
+    <li wx:for="v in 6" style="--line-index: {{index}};"></li>
+</ul>
