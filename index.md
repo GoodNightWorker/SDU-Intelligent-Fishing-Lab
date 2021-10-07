@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+# SDU智慧摸鱼实验室
 
-You can use the [editor on GitHub](https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+SDU物联网应用系统设计实验课题，智慧实验室的项目前端部分
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### 项目背景
 
-### Markdown
+当前实验室存在进出管理困难，实验室人员、器材等安全检测不全面等问题
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+本项目目的在提供方便高效的人脸识别门禁系统，通过小程序对实验室成员，临时人员等进行快速注册绑定，增强实验室的进出管理便利性
 
-```markdown
-Syntax highlighted code block
+同时硬件端采用`modbus`实现区域组件智联，通过小程序呈现出组联设备的检测数据，包括温湿度，火灾预警，人员活动等，便于检测实验室状况，及时排除隐患
 
-# Header 1
-## Header 2
-### Header 3
+### 项目UI设计
 
-- Bulleted
-- List
+采取 [Figma](https://www.figma.com/) 进行UI设计，本程序的UI设计请访问
 
-1. Numbered
-2. List
+[SDU智慧摸鱼实验室 UI](https://www.figma.com/file/go9aRpvNI2xqIDIpq7dG36/智能安全?node-id=0%3A1)
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
