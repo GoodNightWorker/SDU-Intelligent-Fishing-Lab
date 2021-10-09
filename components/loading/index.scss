@@ -5,17 +5,18 @@
     text-align: center;
     list-style: none;
 
-    li {
+    .item {
         --time: calc((var(--line-index) - 1) * 200ms);
         border-radius: var(--radius-4);
         width: 12rpx;
         height: 60rpx;
+        margin-left: 12rpx;
         background-color: #f66;
         animation: beat 1.5s ease-in-out var(--time) infinite;
 
-        &+li {
-            margin-left: 12rpx;
-        }
+        // &+li {
+        //     margin-left: 12rpx;
+        // }
     }
 
 }

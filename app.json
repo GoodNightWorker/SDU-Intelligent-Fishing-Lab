@@ -5,7 +5,8 @@
   ],
   "usingComponents": {
     "userSelectCard": "/components/userselectcard/index",
-    "loading": "/components/loading/index"
+    "loading": "/components/loading/index",
+    "button": "/components/button"
   },
   "window":{
     "backgroundTextStyle":"light",

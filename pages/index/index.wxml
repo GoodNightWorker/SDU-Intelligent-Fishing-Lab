@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<userSelectCard/>
-<userSelectCard/>
-<userSelectCard/>
+<userSelectCard color="blue"/>
+<userSelectCard color="green" title="我是实验室成员" subtitle="User"/>
+<userSelectCard color="yellow"/>
 <loading/>
