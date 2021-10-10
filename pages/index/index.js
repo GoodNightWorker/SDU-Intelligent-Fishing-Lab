@@ -8,8 +8,14 @@ Page({
     },
 
     btnShowModel() {
-        this.setData({
-            showModel: !this.showModel
+        this.upData({
+            showModel: !this.data.showModel
+        })
+    },
+
+    showModelChanged(e) {
+        this.upData({
+            showModel: e.detail
         })
     }
 })

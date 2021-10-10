@@ -2,4 +2,4 @@
 <ai-userSelectCard color="green" title="我是实验室成员" subtitle="User" image="/images/icon-user.svg" bind:tap="btnUser" />
 <ai-userSelectCard color="yellow" title="我是临时来访" subtitle="Guest" image="/images/icon-guest.svg" bind:tap="btnGuest" />
 <button class="ai-button" catch:tap="btnShowModel">CLICK</button>
-<ai-loading showModel="{{showModel}}" enableClose="{{true}}" />
+<ai-loading showModel="{{showModel}}" enableClose="{{true}}" bind:show-model-changed="showModelChanged" />

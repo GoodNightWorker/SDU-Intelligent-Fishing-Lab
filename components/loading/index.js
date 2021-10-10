@@ -1,3 +1,7 @@
+import {
+    objToPath
+} from 'wx-updata'
+
 Component({
     /**
      * 组件的属性列表
@@ -21,37 +25,34 @@ Component({
      * 组件的初始数据
      */
     data: {
-        dShowModel: true
+
     },
 
     /**
      * 组件的方法列表
      */
     methods: {
+        upData(data) {
+            return this.setData(objToPath(data))
+        },
+
         // 阻止向下的滚动传递
         touchMove() {
 
         },
 
         tap() {
-            this.closeModel()
+            if (this.properties.enableClose == true) {
+                this.closeModel()
+            }
         },
 
         // 关闭
         closeModel() {
-            if (this.properties.enableClose == true) {
-                this.setData({
-                    dShowModel: false
-                })
-            }
-        }
-    },
-
-    observers: {
-        'showModel': function (showModel) {
-            this.setData({
-                dShowModel: showModel
+            this.upData({
+                showModel: false
             })
+            this.triggerEvent('show-model-changed', false)
         }
     },
 })
