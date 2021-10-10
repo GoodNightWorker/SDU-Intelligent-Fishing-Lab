@@ -39,7 +39,7 @@
         "showES6CompileOption": false
     },
     "compileType": "miniprogram",
-    "libVersion": "2.19.5",
+    "libVersion": "2.20.0",
     "appid": "wxefeb4c1d5a0233ee",
     "projectname": "SDU%E6%99%BA%E6%85%A7%E6%91%B8%E9%B1%BC%E5%AE%9E%E9%AA%8C%E5%AE%A4",
     "debugOptions": {

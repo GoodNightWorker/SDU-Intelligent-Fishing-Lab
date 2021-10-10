@@ -7,42 +7,37 @@
   margin-bottom: var(--margin-16);
   box-shadow: var(--box-shadow-small);
   border-radius: var(--radius-8);
+  overflow: hidden;
 }
 
-.container .circle1 {
+.container .circle {
   position: absolute;
   border-radius: 50%;
   background-color: var(--white-transparent);
+}
+
+.container .circle:nth-child(1) {
   width: 60rpx;
   height: 60rpx;
   left: -32rpx;
   top: -24rpx;
 }
 
-.container .circle2 {
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--white-transparent);
+.container .circle:nth-child(2) {
   width: 144rpx;
   height: 144rpx;
   left: 80rpx;
   bottom: -60rpx;
 }
 
-.container .circle3 {
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--white-transparent);
+.container .circle:nth-child(3) {
   width: 96rpx;
   height: 96rpx;
   left: 280rpx;
   top: -48rpx;
 }
 
-.container .circle4 {
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--white-transparent);
+.container .circle:nth-child(4) {
   width: 32rpx;
   height: 32rpx;
   left: 416rpx;
@@ -62,15 +57,15 @@
 .container .text-view .title {
   font-style: normal;
   font-weight: bold;
-  font-size: 28rpx;
+  font-size: var(--font-14);
   line-height: 100%;
   color: var(--white);
 }
 
 .container .text-view .subtitle {
-  margin-top: 12rpx;
+  margin-top: var(--margin-8);
   font-style: normal;
-  font-size: 24rpx;
+  font-size: var(--font-12);
   line-height: 100%;
   color: var(--white);
 }
@@ -78,7 +73,24 @@
 .container .image-view {
   position: absolute;
   width: 116rpx;
-  height: 118rpx;
+  height: 116rpx;
   right: 22rpx;
   top: 10rpx;
+}
+
+.container:active {
+  background-color: white;
+  opacity: 0.8;
+}
+
+.blue {
+  background: var(--blue-linear);
+}
+
+.yellow {
+  background: var(--yellow-linear);
+}
+
+.green {
+  background: var(--green-linear);
 }

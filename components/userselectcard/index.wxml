@@ -1,8 +1,8 @@
-<view class="container" style='{{"background: var(--"+color+"-linear);"}}'>
-    <view class="circle1" />
-    <view class="circle2" />
-    <view class="circle3" />
-    <view class="circle4" />
+<view class="container {{color}}">
+    <view class="circle" />
+    <view class="circle" />
+    <view class="circle" />
+    <view class="circle" />
     <view class="text-view">
         <text class="title">{{title}}</text>
         <text class="subtitle">{{subtitle}}</text>
