@@ -1,18 +1,17 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
-  "usingComponents": {
-    "userSelectCard": "/components/userselectcard/index",
-    "loading": "/components/loading/index"
-  },
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "SDU智慧摸鱼实验室",
-    "navigationBarTextStyle":"black"
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/index/index"
+    ],
+    "usingComponents": {
+        "ai-userSelectCard": "/components/userselectcard/index",
+        "ai-loading": "/components/loading/index"
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "SDU智慧摸鱼实验室",
+        "navigationBarTextStyle": "black"
+    },
+    
+    "sitemapLocation": "sitemap.json"
 }

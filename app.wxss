@@ -1,3 +1,10 @@
-/**app.wxss**/
+@import "/styles/color.wxss";
+@import "/styles/shadow.wxss";
+@import "/styles/dimen.wxss";
+@import "/styles/components.wxss";
 
-@import 'styles/style.wxss';
+page {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica,
+    Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB",
+    "Microsoft Yahei", sans-serif;
+}

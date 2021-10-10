@@ -1,4 +1,11 @@
-<!--components/userselectcard/index.wxml-->
-<view class="container">
-    <view class="circle1"/>
+<view class="container {{color}}">
+    <view class="circle" />
+    <view class="circle" />
+    <view class="circle" />
+    <view class="circle" />
+    <view class="text-view">
+        <text class="title">{{title}}</text>
+        <text class="subtitle">{{subtitle}}</text>
+    </view>
+    <image class="image-view" src="{{image}}" />
 </view>
