@@ -1,4 +1,6 @@
 page {
+  --background: #fbfcfd;
+  --mask-background: rgba(0, 0, 0, 0.25);
   --blue: #25a1ff;
   --blue-60: rgba(37, 161, 255, 0.6);
   --blue-linear: linear-gradient(90deg, var(--blue) 0%, var(--blue-60) 100%);
@@ -18,7 +20,6 @@ page {
   --green-linear: linear-gradient(90deg, var(--green) 0%, var(--green-60) 100%);
   --gray-4-60: rgba(204, 204, 204, 0.6);
   --gray-linear: linear-gradient(90deg, var(--gray-4) 0%, var(--gray-4-60) 100%);
-  --background: #fbfcfd;
   --blue-background: #f2f6fa;
   --gray-1: #333333;
   --gray-2: #666666;

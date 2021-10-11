@@ -1,21 +1,44 @@
 Page({
     data: {
         showModel: false,
+        showDialog: false,
     },
 
-    btnAdministrator() {
-        console.log("btn_administrator")
+    btnUserSelectCard(e) {
+        switch (e.currentTarget.dataset.role) {
+            case "Administrator":
+                console.log("Administrator");
+                break;
+            case "User":
+                console.log("User");
+                break;
+            case "Guest":
+                console.log("Guest");
+                break;
+        }
     },
 
     btnShowModel() {
         this.upData({
-            showModel: !this.data.showModel
-        })
+            showModel: true,
+        });
     },
 
-    showModelChanged(e) {
+    modelCloseCallBack() {
         this.upData({
-            showModel: e.detail
-        })
-    }
-})
+            showModel: false,
+        });
+    },
+
+    btnShowDialog() {
+        this.upData({
+            showDialog: true,
+        });
+    },
+
+    dialogCloseCallBack() {
+        this.upData({
+            showDialog: false,
+        });
+    },
+});

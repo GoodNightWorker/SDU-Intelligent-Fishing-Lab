@@ -7,7 +7,15 @@ Component({
     properties: {
         title: {
             type: String,
-            value: "数据请求中",
+            value: "验证成功",
+        },
+        subtitle: {
+            type: String,
+            value: "密钥有效期：\n" + "2021年9月14日 00点00分",
+        },
+        type: {
+            type: String,
+            value: "right",
         },
     },
 
@@ -28,11 +36,11 @@ Component({
         touchMove() {},
 
         tap() {
-            this.closeModel();
+            this.closeDialog();
         },
 
         // 关闭
-        closeModel() {
+        closeDialog() {
             this.triggerEvent("closeCallBack");
         },
     },

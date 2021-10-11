@@ -16,9 +16,11 @@ npm i wx-updata -S
 
 本项目使用 [vscode](https://code.visualstudio.com/) 进行快速开发
 
-建议配合插件`Easy Sass`及`WXML - Language Services`以替代原生开发工具，微信原生开发工具仅作为调试器使用
+- 建议配合插件`WXML - Language Services`以替代原生开发工具，微信原生开发工具仅作为调试器使用
 
-必须使用通过 [Pull requests](https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab/pulls) 才可以提交合并请求
+- 通过`Easy Sass`及`CSScomb`进行样式文件编写
+
+- 必须使用通过 [Pull requests](https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab/pulls) 才可以提交合并请求
 
 ### 项目背景
 
@@ -62,16 +64,20 @@ npm i wx-updata -S
 
 项目结构参考 [weapp-library](https://github.com/imageslr/weapp-library)
 
-微信小程序异步库 [wx-promise-pro](https://github.com/youngjuning/wx-promise-pro)
+### 项目组件库库
 
-setData 替代品 [wx-updata](https://github.com/SHERlocked93/wx-updata)
+- 微信小程序异步库 [wx-promise-pro](https://github.com/youngjuning/wx-promise-pro)
+
+- setData 替代品 [wx-updata](https://github.com/SHERlocked93/wx-updata)
+
+<!-- - 动画 [animate.css](https://animate.style/) -->
 
 ### 代码规范
 
-遵循 [JavaScript Standard Style](https://standardjs.com/rules-zhcn.html#javascript-standard-style)
+遵循 [JavaScript Standard Style](https://standardjs.com/rules-zhcn.html#javascript-standard-style) 语言规范
 
-采用 [Sass拓展语言](https://www.sass.hk/docs/)
+采用 [腾讯AlloyTeam CSS代码规范](http://alloyteam.github.io/CodeGuide/#cs)
 
 ### 声明
 
-本作品仅作为课设使用，转载请遵循 `MIT License` 许可
+本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源

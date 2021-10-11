@@ -1,10 +1,7 @@
-<!-- components/loading/index.wxml -->
-<block  wx:if="{{showModel}}">
-    <view class="mask" catch:tap="tap" catch:touchmove="touchMove"></view>
-    <view class="container">
-        <ul class="strip-loading">
-            <li class="item" wx:for="v in 6" wx:key="v" style="--line-index: {{index}};"></li>
-        </ul>
-        <text>{{title}}</text>
-    </view>
-</block>
+<view class="mask" catch:tap="tap" catch:touchmove="touchMove"></view>
+<view class="container">
+    <ul class="strip-loading">
+        <li class="item" wx:for="v in 6" wx:key="v" style="--line-index: {{index}};"></li>
+    </ul>
+    <text>{{title}}</text>
+</view>

@@ -1,13 +1,13 @@
 .container {
-  position: relative;
-  height: 144rpx;
-  margin-left: var(--margin-16);
-  margin-right: var(--margin-16);
-  margin-top: var(--margin-8);
-  margin-bottom: var(--margin-16);
-  box-shadow: var(--box-shadow-small);
-  border-radius: var(--radius-8);
   overflow: hidden;
+  position: relative;
+  margin-top: var(--margin-8);
+  margin-right: var(--margin-16);
+  margin-bottom: var(--margin-16);
+  margin-left: var(--margin-16);
+  border-radius: var(--radius-8);
+  height: 144rpx;
+  box-shadow: var(--box-shadow-small);
 }
 
 .container .circle {
@@ -17,70 +17,70 @@
 }
 
 .container .circle:nth-child(1) {
+  top: -24rpx;
+  left: -32rpx;
   width: 60rpx;
   height: 60rpx;
-  left: -32rpx;
-  top: -24rpx;
 }
 
 .container .circle:nth-child(2) {
+  bottom: -60rpx;
+  left: 80rpx;
   width: 144rpx;
   height: 144rpx;
-  left: 80rpx;
-  bottom: -60rpx;
 }
 
 .container .circle:nth-child(3) {
+  top: -48rpx;
+  left: 280rpx;
   width: 96rpx;
   height: 96rpx;
-  left: 280rpx;
-  top: -48rpx;
 }
 
 .container .circle:nth-child(4) {
+  top: calc(50% - 32rpx/2 + 8rpx);
+  left: 416rpx;
   width: 32rpx;
   height: 32rpx;
-  left: 416rpx;
-  top: calc(50% - 32rpx/2 + 8rpx);
 }
 
 .container .text-view {
-  position: absolute;
   display: flex;
+  position: absolute;
+  top: 50%;
+  left: 48rpx;
+  transform: translateY(-50%);
   flex-direction: column;
   align-items: flex-start;
-  left: 48rpx;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .container .text-view .title {
-  font-style: normal;
-  font-weight: bold;
   font-size: var(--font-14);
+  font-weight: bold;
+  font-style: normal;
   line-height: 100%;
   color: var(--white);
 }
 
 .container .text-view .subtitle {
   margin-top: var(--margin-8);
-  font-style: normal;
   font-size: var(--font-12);
+  font-style: normal;
   line-height: 100%;
   color: var(--white);
 }
 
 .container .image-view {
   position: absolute;
+  top: 10rpx;
+  right: 22rpx;
   width: 116rpx;
   height: 116rpx;
-  right: 22rpx;
-  top: 10rpx;
 }
 
 .container:active {
   background-color: white;
-  opacity: 0.8;
+  opacity: .8;
 }
 
 .blue {
