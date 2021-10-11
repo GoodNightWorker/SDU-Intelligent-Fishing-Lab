@@ -1,10 +1,8 @@
-<block wx:if="{{showDialog}}">
-    <view class="mask" catch:tap="tap" catch:touchmove="touchMove"></view>
-    <view class="container">
-        <image class="image-view" src="/images/icon-{{type}}.svg" />
-        <view class="text-view">
-            <text class="title">{{title}}</text>
-            <text class="subtitle">{{subtitle}}</text>
-        </view>
+<view class="mask" catch:tap="tap" catch:touchmove="touchMove"></view>
+<view class="container">
+    <image class="image-view" src="/images/icon-{{type}}.svg" />
+    <view class="text-view">
+        <text class="title">{{title}}</text>
+        <text class="subtitle">{{subtitle}}</text>
     </view>
-</block>
+</view>
