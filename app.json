@@ -1,10 +1,9 @@
 {
-    "pages": [
-        "pages/index/index"
-    ],
+    "pages": ["pages/index/index"],
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
-        "ai-loading": "/components/loading/index"
+        "ai-loading": "/components/loading/index",
+        "ai-popupdialog": "/components/popupdialog/index"
     },
     "window": {
         "backgroundTextStyle": "light",
@@ -12,6 +11,6 @@
         "navigationBarTitleText": "SDU智慧摸鱼实验室",
         "navigationBarTextStyle": "black"
     },
-    
+
     "sitemapLocation": "sitemap.json"
 }

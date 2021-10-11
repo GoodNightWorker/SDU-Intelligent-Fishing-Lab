@@ -1,6 +1,7 @@
 Page({
     data: {
         showModel: false,
+        showDialog: true,
     },
 
     btnAdministrator() {
@@ -16,6 +17,18 @@ Page({
     showModelChanged(e) {
         this.upData({
             showModel: e.detail
+        })
+    },
+
+    btnShowDialog() {
+        this.upData({
+            showDialog: !this.data.showDialog
+        })
+    },
+
+    showDialogChanged(e) {
+        this.upData({
+            showDialog: e.detail
         })
     }
 })

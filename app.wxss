@@ -1,10 +1,14 @@
-@import "/styles/color.wxss";
-@import "/styles/shadow.wxss";
-@import "/styles/dimen.wxss";
-@import "/styles/components.wxss";
+@import '/styles/color.wxss';
 
-page {
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica,
-    Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB",
-    "Microsoft Yahei", sans-serif;
+@import '/styles/shadow.wxss';
+
+@import '/styles/dimen.wxss';
+
+@import '/styles/components.wxss';
+
+page
+{
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB',
+    'Microsoft Yahei', sans-serif;
 }
