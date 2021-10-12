@@ -1,7 +1,7 @@
 .container {
   display: flex;
   overflow: hidden;
-  margin: var(--margin-16);
+  margin: 0 var(--margin-16);
   box-sizing: border-box;
   border-radius: var(--radius-8);
   padding: var(--margin-16);
