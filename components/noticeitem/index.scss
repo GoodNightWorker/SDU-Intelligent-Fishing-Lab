@@ -3,24 +3,22 @@
     display: flex;
     overflow: hidden;
 
-    position: relative;
-
-    margin-top: var(--margin-16);
-    margin-right: var(--margin-16);
-    margin-bottom: var(--margin-16);
-    margin-left: var(--margin-16);
+    margin: var(--margin-16);
+    box-sizing: border-box;
     border-radius: var(--radius-8);
+    padding: var(--margin-16);
     height: 144rpx;
 
-    background: #fff;
+    background: var(--white);
 
     box-shadow: var(--box-shadow-small);
 
+    align-content: center;
+    flex-direction: row;
+
     .icon
     {
-        margin-top: var(--margin-16);
-        margin-left: var(--margin-16);
-        width: 70rpx;
+        width: 80rpx;
         height: 80rpx;
     }
 
@@ -30,37 +28,44 @@
 
         margin-left: var(--margin-8);
 
+        flex: 1;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+
         .left-view
         {
             margin-left: var(--margin-8);
 
             .title
             {
-                margin-top: var(--margin-16);
                 margin-bottom: var(--margin-4);
 
                 font-size: var(--font-12);
+                font-style: normal;
+                line-height: 100%;
 
                 color: var(--gray-3);
             }
 
             .message
             {
-                font-weight: 500;
+                font-size: var(--font-14);
+                font-weight: bold;
+                font-style: normal;
+                line-height: 100%;
             }
         }
 
         .right-view
         {
-            position: absolute;
-            right: 22rpx;
-
             .time
             {
-                margin-top: var(--margin-16);
                 margin-bottom: var(--margin-4);
 
                 font-size: var(--font-12);
+                font-style: normal;
+                line-height: 100%;
                 text-align: right;
 
                 color: var(--gray-3);
@@ -68,7 +73,10 @@
 
             .detail
             {
-                font-weight: 500;
+                font-size: var(--font-14);
+                font-weight: bold;
+                font-style: normal;
+                line-height: 100%;
             }
         }
     }
