@@ -5,7 +5,7 @@
 <button class="ai-button" catch:tap="btnShowModel">btnShowModel</button>
 <button class="ai-button" catch:tap="btnShowDialog">btnShowDialog</button>
 
-<ai-noticeitem icon="/images/icon-userleft.svg" message="人员离开" time="2:30" color="red" color="green" detail="狗十三"/>
+<ai-noticeitem icon="/images/icon-userleft.svg" message="人员离开" time="2:30" color="red" detail="狗十三"/>
 
 <!-- Functions -->
 <ai-loading wx:if="{{showModel}}" bind:closeCallBack="modelCloseCallBack" />
