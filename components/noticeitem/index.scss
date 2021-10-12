@@ -1,0 +1,98 @@
+.container
+{
+    display: flex;
+    overflow: hidden;
+
+    margin: 0 var(--margin-16);
+    box-sizing: border-box;
+    border-radius: var(--radius-8);
+    padding: var(--margin-16);
+    height: 144rpx;
+
+    background: var(--white);
+
+    box-shadow: var(--box-shadow-small);
+
+    align-content: center;
+    flex-direction: row;
+
+    .icon
+    {
+        width: 80rpx;
+        height: 80rpx;
+    }
+
+    .text-view
+    {
+        display: flex;
+
+        margin-left: var(--margin-8);
+
+        flex: 1;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+
+        .left-view
+        {
+            margin-left: var(--margin-8);
+
+            .title
+            {
+                margin-bottom: var(--margin-4);
+
+                font-size: var(--font-12);
+                font-style: normal;
+                line-height: 100%;
+
+                color: var(--gray-3);
+            }
+
+            .message
+            {
+                font-size: var(--font-14);
+                font-weight: bold;
+                font-style: normal;
+                line-height: 100%;
+            }
+        }
+
+        .right-view
+        {
+            .time
+            {
+                margin-bottom: var(--margin-4);
+
+                font-size: var(--font-12);
+                font-style: normal;
+                line-height: 100%;
+                text-align: right;
+
+                color: var(--gray-3);
+            }
+
+            .detail
+            {
+                font-size: var(--font-14);
+                font-weight: bold;
+                font-style: normal;
+                line-height: 100%;
+            }
+        }
+    }
+}
+
+.gray
+{
+    color: var(--gray-2);
+}
+
+.red
+{
+    color: var(--red);
+}
+
+.green
+{
+    color: var(--green);
+}

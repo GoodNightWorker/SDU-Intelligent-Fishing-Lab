@@ -3,7 +3,8 @@
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
         "ai-loading": "/components/loading/index",
-        "ai-popupdialog": "/components/popupdialog/index"
+        "ai-popupdialog": "/components/popupdialog/index",
+        "ai-noticeitem" : "/components/noticeitem/index"
     },
     "window": {
         "backgroundTextStyle": "light",
