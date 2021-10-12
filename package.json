@@ -18,6 +18,6 @@
   "homepage": "https://github.com/GoodNightWorker/SDU-Intelligent-Fishing-Lab#readme",
   "dependencies": {
     "wx-promise-pro": "^3.2.4",
-    "wx-updata": "^0.0.13"
+    "wx-updata": "0.0.13"
   }
 }

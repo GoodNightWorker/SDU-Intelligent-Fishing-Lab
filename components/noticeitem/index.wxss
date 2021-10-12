@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  margin-top: var(--margin-16);
+  margin-right: var(--margin-16);
+  margin-bottom: var(--margin-16);
+  margin-left: var(--margin-16);
+  border-radius: var(--radius-8);
+  height: 144rpx;
+  background: #fff;
+  box-shadow: var(--box-shadow-small);
+}
+
+.container .icon {
+  margin-top: var(--margin-16);
+  margin-left: var(--margin-16);
+  width: 70rpx;
+  height: 80rpx;
+}
+
+.container .text-view {
+  display: flex;
+  margin-left: var(--margin-8);
+}
+
+.container .text-view .left-view {
+  margin-left: var(--margin-8);
+}
+
+.container .text-view .left-view .title {
+  margin-top: var(--margin-16);
+  margin-bottom: var(--margin-4);
+  font-size: var(--font-12);
+  color: var(--gray-3);
+}
+
+.container .text-view .left-view .message {
+  font-weight: 500;
+}
+
+.container .text-view .right-view {
+  position: absolute;
+  right: 22rpx;
+}
+
+.container .text-view .right-view .time {
+  margin-top: var(--margin-16);
+  margin-bottom: var(--margin-4);
+  font-size: var(--font-12);
+  text-align: right;
+  color: var(--gray-3);
+}
+
+.container .text-view .right-view .detail {
+  font-weight: 500;
+}
+
+.gray {
+  color: var(--gray-2);
+}
+
+.red {
+  color: var(--red);
+}
+
+.green {
+  color: var(--green);
+}

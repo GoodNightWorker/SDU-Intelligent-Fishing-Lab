@@ -17,6 +17,17 @@
     "**/miniprogram_npm": true
   },
 
+  "easysass.formats": [
+    {
+      "format": "expanded",
+      "extension": ".wxss"
+    },
+    {
+      "format": "compressed",
+      "extension": ".min.wxss"
+    }
+  ],
+
   // csscomb 配置
   "csscomb.formatOnSave": true,
   "csscomb.preset": {

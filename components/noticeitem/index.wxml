@@ -1,0 +1,13 @@
+<view class="container">
+    <image class="icon" src="{{icon}}"/>
+    <view class="text-view">
+        <view class="left-view">
+            <view class="title">触发规则</view>
+            <view class="message">{{message}}</view>
+        </view>
+        <view class="right-view">
+            <view class="time">{{time}}</view>
+            <view class="detail {{color}}">{{detail}}</view>
+        </view>
+    </view>
+</view>
