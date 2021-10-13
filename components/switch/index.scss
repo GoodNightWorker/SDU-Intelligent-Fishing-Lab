@@ -1,0 +1,51 @@
+.switch
+{
+    display: flex;
+
+    box-sizing: border-box;
+    border-radius: 16px;
+    padding: 4rpx;
+    width: 68rpx;
+    height: 40rpx;
+
+    transition: all .4s;
+
+    align-items: center;
+
+    .item
+    {
+        border-radius: 16px;
+        border-radius: 50%;
+        width: 32rpx;
+        height: 32rpx;
+
+        background: var(--white);
+
+        transition: all .4s;
+    }
+}
+
+.on
+{
+    background: var(--blue);
+
+    .item
+    {
+        margin-left: 28rpx;
+    }
+}
+
+.off
+{
+    background: var(--blue-unchecked);
+}
+
+.half
+{
+    background: var(--blue-light);
+
+    .item
+    {
+        margin-left: 14rpx;
+    }
+}

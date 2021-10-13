@@ -4,7 +4,8 @@
         "ai-userSelectCard": "/components/userselectcard/index",
         "ai-loading": "/components/loading/index",
         "ai-popupdialog": "/components/popupdialog/index",
-        "ai-noticeitem" : "/components/noticeitem/index"
+        "ai-noticeitem": "/components/noticeitem/index",
+        "ai-switch": "/components/switch/index"
     },
     "window": {
         "backgroundTextStyle": "light",
