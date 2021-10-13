@@ -2,6 +2,7 @@ Page({
     data: {
         showModel: false,
         showDialog: false,
+        switchType: "on",
     },
 
     btnUserSelectCard(e) {
@@ -40,5 +41,21 @@ Page({
         this.upData({
             showDialog: false,
         });
+    },
+    btnSwitch() {
+        switch (this.data.switchType) {
+            case "on":
+                this.upData({ switchType: "half" });
+                break;
+            case "half":
+                this.upData({ switchType: "off" });
+                break;
+            case "off":
+                this.upData({ switchType: "on" });
+                break;
+            default:
+                this.upData({ switchType: "half" });
+                break;
+        }
     },
 });

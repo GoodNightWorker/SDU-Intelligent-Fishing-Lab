@@ -1,0 +1,3 @@
+<view class="switch {{type}}" bind:tap="btnTap" bind:touchstart="touchstart" bind:touchend="touchend">
+    <view class="item"></view>
+</view>

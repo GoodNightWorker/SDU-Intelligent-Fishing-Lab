@@ -21,6 +21,7 @@ page {
   --gray-4-60: rgba(204, 204, 204, 0.6);
   --gray-linear: linear-gradient(90deg, var(--gray-4) 0%, var(--gray-4-60) 100%);
   --blue-background: #f2f6fa;
+  --blue-unchecked: #e9f5ff;
   --gray-1: #333333;
   --gray-2: #666666;
   --gray-3: #999999;
