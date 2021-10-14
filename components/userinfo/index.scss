@@ -1,0 +1,56 @@
+.container
+{
+    overflow: hidden;
+
+    margin: var(--margin-16);
+    box-sizing: border-box;
+
+    background: var(--white);
+
+    box-shadow: var(--box-shadow-small);
+
+    .info
+    {
+        .line-top
+        {
+            margin: 0 var(--margin-16);
+            border-top: 1rpx solid var(--gray-4);
+            height: 1rpx;
+        }
+
+        &:nth-child(1)
+        {
+            margin-top: var(-margin-4);
+
+            .line-top
+            {
+                border: none;
+            }
+        }
+
+        .message
+        {
+            display: flex;
+
+            padding: var(--margin-16);
+
+            .icon
+            {
+                width: 40rpx;
+                height: 40rpx;
+            }
+
+            .input
+            {
+                margin-left: var(--margin-12);
+
+                font-size: var(--font-12);
+            }
+
+            .input-placeholder
+            {
+                color: var(--gray-3);
+            }
+        }
+    }
+}

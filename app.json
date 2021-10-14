@@ -4,7 +4,9 @@
         "ai-userSelectCard": "/components/userselectcard/index",
         "ai-loading": "/components/loading/index",
         "ai-popupdialog": "/components/popupdialog/index",
-        "ai-noticeitem" : "/components/noticeitem/index"
+        "ai-noticeitem" : "/components/noticeitem/index",
+        "ai-userinfo":"/components/userinfo/index",
+        "ai-lablabel":"/components/lablabel/index"
     },
     "window": {
         "backgroundTextStyle": "light",

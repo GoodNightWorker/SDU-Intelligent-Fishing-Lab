@@ -9,6 +9,7 @@ page {
   --margin-64: 128rpx;
   --radius-4: 8rpx;
   --radius-8: 16rpx;
+  --radius-12: 24rpx;
   --radius-16: 32rpx;
   --font-9: 18rpx;
   --font-12: 24rpx;

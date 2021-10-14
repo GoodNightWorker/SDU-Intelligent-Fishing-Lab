@@ -7,7 +7,7 @@ Component({
     properties: {
         icon: {
             type: String,
-            value: "/images/userleft.svg",
+            value: "/images/icon-userleft.svg",
         },
         message : {
             type : String,

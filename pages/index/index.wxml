@@ -7,6 +7,10 @@
 
 <ai-noticeitem icon="/images/icon-userleft.svg" message="人员离开" time="2:30" color="red" detail="狗十三"/>
 
+<ai-userinfo info="{{info}}" />
+
+<ai-lablabel message="{{message}}"/>
+
 <!-- Functions -->
 <ai-loading wx:if="{{showModel}}" bind:closeCallBack="modelCloseCallBack" />
 <ai-popupdialog wx:if="{{showDialog}}" bind:closeCallBack="dialogCloseCallBack" />

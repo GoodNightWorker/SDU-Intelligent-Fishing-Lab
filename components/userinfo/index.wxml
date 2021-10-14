@@ -1,0 +1,9 @@
+<view class="container">
+    <view class="info" wx:for="{{info}}" wx:for-item="info_item">
+        <view class="line-top"></view>
+        <view class="message">
+            <image class="icon" src="{{info_item.icon}}"/>
+            <input class="input" placeholder-class="input-placeholder" placeholder="{{info_item.placeholder}}"/>
+        </view>
+    </view>
+</view>

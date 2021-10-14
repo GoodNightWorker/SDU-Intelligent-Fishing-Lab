@@ -1,0 +1,6 @@
+<view class="container" wx:for="{{message}}"  wx:for-item="message_item">
+    <view class="label ">{{message_item.label}}</view>
+    <view class="detail {{message_item.color}}">
+        <text class="text">{{message_item.detail}}</text>
+    </view>
+</view>
