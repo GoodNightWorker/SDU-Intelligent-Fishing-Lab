@@ -58,4 +58,21 @@ Page({
                 break;
         }
     },
+
+    btnLogin() {
+        wx.pro
+            .login()
+            .then((res) => {
+                wx.pro
+                    .request({
+                        url: "http://localhost:8081/api/user/login",
+                        data: {
+                            code: res.code,
+                        },
+                    })
+                    .then((res) => console.log(res))
+                    .catch((error) => console.log(error));
+            })
+            .catch((error) => console.log(error));
+    },
 });
