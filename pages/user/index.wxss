@@ -1,0 +1,23 @@
+.title {
+  margin-top: var(--margin-19);
+  margin-bottom: var(--margin-12);
+  margin-left: var(--margin-17_5);
+  font-size: var(--font-24);
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-bottom: var(--margin-32);
+  margin-left: var(--margin-17_5);
+  font-size: var(--font-12);
+  color: var(--gray-2);
+}
+
+.fish {
+  position: absolute;
+  bottom: var(--margin-16);
+  left: calc( 50% - 98rpx);
+  font-size: var(--font-14);
+  font-weight: 600;
+  color: var(--blue);
+}

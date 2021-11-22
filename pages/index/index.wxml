@@ -1,8 +1,8 @@
 <ai-userSelectCard color="blue" title="我是实验室管理" subtitle="Administrator" image="/images/icon-administrator.svg" bind:tap="btnUserSelectCard" data-role="Administrator"/>
 <ai-userSelectCard color="green" title="我是实验室成员" subtitle="User" image="/images/icon-user.svg" bind:tap="btnUserSelectCard" data-role="User"/>
 <ai-userSelectCard color="yellow" title="我是临时来访" subtitle="Guest" image="/images/icon-guest.svg" bind:tap="btnUserSelectCard" data-role="Guest"/>
-
 <button class="ai-button" catch:tap="btnShowModel">btnShowModel</button>
+
 <button class="ai-button" catch:tap="btnShowDialog">btnShowDialog</button>
 
 <ai-noticeitem icon="/images/icon-userleft.svg" message="人员离开" time="2:30" color="red" detail="狗十三"/>
@@ -14,3 +14,7 @@
 <!-- Functions -->
 <ai-loading wx:if="{{showModel}}" bind:closeCallBack="modelCloseCallBack" />
 <ai-popupdialog wx:if="{{showDialog}}" bind:closeCallBack="dialogCloseCallBack" />
+
+<button class="ai-button" loading="{{loading}}" bindtap="uploadImage">
+    上传照片
+</button>

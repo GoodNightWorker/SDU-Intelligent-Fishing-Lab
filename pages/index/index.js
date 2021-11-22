@@ -72,4 +72,44 @@ Page({
             showDialog: false,
         });
     },
+    
+    uploadImage(){
+        wx.chooseImage({
+            count:1,
+            sizeType:['original','compressed'],
+            sourceType:['album','camera'],
+            success:function(res){
+                var filePaths = res.tempFilePaths;
+                wx.showToast({
+                    icon:"loading",
+                    title:'正在上传'
+                }),
+                wx.uploadFile({
+                    url:'https://api.yumik.top/api/v1/face/upload',
+                    filePath:filePaths[0],
+                    name:'file',
+                    header:{
+                        'content-type':'application/x-www-form-urlencoded',
+                        'Authorization':wx.getStorageSync('token')
+                    },
+                    success:function(res){
+                        console.log(res);
+                        if(JSON.parse(res.data).errCode==0){
+                            wx.showToast({
+                                icon:'success',
+                                title:'上传成功！'
+                            })
+                        }
+                        if(JSON.parse(res.data).errCode==40304){
+                            wx.showToast({
+                                icon:'none',
+                                title:'人脸未注册！'
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    },
+    
 });
