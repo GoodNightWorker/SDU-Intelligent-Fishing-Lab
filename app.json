@@ -1,8 +1,10 @@
 {
     "pages": [
+        "pages/uploadimage/index",
         "pages/login/index",
         "pages/index/index",
-        "pages/user/index"
+        "pages/administrator/index"
+        
     ],
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
@@ -10,7 +12,8 @@
         "ai-popupdialog": "/components/popupdialog/index",
         "ai-noticeitem" : "/components/noticeitem/index",
         "ai-userinfo":"/components/userinfo/index",
-        "ai-lablabel":"/components/lablabel/index"
+        "ai-lablabel":"/components/lablabel/index",
+        "ai-bindsuccess":"/components/bindsuccess/index"
     },
     "window": {
         "backgroundTextStyle": "light",
