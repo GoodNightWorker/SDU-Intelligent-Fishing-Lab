@@ -1,10 +1,10 @@
 {
     "pages": [
-        "pages/uploadimage/index",
+        "pages/administratorindex/index",
         "pages/login/index",
         "pages/index/index",
-        "pages/administrator/index"
-        
+        "pages/administrator/index",
+        "pages/uploadimage/index"
     ],
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
@@ -13,7 +13,8 @@
         "ai-noticeitem" : "/components/noticeitem/index",
         "ai-userinfo":"/components/userinfo/index",
         "ai-lablabel":"/components/lablabel/index",
-        "ai-bindsuccess":"/components/bindsuccess/index"
+        "ai-bindsuccess":"/components/bindsuccess/index",
+        "ai-labcard":"/components/labcard/index"
     },
     "window": {
         "backgroundTextStyle": "light",

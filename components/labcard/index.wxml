@@ -1,0 +1,12 @@
+<view class="container {{color}}">
+    <view class="circle" />
+    <view class="circle" />
+    <view class="circle" />
+    <view class="circle" />
+    <view class="title">{{title}}</view>
+    <view class="subtitle">
+        <image class="subtitle-icon" src="{{image}}" />
+        <view class="subtitle-text">{{subtitle}}</view>
+    </view>
+    
+</view>

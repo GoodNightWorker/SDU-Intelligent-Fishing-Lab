@@ -1,0 +1,197 @@
+.userinfo
+{
+    display: flex;
+
+    margin-top: var(--margin-16);
+
+    .img
+    {
+        margin: 0 26rpx 48rpx 32rpx;
+        border: rgba(37, 161, 255, .5) .5px solid;
+        border-radius: 96rpx;
+        width: 96rpx;
+        height: 96rpx;
+    }
+
+    .name
+    {
+        font-size: var(--font-18);
+        font-weight: 600;
+    }
+
+    .info
+    {
+        display: flex;
+
+        margin-top: var(--margin-8);
+
+        font-size: var(--font-9);
+        line-height: 20.1rpx;
+
+        color: var(--gray-2);
+
+        .idnum
+        {
+            margin-right: 4rpx;
+            border: .5px solid rgba(37, 161, 255, 1);
+            padding: 4rpx 8rpx;
+
+            background-color: var(--background);
+        }
+
+        .academy
+        {
+            border: .5px solid rgba(37, 161, 255, 1);
+            padding: 4rpx 8rpx;
+
+            background-color: var(--background);
+        }
+    }
+
+    .scan
+    {
+        display: flex;
+
+        margin-top: 23rpx;
+        margin-left: 86rpx;
+        border-radius: var(--radius-16);
+        width: 128rpx;
+        height: 50rpx;
+
+        color: white;
+        background-color: var(--blue);
+
+        .scan-icon
+        {
+            margin: 15.66rpx 6.04rpx 14.42rpx 30.04rpx;
+            width: 19.92rpx;
+            height: 19.92rpx;
+            ;
+        }
+
+        .scan-text
+        {
+            margin: 8rpx 24rpx 8rpx 0;
+
+            font-size: var(--font-12);
+            line-height: 33.6rpx;
+        }
+    }
+}
+
+.num
+{
+    display: flex;
+
+    .warn
+    {
+        margin: 53rpx 148.5rpx 8rpx 173.5rpx;
+
+        text-align: center;
+
+        .warn-num
+        {
+            margin-bottom: 8rpx;
+
+            font-size: var(--font-18);
+            font-weight: 700;
+
+            color: var(--gray-1);
+        }
+
+        .warn-text
+        {
+            font-size: var(--font-12);
+            font-weight: 400;
+
+            color: var(--gray-1);
+        }
+    }
+
+    .line
+    {
+        margin-top: 57rpx;
+        border: .5px solid var(--gray-4);
+        width: 0;
+        height: 76rpx;
+    }
+
+    .lab
+    {
+        margin: 53rpx 161.5rpx 8rpx 146.5rpx;
+
+        text-align: center;
+
+        .lab-num
+        {
+            margin-bottom: 8rpx;
+
+            font-size: var(--font-18);
+            font-weight: 700;
+
+            color: var(--gray-1);
+        }
+
+        .lab-text
+        {
+            font-size: var(--font-12);
+            font-weight: 400;
+
+            color: var(--gray-1);
+        }
+    }
+}
+
+.mylab
+{
+    margin: 48rpx 32rpx 0 0;
+
+    .title
+    {
+        display: flex;
+
+        margin-left: var(--margin-16);
+
+        .title-text
+        {
+            font-size: var(--font-24);
+            font-weight: 600;
+
+            color: var(--gray-1);
+        }
+
+        .title-button
+        {
+            display: flex;
+
+            margin-left: 364rpx;
+            height: 70rpx;
+
+            justify-content: center;
+            align-items: center;
+
+            .button-text
+            {
+                font-size: var(--font-14);
+                font-weight: 400;
+
+                color: var(--gray-2);
+            }
+
+            .button-icon
+            {
+                margin-left: 11.54rpx;
+                width: 16rpx;
+                height: 16rpx;
+            }
+        }
+    }
+
+    .card
+    {
+        //display: flex;
+        margin-top: var(--margin-12);
+        margin-left: 9rpx;
+    }
+}
+

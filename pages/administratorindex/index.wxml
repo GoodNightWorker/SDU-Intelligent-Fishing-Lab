@@ -1,0 +1,40 @@
+<view class="userinfo">
+    <view class="img"></view>
+    <view class="text">
+        <text class="name">张三</text>
+        <view class="info">
+            <view class="idnum">201805121155</view>
+            <view class="academy">信息科学与工程学院</view>
+        </view>
+    </view>
+    <view class="scan">
+        <image class="scan-icon" src="/images/icon-adindex-scan.svg" />
+        <text class="scan-text">扫码</text>
+    </view>
+</view>
+<view class="num">
+    <view class="warn">
+        <view class="warn-num">0</view>
+        <view class="warn-text">告警</view>
+    </view>
+    <view class="line"></view>
+    <view class="lab">
+        <view class="lab-num">3</view>
+        <view class="lab-text">实验室</view>
+    </view>
+</view>
+<view class="mylab">
+    <view class="title">
+        <view class="title-text">我的实验室</view>
+        <view class="title-button">
+            <view class="button-text">所有</view>
+            <image class="button-icon" src="/images/icon-adindex-all.svg" />
+        </view>
+    </view>
+    <view class="card">
+        <ai-labcard/>
+        <ai-labcard color="green" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
+        <ai-labcard color="yellow" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
+        <ai-labcard color="gray" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
+    </view>
+</view>
