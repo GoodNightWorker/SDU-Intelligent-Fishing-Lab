@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  margin-top: var(--margin-12);
+  margin-left: var(--margin-12);
+  border: 1rpx solid var(--gray-4);
+  border-radius: var(--radius-8);
+  width: 331rpx;
+  height: 160rpx;
+  background-color: var(--blue-background);
+}
+
+.container .title {
+  margin-top: 20rpx;
+  margin-left: var(--margin-12);
+  font-size: var(--font-12);
+  color: var(--gray-2);
+}
+
+.container .icon {
+  margin-top: 40rpx;
+  margin-left: 30rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.container .button {
+  margin-top: 112rpx;
+  margin-left: 46rpx;
+  width: 64rpx;
+  height: 32rpx;
+}

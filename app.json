@@ -16,7 +16,9 @@
         "ai-bindsuccess":"/components/bindsuccess/index",
         "ai-labcard":"/components/labcard/index",
         "ai-labcard-gray":"/components/labcard_gray/index",
-        "ai-footer":"/components/footer/index"
+        "ai-footer":"/components/footer/index",
+        "ai-switch":"/components/switch/index",
+        "ai-devicecard":"/components/devicecard/index"
     },
     "window": {
         "backgroundTextStyle": "light",

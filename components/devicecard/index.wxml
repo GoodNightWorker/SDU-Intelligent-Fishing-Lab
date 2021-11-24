@@ -1,0 +1,5 @@
+<view class="container">
+    <view class="title">{{title}}</view>
+    <image class="icon" src="{{image}}"/>
+    <ai-switch class="button" type="{{isOn}}"/>
+</view>
