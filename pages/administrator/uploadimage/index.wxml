@@ -15,4 +15,4 @@
 </view>
 <button class="ai-button" loading="{{loading}}" bindtap="submitImage">提交</button>
 <ai-bindsuccess wx:if="{{showDialog}}" />
-<view class="fish">智慧摸鱼实验室</view>
+<ai-footer/>

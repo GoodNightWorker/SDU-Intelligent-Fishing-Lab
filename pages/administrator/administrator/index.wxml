@@ -1,4 +1,4 @@
 <view class="title">填写个人信息</view>
 <view class="subtitle">您的信息将会保存，以用于绑定实验室信息</view>
 <ai-userinfo info="{{info}}" bind:submitList="submitList"/>
-<view class="fish">智慧摸鱼实验室</view>
+<ai-footer/>

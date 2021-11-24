@@ -35,6 +35,7 @@
         <ai-labcard/>
         <ai-labcard color="green" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
         <ai-labcard color="yellow" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
-        <ai-labcard color="gray" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
+        <ai-labcard-gray/>
     </view>
 </view>
+<ai-footer/>

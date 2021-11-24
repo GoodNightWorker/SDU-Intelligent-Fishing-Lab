@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/administrator/labinfo/index",
         "pages/administrator/index/index",
         "pages/administrator/administrator/index",
         "pages/administrator/uploadimage/index",
@@ -13,7 +14,9 @@
         "ai-userinfo":"/components/userinfo/index",
         "ai-lablabel":"/components/lablabel/index",
         "ai-bindsuccess":"/components/bindsuccess/index",
-        "ai-labcard":"/components/labcard/index"
+        "ai-labcard":"/components/labcard/index",
+        "ai-labcard-gray":"/components/labcard_gray/index",
+        "ai-footer":"/components/footer/index"
     },
     "window": {
         "backgroundTextStyle": "light",

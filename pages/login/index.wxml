@@ -5,4 +5,4 @@
     <ai-userSelectCard color="green" title="我是实验室成员" subtitle="User" image="/images/icon-user.svg" bind:tap="btnUserSelectCard" data-role="User"/>
     <ai-userSelectCard color="yellow" title="我是临时来访" subtitle="Guest" image="/images/icon-guest.svg" bind:tap="btnUserSelectCard" data-role="Guest"/>
 </view>
-<view class="fish">智慧摸鱼实验室</view>
+<ai-footer/>
