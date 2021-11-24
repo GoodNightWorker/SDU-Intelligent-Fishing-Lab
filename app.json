@@ -1,10 +1,9 @@
 {
     "pages": [
-        "pages/administratorindex/index",
-        "pages/login/index",
-        "pages/index/index",
-        "pages/administrator/index",
-        "pages/uploadimage/index"
+        "pages/administrator/index/index",
+        "pages/administrator/administrator/index",
+        "pages/administrator/uploadimage/index",
+        "pages/login/index"
     ],
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",

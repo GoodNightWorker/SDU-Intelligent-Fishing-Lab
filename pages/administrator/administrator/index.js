@@ -1,4 +1,4 @@
-import WxValidate from '../../utils/WxValidate';
+import WxValidate from '../../../utils/WxValidate';
 var Validate=""
 Page({
     data: {
