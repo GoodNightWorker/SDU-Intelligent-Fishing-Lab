@@ -1,0 +1,25 @@
+<view class="sky">
+    <view class="bird">
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="wind"></view>
+        <view class="bird-body">
+            <view class="bird-head"></view>
+            <view class="bird-wing-left">
+                <view class="bird-wing-left-top"></view>
+            </view>
+            <view class="bird-wing-right">
+                <view class="bird-wing-right-top"></view>
+            </view>
+            <view class="bird-tail-left"></view>
+            <view class="bird-tail-right"></view>
+        </view>
+    </view>
+</view>

@@ -48,5 +48,11 @@ Page({
                 "isOn":"on"
             },
         ]
-    }
+    },
+    
+      scrollToTop() {
+        this.setAction({
+          scrollTop: 0
+        })
+      },
 })

@@ -18,7 +18,8 @@
         "ai-labcard-gray":"/components/labcard_gray/index",
         "ai-footer":"/components/footer/index",
         "ai-switch":"/components/switch/index",
-        "ai-devicecard":"/components/devicecard/index"
+        "ai-devicecard":"/components/devicecard/index",
+        "ai-bird":"/components/bird/index"
     },
     "window": {
         "backgroundTextStyle": "light",
