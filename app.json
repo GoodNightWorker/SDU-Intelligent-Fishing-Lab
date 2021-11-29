@@ -1,9 +1,10 @@
 {
     "pages": [
-        "pages/administrator/labinfo/index",
-        "pages/administrator/index/index",
-        "pages/administrator/administrator/index",
-        "pages/administrator/uploadimage/index",
+        "pages/labinfo/index",
+        "pages/labinfo/labname/index",
+        "pages/index/index",
+        "pages/administrator/index",
+        "pages/uploadimage/index",
         "pages/login/index"
     ],
     "usingComponents": {

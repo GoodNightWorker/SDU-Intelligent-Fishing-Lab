@@ -15,8 +15,10 @@
     {
         margin-top: 20rpx;
         margin-left: var(--margin-12);
+        width: 100rpx;
 
         font-size: var(--font-12);
+        text-align: center;
 
         color: var(--gray-2);
     }
@@ -24,7 +26,8 @@
     .icon
     {
         margin-top: 40rpx;
-        margin-left: 30rpx;
+
+//margin-left: 6rpx;
         width: 80rpx;
         height: 80rpx;
     }

@@ -3,7 +3,7 @@ Page({
         listData:[
             {
                 "name":"名称",
-                "value":"实验室 N5-101 >"
+                "value":"实验室 N5-101 >",
             },
             {
                 "name":"管理员",
@@ -55,4 +55,8 @@ Page({
           scrollTop: 0
         })
       },
+    
+        toName(){
+            wx.navigateTo({url:"pages/administrator/labinfo/labname/index"});
+        }
 })

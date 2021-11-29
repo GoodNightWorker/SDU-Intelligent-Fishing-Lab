@@ -4,7 +4,7 @@
         <view class="list">
             <view class="list-item" wx:for="{{listData}}" wx:for-item="listData_item" wx:key="name">
                 <view class="name">{{listData_item.name}}</view> 
-                <view class="value">{{listData_item.value}}</view>
+                <view class="value" bindtap="{{listData_item.function}}">{{listData_item.value}}</view>
             </view>
         </view>
         <view class="title">实验室设备</view>
