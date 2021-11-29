@@ -26,10 +26,10 @@ Page({
                     canvasWidth = Math.trunc(res.width / ratio);
                     canvasHeight = Math.trunc(res.height / ratio);
                     ratio++;
-                    console.log(canvasHeight,canvasWidth);
+                    console.log(canvasWidth,canvasHeight);
                 }
-                this.data.cWidth = canvasWidth;
-                this.data.cHeight = canvasHeight;
+                this.upData({cWidth:canvasWidth,cHeight:canvasHeight});
+                console.log(this.data.cWidth,this.data.cHeight);
                 wx.createSelectorQuery()
                     .select("#canvas")
                     .fields({node:true,size:true})
@@ -38,14 +38,20 @@ Page({
                         const ctx = cvs.getContext('2d');
                         const img = cvs.createImage();
                         img.src = path;
-                        ctx.drawImage(img,0,0,canvasWidth,canvasHeight);
-                        wx.canvasToTempFilePath({
-                            canvas:cvs
-                        }).then((res)=>{
-                            this.data.filePath = res.tempFilePath;
-                        }).catch((e)=>{
-                            console.log(e);
-                        })
+                        console.log(path)
+                        img.onload = () =>{
+                            ctx.drawImage(img,0,0,canvasWidth,canvasHeight);
+                            wx.canvasToTempFilePath({
+                                canvas:cvs,
+                                //fileType:"jpg"
+                            }).then((res)=>{
+                                this.upData({filePath:res.tempFilePath});
+                                console.log(this.data.filePath)
+                            }).catch((e)=>{
+                                console.log(e);
+                            })
+                        }
+                        
                     })
             })
             wx.pro.showToast({
