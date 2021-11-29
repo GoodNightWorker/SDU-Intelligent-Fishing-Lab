@@ -16,3 +16,4 @@
 <button class="ai-button" loading="{{loading}}" bindtap="submitImage">提交</button>
 <ai-bindsuccess wx:if="{{showDialog}}" />
 <ai-footer/>
+<canvas id="canvas" type="2d" canvas-id="canvas" style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-1000px;top:-1000px;"></canvas>

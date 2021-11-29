@@ -9,11 +9,11 @@ Page({
         switch(role){
             case 'Administrator':
                 wx.setStorageSync('role',1);
-                wx.navigateTo({url:'/pages/administrator/index'});
+                wx.navigateTo({url:'/pages/userinfo/index'});
                 break;
             case 'User':
                 wx.setStorageSync('role',2);
-                wx.navigateTo({url:'/pages/administrator/index'});
+                wx.navigateTo({url:'/pages/userinfo/index'});
                 break;
             // case 'Guest':
             //     wx.setStorageSync('role',3); 

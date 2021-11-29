@@ -8,7 +8,7 @@ import {updataInit} from 'wx-updata'
 var mqtt = require('./utils/mqtt');
 var client = null;
 
-const connectMqtt=function(){
+const connectMqtt = () => {
   const options={
     connectTimeout:4000,
     clientId:wx.getStorageSync('clientId'),
@@ -39,6 +39,30 @@ const connectMqtt=function(){
   })
 }
 
+const login = () =>{
+  wx.pro.login().then((res)=>{
+    wx.pro.request({
+    url:"https://api.yumik.top/api/v1/login/wechat",
+    data:{
+      code:res.code,
+      compulsory : true,
+    },
+    method:'post',
+    header:{
+      'content-type':'application/x-www-form-urlencoded'
+    },
+  })
+  .then((res)=>{
+    var token = res.data.data.token;
+    var clientId = res.data.data.mqttId;
+    wx.setStorageSync('token',token);
+    wx.setStorageSync('clientId',clientId);
+    console.log(token);
+  })
+  .catch((e)=>console.log(e));
+  }).catch((e)=>console.log(e))
+}
+
 
 promisifyAll()
 updataInit()
@@ -46,27 +70,7 @@ updataInit()
 App({
   onLaunch() {
     // connectMqtt();
-    // wx.pro.getSystemInfo().then(console.log)
-    // wx.pro.login().then((res)=>{
-    //   wx.pro.request({
-    //   url:"https://api.yumik.top/api/v1/login/wechat",
-    //   data:{
-    //     code:res.code,
-    //     compulsory : true,
-    //   },
-    //   method:'post',
-    //   header:{
-    //     'content-type':'application/x-www-form-urlencoded'
-    //   },
-    // })
-    // .then((res)=>{
-    //   var token = res.data.data.token;
-    //   var clientId = res.data.data.mqttId;
-    //   wx.setStorageSync('token',token);
-    //   wx.setStorageSync('clientId',clientId);
-    // })
-    // .catch((e)=>console.log(e));
-    // }).catch((e)=>console.log(e))
+    login();
     Page = updataInit(Page, {
       debug: false
     }) 

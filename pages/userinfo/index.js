@@ -84,24 +84,24 @@ Page({
             return false;
         }
         wx.navigateTo({url:'/pages/uploadimage/index'});
-        // wx.pro.request({
-        //     url:"https://api.yumik.top/api/v1/user/info",
-        //     data:{
-        //       name:form['name'],
-        //       academy:form['academy'],
-        //       telephone:form['telephone'],
-        //       sduNumber:form['sduNumber'],
-        //       role:wx.getStorageSync('role'),
-        //     },
-        //     method:'post',
-        //     header:{
-        //       'content-type':'application/x-www-form-urlencoded',
-        //       'Authorization':wx.getStorageSync('token')
-        //     },
-        // }).then((res)=>{
-        //     console.log(res)
-        // }).catch((e)=>{
-        //     console.log(e)
-        // })
+        wx.pro.request({
+            url:"https://api.yumik.top/api/v1/user/info",
+            data:{
+              name:form['name'],
+              academy:form['academy'],
+              telephone:form['telephone'],
+              sduNumber:form['sduNumber'],
+              role:wx.getStorageSync('role'),
+            },
+            method:'post',
+            header:{
+              'content-type':'application/x-www-form-urlencoded',
+              'Authorization':wx.getStorageSync('token')
+            },
+        }).then((res)=>{
+            console.log(res)
+        }).catch((e)=>{
+            console.log(e)
+        })
     }
 });

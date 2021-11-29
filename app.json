@@ -1,11 +1,13 @@
 {
     "pages": [
-        "pages/labinfo/index",
-        "pages/labinfo/labname/index",
-        "pages/index/index",
-        "pages/administrator/index",
         "pages/uploadimage/index",
-        "pages/login/index"
+        "pages/login/index",
+        "pages/userinfo/index",
+        
+        "pages/index/index",
+        "pages/labinfo/index",
+        "pages/labinfo/labname/index"
+        
     ],
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
