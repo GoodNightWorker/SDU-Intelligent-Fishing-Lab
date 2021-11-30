@@ -1,10 +1,9 @@
 {
     "pages": [
+        "pages/index/index",
         "pages/uploadimage/index",
         "pages/login/index",
         "pages/userinfo/index",
-        
-        "pages/index/index",
         "pages/labinfo/index",
         "pages/labinfo/labname/index"
         

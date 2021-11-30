@@ -3,69 +3,38 @@ Page({
         showModel: false,
         showDialog: false,
         filePath:"",
-        cWidth: 0,
-        cHeight : 0,
     },
     upData(data) {
         return this.setData(objToPath(data))
     },
     chooseImage() {
         wx.pro.chooseImage({
-            count:1,
-            sizeType:['original','compressed'],
-            sourceType:['album','camera'],
-        }).then((res)=>{
-            wx.pro.getImageInfo({
-                src:res.tempFilePaths[0],
-            }).then((res)=>{
-                var ratio = 2;
-                var canvasWidth = res.width;
-                var canvasHeight = res.height;
-                var path = res.path;
-                while (canvasWidth * canvasHeight >= 65536){
-                    canvasWidth = Math.trunc(res.width / ratio);
-                    canvasHeight = Math.trunc(res.height / ratio);
-                    ratio++;
-                    console.log(canvasWidth,canvasHeight);
-                }
-                this.upData({cWidth:canvasWidth,cHeight:canvasHeight});
-                console.log(this.data.cWidth,this.data.cHeight);
-                wx.createSelectorQuery()
-                    .select("#canvas")
-                    .fields({node:true,size:true})
-                    .exec((res)=>{
-                        const cvs= res[0].node;
-                        const ctx = cvs.getContext('2d');
-                        const img = cvs.createImage();
-                        img.src = path;
-                        console.log(path)
-                        img.onload = () =>{
-                            ctx.drawImage(img,0,0,canvasWidth,canvasHeight);
-                            wx.canvasToTempFilePath({
-                                canvas:cvs,
-                                //fileType:"jpg"
-                            }).then((res)=>{
-                                this.upData({filePath:res.tempFilePath});
-                                console.log(this.data.filePath)
-                            }).catch((e)=>{
-                                console.log(e);
-                            })
-                        }
-                        
-                    })
+            sizeType: ['compressed'],
+            count: 1,
+        }).then((res) => {
+            console.log(res)
+            this.filePath = res.tempFilePaths[0];
+            return wx.pro.getFileInfo({
+                filePath: this.filePath,
             })
-            wx.pro.showToast({
-                icon:"loading",
-                title:'正在上传'
+        }).then((image) => {
+            console.log(image)
+            return wx.pro.getFileInfo({
+                filePath: this.filePath,
             })
-        }).catch((e)=>{
-            console.log(e);
-        })
+        }).then((file) => {
+            console.log(file)
+            return wx.pro.saveImageToPhotosAlbum({
+                filePath: this.filePath,
+            })
+        }).then((success) => {
+            console.log(success)
+        }).catch((e) => { console.log(e) })
     },
     submitImage(){
         wx.pro.uploadFile({
             url:'https://api.yumik.top/api/v1/face/upload',
-            filePath:this.data.filePath,
+            filePath:this.filePath,
             name:'file',
             header:{
                 'content-type':'application/x-www-form-urlencoded',
@@ -76,7 +45,8 @@ Page({
                 if(JSON.parse(res.data).errCode==0){
                     this.upData({showDialog:true})
                     setTimeout(()=>{
-                        this.upData({showDialog:false})
+                        this.upData({showDialog:false});
+                        wx.pro.redirectTo({url:'/pages/index/index'});
                     },800)
                 }
                 if(JSON.parse(res.data).errCode==40304){
@@ -88,8 +58,9 @@ Page({
                 if(JSON.parse(res.data).errCode==40305){
                     wx.pro.showToast({
                         icon:'none',
-                        title:'此图片已存在，请重新上传！'
+                        title:'已上传过图片，请勿重复上传！'
                     })
+                    wx.pro.redirectTo({url:'/pages/index/index'});
                 }
                 if(JSON.parse(res.data).errCode==40102){
                     wx.pro.showToast({
