@@ -1,10 +1,11 @@
+<scroll-view class="scroll" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
 <view class="userinfo">
-    <view class="img"></view>
+    <image class="img" src="{{avatarUrl}}" />
     <view class="text">
-        <text class="name">张三</text>
+        <text class="name">{{userInfo.name}}</text>
         <view class="info">
-            <view class="idnum">201805121155</view>
-            <view class="academy">信息科学与工程学院</view>
+            <view class="idnum">{{userInfo.sduNumber}}</view>
+            <view class="academy">{{userInfo.academy}}</view>
         </view>
     </view>
     <view class="scan">
@@ -19,7 +20,7 @@
     </view>
     <view class="line"></view>
     <view class="lab">
-        <view class="lab-num">3</view>
+        <view class="lab-num">{{labCount}}</view>
         <view class="lab-text">实验室</view>
     </view>
 </view>
@@ -31,11 +32,13 @@
             <image class="button-icon" src="/images/icon-adindex-all.svg" />
         </view>
     </view>
-    <view class="card">
-        <ai-labcard/>
-        <ai-labcard color="green" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
-        <ai-labcard color="yellow" image="/images/icon-noticeoff.svg" subtitle="一切安好"/>
-        <ai-labcard-gray/>
+    <view class="card" >
+        <view wx:for="{{labListName}}" wx:for-item="labListName_item">
+            <ai-labcard title ="{{labListName_item}}" subtitle="一切安好" image="/images/icon-noticeoff.svg"/>
+        </view>
     </view>
+    <ai-labcard-gray bind:tap="addLab"/>
+    <ai-labcard-gray title="加入实验室" bind:tap="enterLab"/>
 </view>
+</scroll-view>
 <ai-footer/>

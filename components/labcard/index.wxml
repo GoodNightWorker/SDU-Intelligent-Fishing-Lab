@@ -8,5 +8,4 @@
         <image class="subtitle-icon" src="{{image}}" />
         <view class="subtitle-text">{{subtitle}}</view>
     </view>
-    
 </view>

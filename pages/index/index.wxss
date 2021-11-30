@@ -1,3 +1,7 @@
+.scroll {
+  height: 1120rpx;
+}
+
 .userinfo {
   display: flex;
   margin-top: var(--margin-16);
@@ -143,6 +147,8 @@
 }
 
 .mylab .card {
+  display: flex;
   margin-top: var(--margin-12);
   margin-left: 9rpx;
+  flex-wrap: wrap;
 }
