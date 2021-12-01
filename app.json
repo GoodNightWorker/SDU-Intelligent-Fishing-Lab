@@ -4,8 +4,10 @@
         "pages/uploadimage/index",
         "pages/login/index",
         "pages/userinfo/index",
-        "pages/labinfo/index",
-        "pages/labinfo/labname/index"
+        "pages/index/addlab/index",
+        "pages/index/labinfo/index",
+        "pages/index/labinfo/labname/index",
+        "pages/index/labinfo/labkeylist/index"
         
     ],
     "usingComponents": {

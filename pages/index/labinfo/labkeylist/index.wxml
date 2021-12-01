@@ -1,0 +1,4 @@
+<view class="title">实验室密钥</view>
+<view class="device-list">
+    <ai-devicecard wx:for="" wx:for-item="" wx:key="" title="" image="" isOn=""/>
+</view>

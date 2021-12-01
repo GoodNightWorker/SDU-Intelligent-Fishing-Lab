@@ -1,0 +1,5 @@
+<view class="title">名称</view>
+<view class="list">
+    <input class="list-item" placeholder="{{labName}}" bindinput="getInput" value="{{labName}}"/>
+</view>
+<button class="ai-button" bind:tap="changeName">确认</button>

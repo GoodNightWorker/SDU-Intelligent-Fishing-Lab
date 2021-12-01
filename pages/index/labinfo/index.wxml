@@ -1,0 +1,39 @@
+<view class="container">
+    <scroll-view class="scroll" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view class="title">实验室信息</view>
+        <view class="list">
+            <view class="list-item">
+                <view class="name">名称</view>
+                <view class="value" bindtap="toDetail" data-name="名称">{{listData.name}} ></view>
+            </view>
+            <view class="list-item">
+                <view class="name">管理员</view>
+                <view class="value" bindtap="toDetail" data-name="管理员">{{listData.adminName}}</view>
+            </view>
+            <view class="list-item">
+                <view class="name">联系方式</view>
+                <view class="value" bindtap="toDetail" data-name="联系方式">{{listData.telephone}}</view>
+            </view>
+            <view class="list-item">
+                <view class="name">成员</view>
+                <view class="value" bindtap="toDetail" data-name="成员">{{listData.member}}</view>
+            </view>
+            <view class="list-item">
+                <view class="name">密钥</view>
+                <view class="value" bindtap="toDetail" data-name="密钥">{{listData.key}}</view>
+            </view>
+            <view class="list-item">
+                <view class="name">备注</view>
+                <view class="value" bindtap="toDetail" data-name="备注">{{listData.note}}</view>
+            </view>
+        </view>
+        <view class="title">实验室设备</view>
+        <view class="device-list">
+            <ai-devicecard wx:for="{{deviceList}}" wx:for-item="device_item" wx:key="title" title="{{device_item.title}}" image="{{device_item.image}}" isOn="{{device_item.isOn}}"/>
+        </view>
+        <button class="ai-button" bind:tap="deleteLab">删除实验室</button>
+    </scroll-view>
+    <ai-footer/>
+</view>
+
+

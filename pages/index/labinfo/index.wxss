@@ -43,3 +43,7 @@
   margin: var(--margin-24) var(--margin-4);
   flex-wrap: wrap;
 }
+
+.ai-button {
+  background-color: var(--red);
+}

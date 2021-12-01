@@ -33,12 +33,12 @@
         </view>
     </view>
     <view class="card" >
-        <view wx:for="{{labListName}}" wx:for-item="labListName_item">
-            <ai-labcard title ="{{labListName_item}}" subtitle="一切安好" image="/images/icon-noticeoff.svg"/>
+        <view wx:for="{{labListDetail}}" wx:for-item="labListDetail_item">
+            <ai-labcard bind:tap="getLabDetail" wx:key="{{labListDetail_item.tableLabId}}" id="{{labListDetail_item.tableLabId}}" title ="{{labListDetail_item.name}}" color="{{labListDetail_item.color}}" subtitle="一切安好" image="/images/icon-noticeoff.svg"/>
         </view>
-    </view>
-    <ai-labcard-gray bind:tap="addLab"/>
-    <ai-labcard-gray title="加入实验室" bind:tap="enterLab"/>
+        <ai-labcard-gray title="新建实验室" bind:tap="addLab"/>
+        <ai-labcard-gray title="加入实验室" bind:tap="enterLab"/>
+    </view> 
 </view>
 </scroll-view>
 <ai-footer/>
