@@ -1,21 +1,48 @@
 Page({
     data:{
-        labId:'',
-        duration:'密钥有效期',
-        deadline:'用户有效期',
-        multiIndex: [0,0,0,0,0],
-        multiIndex2:[0,0,0,0,0,],
-        multiArray: [[], [], [], [], []],
+        labId:0,
+        duration:0,
+        deadline:-1,
+        durationIndex:0,
+        durationRange:['15 分钟','1 小时','12 小时','1 天','3 天','7 天'],
+        timeIndex:0,
+        timeRange:['永久','临时'],
+        deadlineIndex: [0,0,0,0,0],
+        deadlineRange: [[], [], [], [], []],
         monthNum:[],
     },
     onLoad:function(option){
         this.upData({labId:option.id});
-        var date = new Date();
-        this.setData({deadline:date.getTime()});
         this.setMonthNum();
+        this.setDeadlineRange();
         var date = new Date();
-        var arr = [date.getFullYear(),date.getMonth(),date.getDate(),date.getHours(),date.getMinutes()]
-        this.setMultiArray(...arr);
+        date.setMinutes(date.getMinutes()+15);
+        this.setData({duration:date.getTime()});
+    },
+    setDuration(e){
+        this.setData({durationIndex: e.detail.value});
+        var date = new Date();
+        switch(this.data.durationIndex){
+            case '0':
+                date.setMinutes(date.getMinutes()+15);
+                break;
+            case '1':
+                date.setHours(date.getHours()+1);
+                break;
+            case '2':
+                date.setHours(date.getHours()+12);
+                break;
+            case '3':
+                date.setDate(date.getDate()+1);
+                break;
+            case '4':
+                date.setDate(date.getDate()+3);
+                break;
+            case '5':
+                date.setDate(date.getDate()+7);
+                break;
+        }
+        this.setData({duration:date.getTime()});
     },
     setMonthNum(year){
         var Num = [31,28,31,30,31,30,31,31,30,31,30,31];
@@ -27,92 +54,42 @@ Page({
         }
         this.setData({monthNum:Num});
     },
-    setMultiArray(year,month,date,hour,minute,op){
+    setDeadlineRange(year,month){
         var arr = [[],[],[],[],[],[]];
+        this.setMonthNum(year);
         for(let i = 0; i <= 10; i++){
             arr[0].push(`${2021+i} 年`);
-            this.setMonthNum(2021+i);
         }
-        for(let i = month; i <= 11; i++){
+        for(let i = 0; i <= 11; i++){
             arr[1].push(`${i+1} 月`)
         }
-        for(let i = date; i<= this.data.monthNum[month]; i++){
+        for(let i = 1; i<= (month?this.data.monthNum[month]:31); i++){
             arr[2].push(`${i} 日`)
         }
-        for(let i = hour; i<= 24; i++){
+        for(let i = 0; i<= 24; i++){
             arr[3].push(`${i} 时`)
         }
-        for(let i = minute; i<= 60; i++){
+        for(let i = 0; i<= 60; i++){
             arr[4].push(`${i} 分`)
         }
-        if(op){
-            arr[0].push('永久')
-        }
-        this.setData({multiArray:arr});
-        console.log(this.data.multiArray)
+        this.setData({deadlineRange:arr});
     },
-    bindMultiPickerChange(e) {
-        switch(e.currentTarget.id){
-            case 'duration':
-                this.setData({multiIndex: e.detail.value});
-                var multiArray = this.data.multiArray;
-                var multiIndex = this.data.multiIndex;
-                var duration = `${parseInt(multiArray[0][multiIndex[0]])}-${parseInt(multiArray[1][multiIndex[1]])}-${parseInt(multiArray[2][multiIndex[2]])} ${parseInt(multiArray[3][multiIndex[3]])}:${parseInt(multiArray[4][multiIndex[4]])}:00`;
-                var date = new Date(duration);
-                this.setData({duration:date.getTime()});
-                break;
-            case 'deadline':
-                this.setData({multiIndex2: e.detail.value});
-                var multiArray = this.data.multiArray;
-                var multiIndex2 = this.data.multiIndex2;
-                if(multiArray[0][multiIndex2[0]]=='永久'){
-                    this.upData({deadline:null});
-                }
-                else{
-                    var deadline = `${parseInt(multiArray[0][multiIndex2[0]])}-${parseInt(multiArray[1][multiIndex2[1]])}-${parseInt(multiArray[2][multiIndex2[2]])} ${parseInt(multiArray[3][multiIndex2[3]])}:${parseInt(multiArray[4][multiIndex2[4]])}:00`;
-                    var date = new Date(deadline);
-                    this.setData({deadline:date.getTime()});
-                }
-                break;
-        }
-        console.log(this.data)
+    timeChange(e){
+        this.setData({timeIndex: e.detail.value});
     },
-    bindMultiPickerColumnChange(e) {
-        switch(e.currentTarget.id){
-            case 'duration':
-                this.data.multiIndex[e.detail.column]=e.detail.value;
-                switch(e.detail.column){
-                    case 0:
-                        switch(this.data.multiIndex[0]){
-                            case 0:
-                                var date = new Date();
-                                this.setMultiArray (date.getFullYear(),date.getMonth(),date.getDate(),date.getHours(),date.getMinutes(),0);
-                                break;
-                            default:
-                                this.setMultiArray(2021,0,1,1,1,0);
-                        }
-                    default:
-                }
-                this.upData(this.data.multiIndex);
-                break;
-            case 'deadline':
-                this.data.multiIndex2[e.detail.column]=e.detail.value;
-                switch(e.detail.column){
-                    case 0:
-                        switch(this.data.multiIndex2[0]){
-                            case 0:
-                                var date = new Date();
-                                this.setMultiArray (date.getFullYear(),date.getMonth(),date.getDate(),date.getHours(),date.getMinutes(),1);
-                                break;
-                            default:
-                                this.setMultiArray(2021,0,1,1,1,1);
-                        }
-                    default:
-                }
-                this.upData(this.data.multiIndex2);
-                break;
-        }
-      },
+    deadlineChange(e) {
+        this.setData({deadlineIndex: e.detail.value});
+        var deadlineRange = this.data.deadlineRange;
+        var deadlineIndex = this.data.deadlineIndex;
+        var deadline = `${parseInt(deadlineRange[0][deadlineIndex[0]])}-${parseInt(deadlineRange[1][deadlineIndex[1]])}-${parseInt(deadlineRange[2][deadlineIndex[2]])} ${parseInt(deadlineRange[3][deadlineIndex[3]])}:${parseInt(deadlineRange[4][deadlineIndex[4]])}:00`;
+        var date = new Date(deadline);
+        this.setData({deadline:date.getTime()});
+    },
+    deadlineColumnChange(e) {
+        this.data.deadlineIndex[e.detail.column]=e.detail.value;
+        this.setDeadlineRange(parseInt(this.data.deadlineRange[0][this.data.deadlineIndex[0]]),parseInt(this.data.deadlineRange[1][this.data.deadlineIndex[1]])-1)
+        this.upData(this.data.deadlineIndex);
+    },
     addKey(){
         console.log(this.data)
         wx.pro.request({
