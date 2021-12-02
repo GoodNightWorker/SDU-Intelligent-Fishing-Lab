@@ -1,4 +1,5 @@
 <view class="title">实验室密钥</view>
 <view class="device-list">
     <ai-devicecard wx:for="" wx:for-item="" wx:key="" title="" image="" isOn=""/>
+    <ai-devicecard title="申请密钥" image="/images/icon-addkey.svg" style_switch="display:none" bind:tap="addKey"/>
 </view>

@@ -1,13 +1,14 @@
 {
     "pages": [
-        "pages/index/index",
+        "pages/index/labinfo/labkeylist/index","pages/index/index",
         "pages/uploadimage/index",
         "pages/login/index",
         "pages/userinfo/index",
         "pages/index/addlab/index",
         "pages/index/labinfo/index",
         "pages/index/labinfo/labname/index",
-        "pages/index/labinfo/labkeylist/index"
+
+        "pages/index/labinfo/labkeylist/addkey/index"
         
     ],
     "usingComponents": {

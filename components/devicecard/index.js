@@ -14,6 +14,10 @@ Component({
         image: {
             type: String,
             value: "/images/icon-nose.svg"
+        },
+        style_switch:{
+            type:String,
+            value:""
         }
     },
 

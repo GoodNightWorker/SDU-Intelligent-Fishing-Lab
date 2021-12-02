@@ -34,7 +34,7 @@ Page({
             prePage.upData({
                 listData:list
             })
-            wx.pro.navigateBack({url:`/pages/index/labinfo/index`})
+            wx.pro.navigateBack()
         }).catch((e)=>{
             console.log(e)
         })

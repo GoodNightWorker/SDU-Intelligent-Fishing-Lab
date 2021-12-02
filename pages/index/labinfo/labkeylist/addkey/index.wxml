@@ -1,0 +1,23 @@
+<view class="title">申请新密钥</view>
+<view class="list">
+    <view class="list-item">
+        <view class="name">密钥有效期</view>
+        <view class="value">
+            <picker id='duration' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} {{multiArray[2][multiIndex[2]]}} {{multiArray[3][multiIndex[3]]}} {{multiArray[4][multiIndex[4]]}}
+            </picker>
+        </view>
+    </view>
+    <view class="list-item">
+        <view class="name">用户有效期</view>
+        <view class="value">
+            <picker id='deadline' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex2}}" range="{{multiArray}}">
+                <view wx:if="{{multiArray[0][multiIndex2[0]]!='永久'}}">
+                    {{multiArray[0][multiIndex2[0]]}} {{multiArray[1][multiIndex2[1]]}} {{multiArray[2][multiIndex2[2]]}} {{multiArray[3][multiIndex2[3]]}} {{multiArray[4][multiIndex2[4]]}}
+                </view>
+                <view wx:else>永久</view>
+            </picker>
+        </view>
+    </view>
+</view>
+<button class="ai-button" bind:tap="addKey">创建新密钥</button>

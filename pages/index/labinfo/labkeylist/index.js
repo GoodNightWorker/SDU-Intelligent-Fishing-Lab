@@ -1,8 +1,11 @@
 Page({
     data:{
-
+        labId:'31',
     },
-    onLoad:function(){
-        
+    onLoad:function(option){
+        //this.upData({labId:option.id})
+    },
+    addKey(){
+        wx.pro.navigateTo({url:`/pages/index/labinfo/labkeylist/addkey/index?id=${this.data.labId}`});
     }
 })

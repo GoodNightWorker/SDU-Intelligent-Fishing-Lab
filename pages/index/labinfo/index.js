@@ -82,10 +82,13 @@ Page({
     toDetail(e){
         switch(e.currentTarget.dataset.name){
             case '名称':
-                wx.navigateTo({url:`/pages/index/labinfo/labname/index?value=${this.data.listData.name}&id=${this.data.listData.labId}`});
+                wx.pro.navigateTo({url:`/pages/index/labinfo/labname/index?value=${this.data.listData.name}&id=${this.data.listData.labId}`});
                 break;
             case '成员':
                 console.log(e);
+                break;
+            case '密钥':
+                wx.pro.navigateTo({url:`/pages/index/labinfo/labkeylist/index?id=${this.data.listData.labId}`});
                 break;
         }
     },

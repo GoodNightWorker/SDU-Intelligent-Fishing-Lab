@@ -24,7 +24,7 @@ Page({
                     duration:2500
                 })
                 setTimeout(()=>{
-                    wx.pro.navigateBack({url:'/pages/index/index'})
+                    wx.pro.navigateBack()
                 },2500)
             }
         }).catch((e)=>{
