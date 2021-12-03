@@ -21,11 +21,11 @@ Page({
                 wx.pro.showToast({
                     title:'添加成功，两秒后自动回到上一页',
                     icon:'none',
-                    duration:2500
+                    duration:2000
                 })
                 setTimeout(()=>{
                     wx.pro.navigateBack()
-                },2500)
+                },2000)
             }
         }).catch((e)=>{
             console.log(e);

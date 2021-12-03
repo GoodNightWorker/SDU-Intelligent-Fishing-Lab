@@ -8,6 +8,7 @@
         "pages/index/addlab/index",
         "pages/index/labinfo/index",
         "pages/index/labinfo/labname/index",
+        "pages/index/labinfo/labmember/index",
         "pages/index/labinfo/labkeylist/index",
         "pages/index/labinfo/labkeylist/addkey/index",
         "pages/index/labinfo/labkeylist/labkeyinfo/index"

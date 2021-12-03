@@ -45,7 +45,7 @@ const login = () =>{
     url:"https://api.yumik.top/api/v1/login/wechat",
     data:{
       code:res.code,
-      compulsory : true,
+      //compulsory:true
     },
     method:'post',
     header:{
@@ -53,11 +53,13 @@ const login = () =>{
     },
   })
   .then((res)=>{
-    var token = res.data.data.token;
-    var clientId = res.data.data.mqttId;
-    wx.setStorageSync('token',token);
-    wx.setStorageSync('clientId',clientId);
-    console.log(token);
+    if(res.data.errCode === 0){
+      var token = res.data.data.token;
+      var clientId = res.data.data.mqttId;
+      wx.setStorageSync('token',token);
+      wx.setStorageSync('clientId',clientId);
+      console.log(token);
+    }
   })
   .catch((e)=>console.log(e));
   }).catch((e)=>console.log(e))

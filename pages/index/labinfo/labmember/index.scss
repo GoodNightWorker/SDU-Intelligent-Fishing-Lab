@@ -1,0 +1,28 @@
+.title
+{
+    display: flex;
+
+    margin-top: var(--margin-24);
+    margin-left: var(--margin-16);
+
+    align-items: center;
+
+    .circle
+    {
+        border-radius: 14rpx;
+        width: 14rpx;
+        height: 14rpx;
+
+        background-color: rgba(178, 188, 253, 1);
+    }
+
+    .text
+    {
+        margin-left: var(--margin-12);
+
+        font-size: var(--font-18);
+        line-height: 50rpx;
+
+        color: var(--gray-1);
+    }
+}

@@ -1,0 +1,16 @@
+<view class="title">
+    <view class="circle"></view>
+    <view class="text">代管员</view>
+</view>
+<view class="head">
+    <view class="head-border">
+        <image class="head-img" src="data:image/png;base64,{{userList[0].img}}" />
+    </view>
+</view>
+<view class="title">
+    <view class="circle"></view>
+    <view class="text">成员</view>
+</view>
+<view class="head">
+    
+</view>

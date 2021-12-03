@@ -8,7 +8,7 @@
         <view class="name">管理员电话</view>
         <view class="value">{{keyList.telephone}}</view>
     </view>
-    <view class="list-item">
+    <view class="list-item" bind:longtap="copyKey" id="{{key}}">
         <view class="name">密钥</view>
         <view class="value">{{key}}</view>
     </view>

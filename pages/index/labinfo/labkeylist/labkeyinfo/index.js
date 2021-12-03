@@ -27,6 +27,15 @@ Page({
             console.log(e);
         })
     },
+    copyKey(e){
+        console.log(e.currentTarget.id)
+        wx.pro.setClipboardData({
+            data:e.currentTarget.id
+        }).then((res)=>{
+        }).catch((e)=>{
+            console.log(e);
+        })
+    },
     toTime(timestamp){
         if(timestamp === null){
             return "永久";

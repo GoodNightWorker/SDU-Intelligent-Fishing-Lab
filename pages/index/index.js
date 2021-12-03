@@ -8,20 +8,7 @@ Page({
     },
     color:['yellow','green','blue'],
     onShow:function(){
-        //获取用户头像
-        wx.pro.getSetting({
-        }).then((res)=>{
-          if(res.authSetting['scope.userInfo']){
-            wx.pro.getUserInfo({})
-            .then((res)=>{
-              this.upData({avatarUrl:res.userInfo.avatarUrl})
-            }).catch((e)=>{
-                console.log(e);
-            })
-          }
-        }).catch((e)=>{
-            console.log(e);
-        })
+        wx.hideHomeButton(); //隐藏小房子
         //获取用户的名字、学号、学院
         wx.pro.request({
             url:'https://api.yumik.top/api/v1/user/info',
@@ -31,7 +18,24 @@ Page({
                 'Authorization':wx.getStorageSync('token')
             }
         }).then((res)=>{
+            //获取用户头像
             this.upData({userInfo:res.data.data.userInfo});
+            wx.pro.request({
+                url:'https://api.yumik.top/api/v1/face/base64',
+                method:'get',
+                header:{
+                    'content-type':'application/x-www-form-urlencoded',
+                    'Authorization':wx.getStorageSync('token')
+                },
+                data:{
+                    'userId':res.data.data.userInfo.tableUserId,
+                    'min':true
+                }
+            }).then((res)=>{
+                this.upData({avatarUrl:res.data.data.base64})
+            }).catch((e)=>{
+                console.log(e)
+            })
         }).catch((e)=>{
             console.log(e);
         })

@@ -2,29 +2,25 @@
     <scroll-view class="scroll" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
         <view class="title">实验室信息</view>
         <view class="list">
-            <view class="list-item">
+            <view class="list-item" bindtap="toDetail" data-name="名称">
                 <view class="name">名称</view>
-                <view class="value" bindtap="toDetail" data-name="名称">{{listData.name}} ></view>
+                <view class="value">{{listData.name}} ></view>
             </view>
             <view class="list-item">
                 <view class="name">管理员</view>
-                <view class="value" bindtap="toDetail" data-name="管理员">{{listData.adminName}}</view>
+                <view class="value">{{listData.adminName}}</view>
             </view>
             <view class="list-item">
                 <view class="name">联系方式</view>
-                <view class="value" bindtap="toDetail" data-name="联系方式">{{listData.telephone}}</view>
+                <view class="value">{{listData.telephone}}</view>
             </view>
-            <view class="list-item">
+            <view class="list-item" bindtap="toDetail" data-name="成员">
                 <view class="name">成员</view>
-                <view class="value" bindtap="toDetail" data-name="成员">{{listData.member}}</view>
+                <view class="value">{{listData.member}}</view>
             </view>
-            <view class="list-item">
+            <view class="list-item" bindtap="toDetail" data-name="密钥">
                 <view class="name">密钥</view>
-                <view class="value" bindtap="toDetail" data-name="密钥">{{listData.key}} 临时密钥 ></view>
-            </view>
-            <view class="list-item">
-                <view class="name">备注</view>
-                <view class="value" bindtap="toDetail" data-name="备注">{{listData.note}}</view>
+                <view class="value">{{listData.key}} 临时密钥 ></view>
             </view>
         </view>
         <view class="title">实验室设备</view>

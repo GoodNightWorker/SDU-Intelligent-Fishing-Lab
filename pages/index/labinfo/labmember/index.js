@@ -1,0 +1,47 @@
+Page({
+    data:{
+        labId:59,
+        userList:[],
+    },
+    onLoad:function(option){
+        this.setData({labId:option.id});
+    },
+    onShow:function(){
+        wx.pro.request({
+            url:'https://api.yumik.top/api/v1/lab/user/list',
+            method:'get',
+            header:{
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token'),
+            },
+            data:{
+                'labId':this.data.labId,
+                'page':1
+            }
+        }).then((res)=>{
+            console.log(res)
+            this.setData({userList:res.data.data.userList});
+            this.data.userList.map((item,index)=>{
+                wx.pro.request({
+                    url:'https://api.yumik.top/api/v1/face/base64',
+                    method:'get',
+                    header:{
+                        'content-type':'application/x-www-form-urlencoded',
+                        'Authorization':wx.getStorageSync('token')
+                    },
+                    data:{
+                        'userId':item.tableUserId,
+                        'min':true
+                    }
+                }).then((res)=>{
+                    console.log(res)
+                    this.data.userList[index].img = res.data.data.base64;
+                    this.upData({userList:this.data.userList});
+                }).catch((e)=>{
+                    console.log(e)
+                })
+
+            })
+        })
+    }
+})

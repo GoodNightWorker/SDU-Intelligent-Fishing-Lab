@@ -1,13 +1,12 @@
 Page({
     data:{
         listData:{
-            name:' >',
+            name:'实验室',
             labId:'',
             adminName:'',
             telephone:'',
             member:' >',
             key:'',
-            note:' >',
         },
         deviceList:[
             {
@@ -31,10 +30,6 @@ Page({
                 "isOn":"on"
             },
         ]
-    },
-    
-    upData(data) {
-        return this.setData(objToPath(data))
     },
     onLoad:function(option){
         this.data.listData.labId = option.id;
@@ -105,7 +100,7 @@ Page({
                 wx.pro.navigateTo({url:`/pages/index/labinfo/labname/index?value=${this.data.listData.name}&id=${this.data.listData.labId}`});
                 break;
             case '成员':
-                console.log(e);
+                wx.pro.navigateTo({url:`/pages/index/labinfo/labmember/index?id=${this.data.listData.labId}`});
                 break;
             case '密钥':
                 wx.pro.navigateTo({url:`/pages/index/labinfo/labkeylist/index?id=${this.data.listData.labId}`});
