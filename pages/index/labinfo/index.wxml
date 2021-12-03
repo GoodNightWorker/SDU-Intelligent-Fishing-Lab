@@ -20,7 +20,7 @@
             </view>
             <view class="list-item">
                 <view class="name">密钥</view>
-                <view class="value" bindtap="toDetail" data-name="密钥">{{listData.key}}</view>
+                <view class="value" bindtap="toDetail" data-name="密钥">{{listData.key}} 临时密钥 ></view>
             </view>
             <view class="list-item">
                 <view class="name">备注</view>

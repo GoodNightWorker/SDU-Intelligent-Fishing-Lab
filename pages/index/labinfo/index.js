@@ -6,7 +6,7 @@ Page({
             adminName:'',
             telephone:'',
             member:' >',
-            key:'1永久 2临时 >',
+            key:'',
             note:' >',
         },
         deviceList:[
@@ -70,6 +70,26 @@ Page({
             })
         }).catch((e)=>{
             console.log(e);
+        })
+    },
+    onShow:function(){
+        wx.pro.request({
+            url:'https://api.yumik.top/api/v1/secret/list',
+            method:'get',
+            header:{
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token'),
+            },
+            data:{
+                'labId':this.data.listData.labId
+            }
+        }).then((res)=>{
+            var list = this.data.listData;
+            var arr = Object.keys(res.data.data)
+            list.key = arr.length;
+            this.setData({listData:list})
+        }).catch((e)=>{
+            console.log(e)
         })
     },
 

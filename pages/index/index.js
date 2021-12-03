@@ -63,7 +63,7 @@ Page({
             //根据列表获取实验室名称
             var list = [];
             this.setData({labList:res.data.data.labList});
-            this.data.labList.map((item)=>{
+            this.data.labList.map((item,index)=>{
                 wx.pro.request({
                     url:'https://api.yumik.top/api/v1/lab/get',
                     method:'get',
@@ -75,9 +75,8 @@ Page({
                         'labId':item['tableLabId']
                     }
                 }).then((res)=>{
-                    console.log(res)
                     res.data.data.lab['tableLabId'] = item['tableLabId'];
-                    res.data.data.lab['color'] = this.color[Math.floor(Math.random()*3)];
+                    res.data.data.lab['color'] = this.color[index%3];
                     list = [...list,res.data.data.lab];
                     this.setData({labListDetail:list});
                 }).catch((e)=>{

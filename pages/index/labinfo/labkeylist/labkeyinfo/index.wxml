@@ -1,0 +1,24 @@
+<view class="title">临时密钥详情</view>
+<view class="list">
+    <view class="list-item">
+        <view class="name">管理员姓名</view>
+        <view class="value">{{keyList.userName}}</view>
+    </view>
+    <view class="list-item">
+        <view class="name">管理员电话</view>
+        <view class="value">{{keyList.telephone}}</view>
+    </view>
+    <view class="list-item">
+        <view class="name">密钥</view>
+        <view class="value">{{key}}</view>
+    </view>
+    <view class="list-item">
+        <view class="name">密钥有效期</view>
+        <view class="value">{{keyList.duration}}</view>
+    </view>
+    <view class="list-item">
+        <view class="name">用户有效期</view>
+        <view class="value">{{keyList.deadline}}</view>
+    </view>
+</view>
+<button class="ai-button" bind:tap="deleteKey">删除密钥</button>

@@ -7,3 +7,10 @@
 
     color: var(--gray-1);
 }
+
+.device-list
+{
+    display: flex;
+
+    flex-wrap: wrap;
+}
