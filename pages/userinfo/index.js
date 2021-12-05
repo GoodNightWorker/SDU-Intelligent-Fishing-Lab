@@ -83,7 +83,6 @@ Page({
             })
             return false;
         }
-        wx.navigateTo({url:'/pages/uploadimage/index'});
         wx.pro.request({
             url:"https://api.yumik.top/api/v1/user/info",
             data:{
@@ -100,6 +99,8 @@ Page({
             },
         }).then((res)=>{
             console.log(res)
+            wx.navigateTo({url:'/pages/uploadimage/index'});
+            wx.setStorageSync('flag',true);
         }).catch((e)=>{
             console.log(e)
         })

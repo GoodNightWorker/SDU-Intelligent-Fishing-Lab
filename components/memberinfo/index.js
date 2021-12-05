@@ -9,13 +9,25 @@ Component({
             type: String,
             value: "赵丽华",
         },
-        subtitle: {
+        sduNumber: {
             type: String,
-            value: "密钥有效期：\n" + "2021年9月14日 00点00分",
+            value: "201805121155",
         },
-        type: {
+        academy: {
             type: String,
-            value: "right",
+            value: "信息科学与工程学院",
+        },
+        auth:{
+            type:String,
+            value:"管理员",
+        },
+        img:{
+            type:String,
+            value:"",
+        },
+        showDel:{
+            type:Boolean,
+            value:false,
         },
     },
 
@@ -38,10 +50,17 @@ Component({
         tap() {
             this.closeDialog();
         },
+        delete(){
+            this.deleteMember();
+        },
 
         // 关闭
         closeDialog() {
             this.triggerEvent("closeCallBack");
         },
+        deleteMember(){
+            this.triggerEvent("deleteMember")
+        }
     },
+    
 });

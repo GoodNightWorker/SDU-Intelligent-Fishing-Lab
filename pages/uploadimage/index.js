@@ -46,7 +46,7 @@ Page({
                     this.upData({showDialog:true})
                     setTimeout(()=>{
                         this.upData({showDialog:false});
-                        wx.pro.redirectTo({url:'/pages/index/index'});
+                        wx.pro.switchTab({url:'/pages/index/index'});
                     },800)
                 }
                 if(JSON.parse(res.data).errCode==40304){
@@ -60,7 +60,7 @@ Page({
                         icon:'none',
                         title:'已上传过图片，请勿重复上传！'
                     })
-                    wx.pro.redirectTo({url:'/pages/index/index'});
+                    wx.pro.switchTab({url:'/pages/index/index'});
                 }
                 if(JSON.parse(res.data).errCode==40102){
                     wx.pro.showToast({

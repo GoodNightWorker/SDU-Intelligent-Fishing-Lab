@@ -19,7 +19,6 @@ Page({
             telephone:option.telephone,
             duration:option.duration,
             deadline:option.deadline,
-            labName:option.labName,
             shareName:option.shareName
         })
         wx.pro.request({
@@ -33,11 +32,16 @@ Page({
                 'labId':this.data.labId
             }
         }).then((res)=>{
+            console.log('获取实验室名称',res.data.data.lab.name)
             this.setData({labName:res.data.data.lab.name})
+            this.getPic()
         }).catch((e)=>{
             console.log(e)
         })
+    },
+    getPic(){
         const scene = `labId=${this.data.labId}&key=${this.data.key}`;
+        const info = wx.pro.getAccountInfoSync();
         wx.pro.request({
             url:"https://api.yumik.top/api/v1/get/qrcode",
             method:'post',
@@ -47,20 +51,22 @@ Page({
             },
             data:{
                 scene:scene,
-                envVersion:'develop'
+                envVersion:info.miniProgram.envVersion
             }
         }).then((res)=>{
+            console.log('获取qrcode',res)
             this.setData({keyImg:res.data.data.generateQRCode})
-            this.drawPic()
         }).catch((e)=>{
             console.log(e)
         })
     },
     drawPic(){
+        console.log('drawPic')
         const query = wx.createSelectorQuery()
         query.select('#canvas')
         .fields({node:true,size:true})
         .exec((res)=>{
+            console.log('获取节点',res)
             const canvas = res[0].node;
             const dpr = wx.getSystemInfoSync().pixelRatio
             canvas.width = res[0].width * dpr
@@ -69,6 +75,7 @@ Page({
             let img = canvas.createImage();
             img.src = "/images/Subtract.svg";
             img.onload = () =>{
+                console.log('图片加载完成')
                 ctx.drawImage(img,1,1,canvas.width,canvas.height);
                 ctx.textBaseline = "top";
                 ctx.textAlign = "center"
@@ -93,9 +100,11 @@ Page({
                     data: buffer,
                     encoding: 'base64',
                     success:()=>{
+                        console.log('写成功')
                         const code = canvas.createImage();
                         code.src = filePath;
                         code.onload=()=>{
+                            console.log('code加载成功')
                             ctx.drawImage(code,25*dpr,268*dpr,88*dpr,88*dpr)
                         }
                     }
@@ -130,8 +139,5 @@ Page({
                 })
             })
         })
-        
-        
-        
     }
 })

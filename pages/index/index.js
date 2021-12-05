@@ -95,7 +95,11 @@ Page({
         wx.pro.navigateTo({url:'/pages/index/addlab/index'})
     },
     enterLab(){
-        
+        wx.pro.scanCode({
+
+        }).then((res)=>{
+            console.log(res)
+        })
     },
 
     getLabDetail(e){

@@ -22,6 +22,7 @@
   height: max-content;
   background: var(--white);
   transform: translate(-50%, -50%);
+  flex-wrap: wrap;
 }
 
 .container .info {
@@ -42,4 +43,54 @@
   font-size: var(--font-18);
   font-weight: 700;
   color: var(--gray-1);
+}
+
+.container .info .info-text .info-list {
+  display: flex;
+  margin-top: var(--margin-8);
+  width: 224rpx;
+  align-items: center;
+}
+
+.container .info .info-text .info-list .list-img {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.container .info .info-text .info-list .list-text {
+  margin-left: var(--margin-8);
+  font-size: var(--font-12);
+  column-gap: var(--gray-2);
+}
+
+.container .del {
+  width: 640rpx;
+  text-align: center;
+}
+
+.container .del .ai-button {
+  display: flex;
+  overflow: hidden;
+  margin-top: var(--margin-16);
+  border-radius: var(--radius-8);
+  height: 80rpx;
+  font-size: var(--font-14);
+  font-weight: bold;
+  font-style: normal;
+  line-height: 100%;
+  color: var(--white);
+  background: var(--red);
+  box-shadow: var(--box-shadow-small);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .del .ai-button::after {
+  border: 0;
+  border-radius: var(--radius-8);
+}
+
+.container .del .ai-button:active {
+  text-decoration: underline;
 }

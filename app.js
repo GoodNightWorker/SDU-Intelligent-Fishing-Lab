@@ -45,7 +45,7 @@ const login = () =>{
     url:"https://api.yumik.top/api/v1/login/wechat",
     data:{
       code:res.code,
-      //compulsory:true
+      compulsory:true
     },
     method:'post',
     header:{
@@ -59,27 +59,33 @@ const login = () =>{
       wx.setStorageSync('token',token);
       wx.setStorageSync('clientId',clientId);
       console.log(token);
+      toPage()
     }
   })
   .catch((e)=>console.log(e));
   }).catch((e)=>console.log(e))
 }
 const toPage=()=>{
-  wx.pro.request({
-    url:"https://api.yumik.top/api/v1/user/info",
-    method:'get',
-    header:{
-      'content-type':'application/x-www-form-urlencoded',
-      'Authorization':wx.getStorageSync('token')
-    },
-  }).then((res)=>{
-    if(res.data.data.userInfo.name){
-      wx.pro.switchTab({url:'/pages/index/index'})
-      //wx.pro.navigateTo({url:"/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index"})
-    }
-  }).catch((e)=>{
-    console.log(e)
-  })
+  if(wx.getStorageSync('flag')){
+    wx.pro.switchTab({url:'/pages/index/index'})
+  }
+  {
+    wx.pro.request({
+      url:"https://api.yumik.top/api/v1/user/info",
+      method:'get',
+      header:{
+        'content-type':'application/x-www-form-urlencoded',
+        'Authorization':wx.getStorageSync('token')
+      },
+    }).then((res)=>{
+      if(res.data.data.userInfo.name){
+        wx.setStorageSync('flag',true)
+        wx.pro.switchTab({url:'/pages/index/index'})
+      }
+    }).catch((e)=>{
+      console.log(e)
+    })
+  }
 }
 
 promisifyAll()
@@ -89,7 +95,6 @@ App({
   onLaunch() {
     // connectMqtt();
     login();
-    toPage()
     Page = updataInit(Page, {
       debug: false
     }) 
