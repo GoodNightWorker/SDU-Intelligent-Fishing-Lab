@@ -74,8 +74,8 @@ const toPage=()=>{
     },
   }).then((res)=>{
     if(res.data.data.userInfo.name){
-      //wx.pro.switchTab({url:'/pages/index/index'})
-      wx.pro.navigateTo({url:"/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index"})
+      wx.pro.switchTab({url:'/pages/index/index'})
+      //wx.pro.navigateTo({url:"/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index"})
     }
   }).catch((e)=>{
     console.log(e)

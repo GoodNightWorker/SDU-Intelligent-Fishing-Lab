@@ -7,19 +7,36 @@ Page({
         telephone:'19953213840',
         duration:'0000年00月00日 00时00分',
         deadline:'0000年00月00日 00时00分',
+        shareName:'赵丽华',
         keyImg:'',
         path:'',
     },
     onLoad:function(option){
-        // this.setData({
-        //     labId:option.labId,
-        //     key:option.key,
-        //     userName:option.userName,
-        //     telephone:option.telephone,
-        //     duration:option.duration,
-        //     deadline:option.deadline,
-        //     labName:option.labName,
-        // })
+        this.setData({
+            labId:option.labId,
+            key:option.key,
+            userName:option.userName,
+            telephone:option.telephone,
+            duration:option.duration,
+            deadline:option.deadline,
+            labName:option.labName,
+            shareName:option.shareName
+        })
+        wx.pro.request({
+            url:'https://api.yumik.top/api/v1/lab/get',
+            method:'get',
+            header:{
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token')
+            },
+            data:{
+                'labId':this.data.labId
+            }
+        }).then((res)=>{
+            this.setData({labName:res.data.data.lab.name})
+        }).catch((e)=>{
+            console.log(e)
+        })
         const scene = `labId=${this.data.labId}&key=${this.data.key}`;
         wx.pro.request({
             url:"https://api.yumik.top/api/v1/get/qrcode",
@@ -85,7 +102,7 @@ Page({
                 })
                 ctx.textAlign = "left";
                 ctx.fillStyle="#585858";
-                ctx.fillText(`${this.data.userName}已经加入实验室`,130*dpr,291*dpr)
+                ctx.fillText(`${this.data.shareName}已经加入实验室`,130*dpr,291*dpr)
                 ctx.fillText('长按小程序码，立即加入',130*dpr,319*dpr)
             }
             ctx.restore();

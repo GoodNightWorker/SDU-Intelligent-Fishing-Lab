@@ -44,14 +44,25 @@ Page({
         let month = (date.getMonth() + 1 > 9?date.getMonth() + 1:'0'+date.getMonth() + 1);
         let day = (date.getDate() > 9?date.getDate():'0'+date.getDate());
         let hour = (date.getHours() > 9?date.getHours():'0'+date.getHours());
-        let minute = (date.getMinutes() > 9?date.etMinutes():'0'+date.etMinutes());
+        let minute = (date.getMinutes() > 9?date.getMinutes():'0'+date.getMinutes());
         let str = `${year}年${month}月${day}日 ${hour}时${minute}分`;
         return str;
     },
     shareKey(){
-        const props = this.data.keyList;
-        wx.pro.navigateTo({
-            url:`/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index?labId=${this.data.labId}&&key=${this.data.key}&&userName=${props.userName}&&telephone=${props.telephone}&&duration=${props.duration}&&deadline=${props.deadline}`
+        wx.pro.request({
+            url:"https://api.yumik.top/api/v1/user/info",
+            method:'get',
+            header:{
+              'content-type':'application/x-www-form-urlencoded',
+              'Authorization':wx.getStorageSync('token')
+            },
+        }).then((res)=>{
+            const props = this.data.keyList;
+            wx.pro.navigateTo({
+                url:`/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index?labId=${this.data.labId}&&key=${this.data.key}&&userName=${props.userName}&&telephone=${props.telephone}&&duration=${props.duration}&&deadline=${props.deadline}&&shareName=${res.data.data.userInfo.name}`
+            })
+        }).catch((e)=>{
+            console.log(e)
         })
     },
     deleteKey(){
