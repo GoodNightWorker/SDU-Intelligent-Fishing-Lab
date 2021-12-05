@@ -1,10 +1,10 @@
 <view class="title">
     <view class="circle"></view>
-    <view class="text">代管员</view>
+    <view class="text">管理员</view>
 </view>
 <view class="head">
     <view class="head-border">
-        <image class="head-img" src="data:image/png;base64,{{userList[0].img}}" />
+        <image class="head-img" src="data:image/png;base64,{{userList[0].img}}" mode="aspectFill"/>
     </view>
 </view>
 <view class="title">
@@ -12,5 +12,7 @@
     <view class="text">成员</view>
 </view>
 <view class="head">
-    
+    <view class="head-border" wx:for="{{userList}}" wx:for-item="userList_item" wx:if="{{userList_item.tableUserId != userId}}">
+        <image class="head-img" src="data:image/png;base64,{{userList_item.img}}" mode="aspectFill"/>
+    </view>
 </view>

@@ -106,14 +106,6 @@ Page({
                 'allowGuest':true
             }
         }).then((res)=>{
-            console.log(res)
-            // let pages = getCurrentPages();
-            // let prePage = pages[pages.length - 2];
-            // let list = prePage.data.listData;
-            // list.name = this.data.newLabName;
-            // prePage.upData({
-            //     listData:list
-            // })
             if(res.data.errCode === 0){
                 wx.pro.showToast({
                     icon:'none',

@@ -94,6 +94,9 @@ Page({
     addLab(){
         wx.pro.navigateTo({url:'/pages/index/addlab/index'})
     },
+    enterLab(){
+        
+    },
 
     getLabDetail(e){
         wx.pro.navigateTo({url:`/pages/index/labinfo/index?id=${e.currentTarget.id}`})

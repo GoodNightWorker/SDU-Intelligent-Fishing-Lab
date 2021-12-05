@@ -28,7 +28,6 @@ Page({
         })
     },
     copyKey(e){
-        console.log(e.currentTarget.id)
         wx.pro.setClipboardData({
             data:e.currentTarget.id
         }).then((res)=>{
@@ -42,13 +41,18 @@ Page({
         }
         var date = new Date(timestamp);
         let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-        let hour = date.getHours();
-        let minute = date.getMinutes();
-        let second = date.getSeconds();
-        let str = `${year} 年 ${month} 月 ${day} 日 ${hour} 时 ${minute} 分 ${second} 秒`;
+        let month = (date.getMonth() + 1 > 9?date.getMonth() + 1:'0'+date.getMonth() + 1);
+        let day = (date.getDate() > 9?date.getDate():'0'+date.getDate());
+        let hour = (date.getHours() > 9?date.getHours():'0'+date.getHours());
+        let minute = (date.getMinutes() > 9?date.etMinutes():'0'+date.etMinutes());
+        let str = `${year}年${month}月${day}日 ${hour}时${minute}分`;
         return str;
+    },
+    shareKey(){
+        const props = this.data.keyList;
+        wx.pro.navigateTo({
+            url:`/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index?labId=${this.data.labId}&&key=${this.data.key}&&userName=${props.userName}&&telephone=${props.telephone}&&duration=${props.duration}&&deadline=${props.deadline}`
+        })
     },
     deleteKey(){
         wx.pro.showModal({

@@ -47,6 +47,17 @@
             flex: 1;
         }
     }
+
+    .qrcode
+    {
+        text-align: center;
+
+        .img
+        {
+            width: 500rpx;
+            height: 500rpx;
+        }
+    }
 }
 
 .ai-button

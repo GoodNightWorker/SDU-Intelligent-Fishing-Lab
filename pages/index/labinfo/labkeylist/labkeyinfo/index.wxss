@@ -34,6 +34,15 @@
   flex: 1;
 }
 
+.list .qrcode {
+  text-align: center;
+}
+
+.list .qrcode .img {
+  width: 500rpx;
+  height: 500rpx;
+}
+
 .ai-button {
   margin-top: var(--margin-24);
   background-color: var(--red);

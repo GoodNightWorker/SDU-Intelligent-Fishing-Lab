@@ -1,8 +1,9 @@
 {
     "pages": [
-        
-        "pages/index/index",
         "pages/login/index",
+        "pages/index/index",
+        "pages/mine/index",
+        "pages/message/index",
         "pages/uploadimage/index",
         "pages/userinfo/index",
         "pages/index/addlab/index",
@@ -11,9 +12,35 @@
         "pages/index/labinfo/labmember/index",
         "pages/index/labinfo/labkeylist/index",
         "pages/index/labinfo/labkeylist/addkey/index",
-        "pages/index/labinfo/labkeylist/labkeyinfo/index"
+        "pages/index/labinfo/labkeylist/labkeyinfo/index",
+        "pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index"
         
     ],
+    "tabBar":{
+        "color":"#FFFFFF",
+        "selectedColor":"#25A1FF",
+        "borderStyle":"white",
+        "list":[
+            {
+                "selectedIconPath": "/images/icon-index-sel.png",  
+                "iconPath": "images/icon-index.png",  
+                "pagePath": "pages/index/index",  
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "/images/icon-message-sel.png",  
+                "iconPath": "images/icon-message.png",  
+                "pagePath": "pages/message/index",  
+                "text": "通知"
+            },
+            {
+                "selectedIconPath": "/images/icon-mine-sel.png",  
+                "iconPath": "images/icon-mine.png",  
+                "pagePath": "pages/mine/index",  
+                "text": "我的"
+            }
+        ]
+    },
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
         "ai-loading": "/components/loading/index",
@@ -27,7 +54,8 @@
         "ai-footer":"/components/footer/index",
         "ai-switch":"/components/switch/index",
         "ai-devicecard":"/components/devicecard/index",
-        "ai-bird":"/components/bird/index"
+        "ai-bird":"/components/bird/index",
+        "ai-memberinfo":"/components/memberinfo/index"
     },
     "window": {
         "backgroundTextStyle": "light",

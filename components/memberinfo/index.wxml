@@ -1,0 +1,12 @@
+<view class="mask" catch:tap="tap" catch:touchmove="touchMove"></view>
+<view class="container">
+    <view class="info">
+        <image class="info-img" src="/images/cat.jpg" />
+        <view class="info-text">
+            <view class="name">{{name}}</view>
+        </view>
+    </view>
+    <view class="sel">
+        
+    </view>
+</view>

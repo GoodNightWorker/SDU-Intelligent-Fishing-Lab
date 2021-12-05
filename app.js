@@ -64,7 +64,23 @@ const login = () =>{
   .catch((e)=>console.log(e));
   }).catch((e)=>console.log(e))
 }
-
+const toPage=()=>{
+  wx.pro.request({
+    url:"https://api.yumik.top/api/v1/user/info",
+    method:'get',
+    header:{
+      'content-type':'application/x-www-form-urlencoded',
+      'Authorization':wx.getStorageSync('token')
+    },
+  }).then((res)=>{
+    if(res.data.data.userInfo.name){
+      //wx.pro.switchTab({url:'/pages/index/index'})
+      wx.pro.navigateTo({url:"/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index"})
+    }
+  }).catch((e)=>{
+    console.log(e)
+  })
+}
 
 promisifyAll()
 updataInit()
@@ -73,6 +89,7 @@ App({
   onLaunch() {
     // connectMqtt();
     login();
+    toPage()
     Page = updataInit(Page, {
       debug: false
     }) 
