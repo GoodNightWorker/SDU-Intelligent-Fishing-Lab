@@ -1,5 +1,6 @@
 .bg
 {
+    margin: 5rpx;
     padding-top: 20rpx;
     padding-bottom: 20rpx;
 
@@ -21,4 +22,9 @@
     font-weight: 600;
 
     color: var(--gray-1);
+}
+
+.ai-button
+{
+    margin-top: 20rpx;
 }
