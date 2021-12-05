@@ -1,5 +1,11 @@
 {
-    "pages": ["pages/index/index"],
+    "pages": ["pages/index/index",
+        "pages/index/admin/index",
+        "pages/index/admin/signup/index",
+        "pages/index/admin/index/index",
+        "pages/index/user/index",
+        "pages/index/guest/index"
+    ],
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
         "ai-loading": "/components/loading/index",

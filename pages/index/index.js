@@ -65,14 +65,83 @@ Page({
             .then((res) => {
                 wx.pro
                     .request({
-                        url: "http://localhost:8081/api/user/login",
+                        url: "https://api.yumik.top/api/v1/login/wechat",
                         data: {
                             code: res.code,
+                            compulsory: true
+                        },
+                        method: "post",
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
                         },
                     })
-                    .then((res) => console.log(res))
+                    .then((res) => {
+                        console.log(res)
+                        if (res.data.data.token != undefined)
+                            wx.setStorageSync('token', res.data.data.token)
+                    })
                     .catch((error) => console.log(error));
             })
             .catch((error) => console.log(error));
     },
+
+    btnCheck() {
+        wx.pro
+            .request({
+                url: "https://api.yumik.top/api/v1/login/check",
+                method: "get",
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'Authorization': wx.getStorageSync('token')
+                },
+            })
+            .then((res) => console.log(res))
+            .catch((error) => console.log(error));
+    },
+
+    btnImage() {
+        wx.pro.chooseImage({
+            sizeType: ['compressed'],
+            count: 1,
+        }).then((res) => {
+            console.log(res)
+            this.filePath = res.tempFilePaths[0]
+            return wx.pro.getFileInfo({
+                filePath: this.filePath,
+            })
+        }).then((file) => {
+            console.log(file)
+            if (file.size > 64 * 1024 - 1) {
+                console.log("larger")
+                return wx.pro.compressImage({
+                    src: this.filePath,
+                    quality: 0
+                })
+            } else {
+                console.log("ok")
+            }
+        }).then((compress) => {
+            console.log(compress)
+            this.filePath = compress.tempFilePath
+            return wx.pro.getImageInfo({
+                src: this.filePath,
+            })
+        }).then((image) => {
+            console.log(image)
+            return wx.pro.getFileInfo({
+                filePath: this.filePath,
+            })
+        }).then((file) => {
+            console.log(file)
+            return wx.pro.saveImageToPhotosAlbum({
+                filePath: this.filePath,
+            })
+        }).then((success) => {
+            console.log(success)
+        }).catch((e) => { console.log(e) })
+    },
+
+    btnPicker() {
+
+    }
 });
