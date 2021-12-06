@@ -66,3 +66,49 @@
 
     background-color: var(--red);
 }
+
+.result_paper
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+
+    width: 100vw;
+    min-height: 100%;
+
+    color: #fff;
+    background: rgba(0, 0, 0, .6);
+
+    .paper_content
+    {
+        overflow: auto;
+
+        position: relative;
+        z-index: 98;
+
+        width: 100vw;
+        height: 100vh;
+
+        text-align: center;
+
+        #canvas_image
+        {
+            margin-top: 24%;
+        }
+    }
+}
+
+.paper_canvas
+{
+    overflow: hidden;
+
+    position: absolute;
+    bottom: -5000rpx;
+    left: 0;
+
+    width: 704rpx;
+    height: 732rpx;
+
+    text-align: center;
+}

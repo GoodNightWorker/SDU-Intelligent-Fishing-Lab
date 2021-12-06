@@ -1,6 +1,0 @@
-<view class="title">生成分享图</view>
-<view class="bg">
-    <canvas canvas-id="canvas" class="cvs" style="height:366px;width:352px"></canvas>
-</view>
-<button class="ai-button" bind:tap="drawPic">生成</button>
-<button class="ai-button" bind:tap="shareImg">分享</button>

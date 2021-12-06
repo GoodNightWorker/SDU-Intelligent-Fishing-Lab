@@ -1,9 +1,6 @@
-
-
 .sky
 {
-    margin-top: -60rpx;
-
+    //margin-top: 10vh;
     perspective: 400rpx;
     filter: drop-shadow(0 150rpx 10rpx rgba(0,0,0,.2));
 
@@ -14,7 +11,7 @@
 
     .bird
     {
-        -webkit-animation: fly 10000ms linear infinite;
+        -webkit-animation: fly 5000ms linear infinite;
 
         .wind
         {

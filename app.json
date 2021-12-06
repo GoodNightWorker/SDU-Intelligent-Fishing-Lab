@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/welcome/index",
         "pages/index/index",
         "pages/login/index",
         "pages/mine/index",
@@ -12,8 +13,7 @@
         "pages/index/labinfo/labmember/index",
         "pages/index/labinfo/labkeylist/index",
         "pages/index/labinfo/labkeylist/addkey/index",
-        "pages/index/labinfo/labkeylist/labkeyinfo/index",
-        "pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index"
+        "pages/index/labinfo/labkeylist/labkeyinfo/index"
         
     ],
     "tabBar":{

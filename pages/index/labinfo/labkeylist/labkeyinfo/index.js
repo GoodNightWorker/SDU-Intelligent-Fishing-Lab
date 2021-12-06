@@ -3,6 +3,12 @@ Page({
         labId:'',
         key:'',
         keyList:[],
+        tempFilePath: '',
+		isShow: false,
+        keyImage:'',
+        labName:'',
+        shareName:'',
+        background:'/images/Subtract.png'
     },
     onLoad:function(option){
         this.setData({labId:option.id,key:option.key})
@@ -30,7 +36,7 @@ Page({
     copyKey(e){
         wx.pro.setClipboardData({
             data:e.currentTarget.id
-        }).then((res)=>{
+        }).then(()=>{
         }).catch((e)=>{
             console.log(e);
         })
@@ -48,22 +54,151 @@ Page({
         let str = `${year}年${month}月${day}日 ${hour}时${minute}分`;
         return str;
     },
-    shareKey(){
+    preventTouchMove() {},
+    getPic(){
+        this.setData({isShow:true})
+        if(this.data.tempFilePath){
+            this.shareImg();
+            return; 
+        }else{
+            wx.pro.showLoading({title:'加载中'});
+        }
+
         wx.pro.request({
-            url:"https://api.yumik.top/api/v1/user/info",
+            url:'https://api.yumik.top/api/v1/lab/get',
             method:'get',
             header:{
-              'content-type':'application/x-www-form-urlencoded',
-              'Authorization':wx.getStorageSync('token')
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token')
             },
+            data:{
+                'labId':this.data.labId
+            }
         }).then((res)=>{
-            const props = this.data.keyList;
-            wx.pro.navigateTo({
-                url:`/pages/index/labinfo/labkeylist/labkeyinfo/sharekey/index?labId=${this.data.labId}&&key=${this.data.key}&&userName=${props.userName}&&telephone=${props.telephone}&&duration=${props.duration}&&deadline=${props.deadline}&&shareName=${res.data.data.userInfo.name}`
+            //console.log('获取实验室名称',res.data.data.lab.name)
+            this.setData({labName:res.data.data.lab.name})
+            return wx.pro.request({
+                url:"https://api.yumik.top/api/v1/user/info",
+                method:'get',
+                header:{
+                  'content-type':'application/x-www-form-urlencoded',
+                  'Authorization':wx.getStorageSync('token')
+                },
             })
+        }).then((res)=>{
+            //console.log('获取分享者姓名',res.data.data.userInfo.name)
+            this.setData({shareName:res.data.data.userInfo.name})
+            const scene = `labId=${this.data.labId}&key=${this.data.key}`;
+            const info = wx.pro.getAccountInfoSync();
+            return wx.pro.request({
+                url:"https://api.yumik.top/api/v1/get/qrcode",
+                method:'post',
+                header:{
+                    'content-type':'application/x-www-form-urlencoded',
+                    'Authorization':wx.getStorageSync('token')
+                },
+                data:{
+                    scene:scene,
+                    envVersion:info.miniProgram.envVersion
+                }
+            })
+        }).then((res)=>{
+            //console.log('获取qrcode',res)
+            this.setData({keyImg:res.data.data.generateQRCode})
+            const buffer = wx.base64ToArrayBuffer(this.data.keyImg),
+            filePath = `${wx.env.USER_DATA_PATH}/temp_image.png`;
+            return wx.getFileSystemManager().writeFile({ 
+                filePath,
+                data: buffer,
+                encoding: 'base64',
+                success:()=>{
+                    this.setData({keyImage:filePath});
+                    this.drawPic();
+                },
+            })
+        }).catch(() => {
+            this.setData({isShow: false});
+            wx.hideLoading()
+            wx.showToast({
+                title: '加载失败',
+                duration: 2000,
+                icon: 'none'
+            })
+        })
+    },
+    drawPic(){
+        const ctx = wx.createCanvasContext('canvas');
+        const dpr = wx.getSystemInfoSync.pixelRatio;
+        ctx.fillStyle="#F2F2F2";
+        //ctx.scale(dpr,dpr)
+        ctx.fillRect(0,0,352,366)
+        ctx.drawImage(this.data.background,1,1,350,364);
+        ctx.drawImage(this.data.keyImage,25,268,88,88);
+        
+        ctx.textBaseline = "top";
+        ctx.textAlign = "center"
+        ctx.font = `600 ${24}px 黑体`;
+        ctx.fillStyle="#333333";
+        ctx.fillText(this.data.labName,352/2,12);
+        ctx.font = `400 ${14}px 黑体`;
+        ctx.fillStyle="#666666";
+        ctx.textAlign = "left"
+        ctx.fillText(`管理员：${this.data.keyList.userName}`,74,78);
+        ctx.fillText(`联系电话：${this.data.keyList.telephone}`,60,106);
+        ctx.fillText(`密钥时限：${this.data.keyList.duration}`,60,134);
+        ctx.fillText(`成员时限：${this.data.keyList.deadline}`,60,162);
+        ctx.textAlign = "center"
+        ctx.fillStyle="#C74242";
+        ctx.fillText("请注意实验室相关事项，注意实验安全",352/2,210);
+        ctx.fillText('实验室',307,319);
+        ctx.textAlign = "left";
+        ctx.fillStyle="#585858";
+        ctx.fillText(`${this.data.shareName}已经加入实验室`,130,291)
+        ctx.fillText('长按小程序码，立即加入',130,319);
+        ctx.draw(false,()=>{
+            wx.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                width: 352,
+                height: 366,
+                destWidth: 352*dpr,
+                destHeight: 366*dpr,
+                canvasId: 'canvas',
+                quality: 1,
+                success: (res) => {
+                    console.log('success',res)
+                    var tempFilePath = res.tempFilePath;
+                    this.setData({
+                        show:false,
+                        tempFilePath: tempFilePath
+                    })
+                    wx.hideLoading();
+                    this.shareImg();
+                },
+                fail: res => {
+                    console.log('fail',res)
+                    wx.hideLoading()
+                    wx.showToast({
+                        title: '海报加载失败',
+                        duration: 2000,
+                        icon: 'none'
+                    })
+                }
+            })
+        })
+    },
+    shareImg(){
+        wx.pro.showShareImageMenu({
+            path:this.data.tempFilePath
+        }).then((res)=>{
+            console.log(res)
         }).catch((e)=>{
             console.log(e)
         })
+    },
+    hidePaper: function () {
+        this.setData({isShow: false});
+        wx.hideLoading()
     },
     deleteKey(){
         wx.pro.showModal({
