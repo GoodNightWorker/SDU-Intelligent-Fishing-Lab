@@ -39,62 +39,53 @@ const connectMqtt = () => {
   })
 }
 
-const login = () =>{
-  wx.pro.login().then((res)=>{
-    wx.pro.request({
-    url:"https://api.yumik.top/api/v1/login/wechat",
-    data:{
-      code:res.code,
-      compulsory:true
-    },
-    method:'post',
-    header:{
-      'content-type':'application/x-www-form-urlencoded'
-    },
-  })
-  .then((res)=>{
-    if(res.data.errCode === 0){
-      var token = res.data.data.token;
-      var clientId = res.data.data.mqttId;
-      wx.setStorageSync('token',token);
-      wx.setStorageSync('clientId',clientId);
-      console.log(token);
-      toPage()
-    }
-  })
-  .catch((e)=>console.log(e));
-  }).catch((e)=>console.log(e))
-}
-const toPage=()=>{
-  if(wx.getStorageSync('flag')){
-    wx.pro.switchTab({url:'/pages/index/index'})
-  }
-  {
-    wx.pro.request({
-      url:"https://api.yumik.top/api/v1/user/info",
-      method:'get',
-      header:{
-        'content-type':'application/x-www-form-urlencoded',
-        'Authorization':wx.getStorageSync('token')
-      },
-    }).then((res)=>{
-      if(res.data.data.userInfo.name){
-        wx.setStorageSync('flag',true)
-        wx.pro.switchTab({url:'/pages/index/index'})
-      }
-    }).catch((e)=>{
-      console.log(e)
-    })
-  }
-}
-
 promisifyAll()
 updataInit()
 
 App({
   onLaunch() {
     // connectMqtt();
-    login();
+    wx.pro.login().then((res)=>{
+      wx.pro.request({
+      url:"https://api.yumik.top/api/v1/login/wechat",
+      data:{
+        code:res.code,
+        compulsory:true
+      },
+      method:'post',
+      header:{
+        'content-type':'application/x-www-form-urlencoded'
+      },
+    })
+    .then((res)=>{
+      if(res.data.errCode === 0){
+        var token = res.data.data.token;
+        var clientId = res.data.data.mqttId;
+        wx.setStorageSync('token',token);
+        wx.setStorageSync('clientId',clientId);
+        console.log(token);
+        if(!wx.getStorageSync('flag')){
+          wx.pro.request({
+            url:"https://api.yumik.top/api/v1/user/info",
+            method:'get',
+            header:{
+              'content-type':'application/x-www-form-urlencoded',
+              'Authorization':wx.getStorageSync('token')
+            },
+          }).then((res)=>{
+            if(res.data.data.userInfo.name){
+              wx.setStorageSync('flag',true)
+            }
+            else{
+              wx.pro.navigateTo({url:"/pages/login/index"})
+            }
+          }).catch((e)=>{
+            console.log(e)
+          })
+        }
+      }
+    }).catch((e)=>console.log(e));
+    }).catch((e)=>console.log(e))
     Page = updataInit(Page, {
       debug: false
     }) 

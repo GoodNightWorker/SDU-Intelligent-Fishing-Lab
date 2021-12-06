@@ -63,13 +63,13 @@ Page({
     drawPic(){
         const ctx = wx.createCanvasContext('canvas');
         const dpr = wx.getSystemInfoSync().pixelRatio
-        ctx.scale(2,2);
-        ctx.drawImage("/images/Subtract.svg",0,0,176,183);
+        //ctx.scale(2,2);
+        ctx.drawImage("/images/Subtract.svg",0,0,352,366);
         ctx.textBaseline = "top";
         ctx.textAlign = "center"
-        ctx.font = `600 ${12}px 黑体`;
+        ctx.font = `600 ${24}px 黑体`;
         ctx.fillStyle="#333333";
-        ctx.fillText(this.data.labName,176/2,12);
+        ctx.fillText(this.data.labName,352/2,12);
         ctx.font = `400 ${14}px 黑体`;
         ctx.fillStyle="#666666";
         ctx.textAlign = "left"
