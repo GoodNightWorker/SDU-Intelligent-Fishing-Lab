@@ -27,10 +27,6 @@
 <view class="mylab">
     <view class="title">
         <view class="title-text">我的实验室</view>
-        <view class="title-button">
-            <view class="button-text">所有</view>
-            <image class="button-icon" src="/images/icon-adindex-all.svg" />
-        </view>
     </view>
     <view class="card" >
         <view wx:for="{{labListDetail}}" wx:for-item="labListDetail_item">

@@ -38,6 +38,11 @@
   flex: 1;
 }
 
+.list .list-item .value .icon-pointright {
+  width: 16rpx;
+  height: 16rpx;
+}
+
 .device-list {
   display: flex;
   margin: var(--margin-24) var(--margin-4);

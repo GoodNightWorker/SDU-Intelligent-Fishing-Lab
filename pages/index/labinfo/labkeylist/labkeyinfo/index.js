@@ -134,57 +134,58 @@ Page({
         ctx.fillRect(0,0,352,366)
         ctx.drawImage(this.data.background,1,1,350,364);
         ctx.drawImage(this.data.keyImage,25,268,88,88);
-        
-        ctx.textBaseline = "top";
-        ctx.textAlign = "center"
-        ctx.font = `600 ${24}px 黑体`;
-        ctx.fillStyle="#333333";
+        ctx.setTextBaseline("top");
+        ctx.setTextAlign("center")
+        ctx.setFontSize(24)
+        ctx.setFillStyle("#333333");
         ctx.fillText(this.data.labName,352/2,12);
-        ctx.font = `400 ${14}px 黑体`;
-        ctx.fillStyle="#666666";
-        ctx.textAlign = "left"
+        ctx.setFontSize(14)
+        ctx.setFillStyle("#666666");
+        ctx.setTextAlign("left")
         ctx.fillText(`管理员：${this.data.keyList.userName}`,74,78);
         ctx.fillText(`联系电话：${this.data.keyList.telephone}`,60,106);
         ctx.fillText(`密钥时限：${this.data.keyList.duration}`,60,134);
         ctx.fillText(`成员时限：${this.data.keyList.deadline}`,60,162);
-        ctx.textAlign = "center"
-        ctx.fillStyle="#C74242";
+        ctx.setTextAlign("center")
+        ctx.setFillStyle("#C74242");
         ctx.fillText("请注意实验室相关事项，注意实验安全",352/2,210);
         ctx.fillText('实验室',307,319);
-        ctx.textAlign = "left";
-        ctx.fillStyle="#585858";
+        ctx.setTextAlign("left");
+        ctx.setFillStyle("#585858");
         ctx.fillText(`${this.data.shareName}已经加入实验室`,130,291)
         ctx.fillText('长按小程序码，立即加入',130,319);
         ctx.draw(false,()=>{
-            wx.canvasToTempFilePath({
-                x: 0,
-                y: 0,
-                width: 352,
-                height: 366,
-                destWidth: 352*dpr,
-                destHeight: 366*dpr,
-                canvasId: 'canvas',
-                quality: 1,
-                success: (res) => {
-                    console.log('success',res)
-                    var tempFilePath = res.tempFilePath;
-                    this.setData({
-                        show:false,
-                        tempFilePath: tempFilePath
-                    })
-                    wx.hideLoading();
-                    this.shareImg();
-                },
-                fail: res => {
-                    console.log('fail',res)
-                    wx.hideLoading()
-                    wx.showToast({
-                        title: '海报加载失败',
-                        duration: 2000,
-                        icon: 'none'
-                    })
-                }
-            })
+            setTimeout(()=>{
+                wx.canvasToTempFilePath({
+                    x: 0,
+                    y: 0,
+                    width: 352,
+                    height: 366,
+                    destWidth: 352*dpr,
+                    destHeight: 366*dpr,
+                    canvasId: 'canvas',
+                    quality: 1,
+                    success: (res) => {
+                        console.log('success',res)
+                        var tempFilePath = res.tempFilePath;
+                        this.setData({
+                            show:false,
+                            tempFilePath: tempFilePath
+                        })
+                        wx.hideLoading();
+                        this.shareImg();
+                    },
+                    fail: res => {
+                        console.log('fail',res)
+                        wx.hideLoading()
+                        wx.showToast({
+                            title: '海报加载失败',
+                            duration: 2000,
+                            icon: 'none'
+                        })
+                    }
+                })
+            },100)
         })
     },
     shareImg(){

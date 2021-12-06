@@ -50,6 +50,12 @@
             color: var(--gray-3);
 
             flex: 1;
+
+            .icon-pointright
+            {
+                width: 16rpx;
+                height: 16rpx;
+            }
         }
     }
 }

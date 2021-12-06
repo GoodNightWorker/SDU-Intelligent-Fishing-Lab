@@ -4,7 +4,7 @@
         <view class="list">
             <view class="list-item" bindtap="toDetail" data-name="名称">
                 <view class="name">名称</view>
-                <view class="value">{{listData.name}} ></view>
+                <view class="value">{{listData.name}}<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
             </view>
             <view class="list-item">
                 <view class="name">管理员</view>
@@ -16,11 +16,11 @@
             </view>
             <view class="list-item" bindtap="toDetail" data-name="成员">
                 <view class="name">成员</view>
-                <view class="value">{{listData.member}}</view>
+                <view class="value"><image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
             </view>
             <view class="list-item" bindtap="toDetail" data-name="密钥">
                 <view class="name">密钥</view>
-                <view class="value">{{listData.key}} 临时密钥 ></view>
+                <view class="value">{{listData.key}} 临时密钥<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
             </view>
         </view>
         <view class="title">实验室设备</view>
