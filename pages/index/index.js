@@ -7,114 +7,111 @@ Page({
         labListDetail:[],
         showDialog:false,
     },
-    color:['yellow','green','blue'],
-    onShow:function(){
-        wx.hideHomeButton(); //隐藏小房子
+    color: ['yellow', 'green', 'blue'],
+    onShow: function () {
+        wx.hideHomeButton() //隐藏小房子
         //获取用户的名字、学号、学院
         wx.pro.request({
-            url:'https://api.yumik.top/api/v1/user/info',
-            method:'get',
-            header:{
-                'content-type':'application/x-www-form-urlencoded',
-                'Authorization':wx.getStorageSync('token')
+            url: 'https://api.yumik.top/api/v1/user/info',
+            method: 'get',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Authorization': wx.getStorageSync('token')
             }
-        }).then((res)=>{
+        }).then((res) => {
             //获取用户头像
-            this.upData({userInfo:res.data.data.userInfo});
+            this.upData({ userInfo: res.data.data.userInfo })
             wx.pro.request({
-                url:'https://api.yumik.top/api/v1/face/base64',
-                method:'get',
-                header:{
-                    'content-type':'application/x-www-form-urlencoded',
-                    'Authorization':wx.getStorageSync('token')
+                url: 'https://api.yumik.top/api/v1/face/base64',
+                method: 'get',
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'Authorization': wx.getStorageSync('token')
                 },
-                data:{
-                    'userId':res.data.data.userInfo.tableUserId,
-                    'min':true
+                data: {
+                    'userId': res.data.data.userInfo.tableUserId,
+                    'min': true
                 }
-            }).then((res)=>{
-                this.upData({avatarUrl:res.data.data.base64})
-            }).catch((e)=>{
+            }).then((res) => {
+                this.upData({ avatarUrl: res.data.data.base64 })
+            }).catch((e) => {
                 console.log(e)
             })
-        }).catch((e)=>{
-            console.log(e);
+        }).catch((e) => {
+            console.log(e)
         })
         //获取实验室个数
         wx.pro.request({
-            url:'https://api.yumik.top/api/v1/lab/user/count',
-            method:'get',
-            header:{
-                'content-type':'application/x-www-form-urlencoded',
-                'Authorization':wx.getStorageSync('token')
+            url: 'https://api.yumik.top/api/v1/lab/user/count',
+            method: 'get',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Authorization': wx.getStorageSync('token')
             }
-        }).then((res)=>{
-            this.upData({labCount:res.data.data.count});
-        }).catch((e)=>{
-            console.log(e);
+        }).then((res) => {
+            this.upData({ labCount: res.data.data.count })
+        }).catch((e) => {
+            console.log(e)
         })
         //获取实验室列表
         wx.pro.request({
-            url:'https://api.yumik.top/api/v1/lab/lab/list',
-            method:'get',
-            header:{
-                'content-type':'application/x-www-form-urlencoded',
-                'Authorization':wx.getStorageSync('token'),
+            url: 'https://api.yumik.top/api/v1/lab/lab/list',
+            method: 'get',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Authorization': wx.getStorageSync('token'),
             },
-            data:{
-                'page':1
+            data: {
+                'page': 1
             }
-        }).then((res)=>{
+        }).then((res) => {
             //根据列表获取实验室名称
-            var list = [];
-            this.setData({labList:res.data.data.labList});
-            this.data.labList.map((item,index)=>{
-                wx.pro.request({
-                    url:'https://api.yumik.top/api/v1/lab/get',
-                    method:'get',
-                    header:{
-                        'content-type':'application/x-www-form-urlencoded',
-                        'Authorization':wx.getStorageSync('token'),
-                    },
-                    data:{
-                        'labId':item['tableLabId']
-                    }
-                }).then((res)=>{
-                    res.data.data.lab['tableLabId'] = item['tableLabId'];
-                    res.data.data.lab['color'] = this.color[index%3];
-                    list = [...list,res.data.data.lab];
-                    this.setData({labListDetail:list});
-                }).catch((e)=>{
-                    console.log(e);
-                })
-            })
-        }).catch((e)=>{
-            console.log(e);
+            this.setData({ labList: res.data.data.labList })
+            this.getLabInfo(this.data.labList, this.data.labList.length - 1, [])
+
+        }).catch((e) => {
+            console.log(e)
         })
     },
-    addLab(){
-        wx.pro.navigateTo({url:'/pages/index/addlab/index'})
+    addLab() {
+        wx.pro.navigateTo({ url: '/pages/index/addlab/index' })
     },
-    enterLab(){
+    enterLab() {
         wx.pro.scanCode({
 
-        }).then((res)=>{
+        }).then((res) => {
             console.log(res)
         })
     },
 
-    getLabDetail(e){
-        wx.pro.navigateTo({url:`/pages/index/labinfo/index?id=${e.currentTarget.id}`})
-    },
-    btnShowDialog() {
-        this.upData({
-            showDialog: true,
-        });
+    getLabDetail(e) {
+        wx.pro.navigateTo({ url: `/pages/index/labinfo/index?id=${e.currentTarget.id}` })
     },
 
-    dialogCloseCallBack() {
-        this.upData({
-            showDialog: false,
-        });
-    },
+    getLabInfo(labList, i, list) {
+        let item = labList[i]
+        wx.pro.request({
+            url: 'https://api.yumik.top/api/v1/lab/get',
+            method: 'get',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Authorization': wx.getStorageSync('token'),
+            },
+            data: {
+                'labId': item['tableLabId']
+            }
+        }).then((res) => {
+            res.data.data.lab['tableLabId'] = item['tableLabId']
+            res.data.data.lab['color'] = this.color[i % 3]
+            list = [res.data.data.lab, ...list]
+            if (i == 0) {
+                this.upData({ labListDetail: list })
+            } else {
+                this.getLabInfo(labList, i - 1, list)
+            }
+        }).catch((e) => {
+            console.log(e)
+        })
+    }
 })
+
