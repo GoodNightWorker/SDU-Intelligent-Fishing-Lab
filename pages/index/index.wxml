@@ -33,7 +33,8 @@
             <ai-labcard bind:tap="getLabDetail" wx:key="{{labListDetail_item.tableLabId}}" id="{{labListDetail_item.tableLabId}}" title ="{{labListDetail_item.name}}" color="{{labListDetail_item.color}}" subtitle="一切安好" image="/images/icon-noticeoff.svg"/>
         </view>
         <ai-labcard-gray title="新建实验室" bind:tap="addLab"/>
-        <ai-labcard-gray title="加入实验室" bind:tap="enterLab"/>
+        <ai-popupdialog wx:if="{{showDialog}}" bind:closeCallBack="dialogCloseCallBack" title="请使用微信 [扫一扫] " subtitle="扫描实验室成员分享的二维码"/>
+        <ai-labcard-gray title="加入实验室" bind:tap="btnShowDialog"/>
     </view> 
 </view>
 </scroll-view>

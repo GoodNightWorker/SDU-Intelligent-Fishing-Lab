@@ -1,0 +1,48 @@
+Page({
+    data:{
+        name:'',
+        eventList:[],
+        type:'',
+        page:1,
+    },
+    onLoad:function(option){
+        this.setData({name:option.name,type:option.type})
+        wx.pro.request({
+            url:'https://api.yumik.top/api/v1/device/event/list',
+            method:'get',
+            header:{
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token'),
+            },
+            data:{
+                name:this.data.name,
+                page:this.data.page,
+            }
+        }).then((res)=>{
+            this.setData({eventList:res.data.data.eventList})
+        }).catch((e)=>{
+            console.log(e)
+        })
+    },
+    scrollToLower(){
+        this.setData({page:this.data.page+1})
+        var list = this.data.eventList;
+        wx.pro.request({
+            url:'https://api.yumik.top/api/v1/device/event/list',
+            method:'get',
+            header:{
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token'),
+            },
+            data:{
+                name:this.data.name,
+                page:this.data.page,
+            }
+        }).then((res)=>{
+            list = list.concat(res.data.data.eventList)
+            this.setData({eventList:list})
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+})

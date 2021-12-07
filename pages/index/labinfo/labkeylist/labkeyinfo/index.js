@@ -88,7 +88,8 @@ Page({
         }).then((res)=>{
             //console.log('获取分享者姓名',res.data.data.userInfo.name)
             this.setData({shareName:res.data.data.userInfo.name})
-            const scene = `labId=${this.data.labId}&key=${this.data.key}`;
+            const scene = `${this.data.labId}*${this.data.key}`;
+            //console.log(encodeURIComponent(scene))
             const info = wx.pro.getAccountInfoSync();
             return wx.pro.request({
                 url:"https://api.yumik.top/api/v1/get/qrcode",
@@ -99,11 +100,12 @@ Page({
                 },
                 data:{
                     scene:scene,
-                    envVersion:info.miniProgram.envVersion
+                    envVersion:info.miniProgram.envVersion,
+                    page:'',
                 }
             })
         }).then((res)=>{
-            //console.log('获取qrcode',res)
+            console.log('获取qrcode',res)
             this.setData({keyImg:res.data.data.generateQRCode})
             const buffer = wx.base64ToArrayBuffer(this.data.keyImg),
             filePath = `${wx.env.USER_DATA_PATH}/temp_image.png`;

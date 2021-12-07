@@ -1,0 +1,18 @@
+<view class="title">历史记录</view>
+<scroll-view class="scroll" scroll-y="true" bindscrolltolower="scrollToLower">
+    
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    <ai-noticeitem/>
+    
+</scroll-view>

@@ -5,6 +5,7 @@ Page({
         labCount:0,
         labList:[],
         labListDetail:[],
+        showDialog:false,
     },
     color:['yellow','green','blue'],
     onShow:function(){
@@ -104,5 +105,16 @@ Page({
 
     getLabDetail(e){
         wx.pro.navigateTo({url:`/pages/index/labinfo/index?id=${e.currentTarget.id}`})
-    }
+    },
+    btnShowDialog() {
+        this.upData({
+            showDialog: true,
+        });
+    },
+
+    dialogCloseCallBack() {
+        this.upData({
+            showDialog: false,
+        });
+    },
 })

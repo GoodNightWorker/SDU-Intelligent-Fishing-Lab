@@ -1,0 +1,7 @@
+<view class="title">设备详细参数</view>
+<view class="list">
+    <view class="list-item">
+        <view class="name">设备详细参数</view>
+        <view class="value">{{json}}</view>
+    </view>
+</view>

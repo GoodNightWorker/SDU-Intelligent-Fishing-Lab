@@ -7,29 +7,17 @@ Page({
             telephone:'',
             member:' >',
             key:'',
+            
         },
-        deviceList:[
-            {
-                "title":"温度计",
-                "image":"/images/icon-thermometer.svg",
-                "isOn":"on"
-            },
-            {
-                "title":"摄像头",
-                "image":"/images/icon-camera.svg",
-                "isOn":"on"
-            },
-            {
-                "title":"湿度计",
-                "image":"/images/icon-humidity.svg",
-                "isOn":"on"
-            },
-            {
-                "title":"有害气体",
-                "image":"/images/icon-nose.svg",
-                "isOn":"on"
-            },
-        ]
+        deviceList:{},
+        iconList:{
+            "温度计":"/images/icon-thermometer.svg",
+            "摄像头":"/images/icon-camera.svg",
+            "湿度计":"/images/icon-humidity.svg",
+            "有害气体":"/images/icon-nose.svg",
+            "实验室门禁":"/images/icon-door.svg",
+            "温湿度传感器":"/images/icon-tem&hum.svg"
+        }
     },
     onLoad:function(option){
         this.data.listData.labId = option.id;
@@ -83,8 +71,39 @@ Page({
             var arr = Object.keys(res.data.data)
             list.key = arr.length;
             this.setData({listData:list})
-        }).catch((e)=>{
-            console.log(e)
+            return wx.pro.request({
+                url:'https://api.yumik.top/api/v1/device/list',
+                method:'get',
+                header:{
+                    'content-type':'application/x-www-form-urlencoded',
+                    'Authorization':wx.getStorageSync('token'),
+                },
+                data:{
+                    'labId':this.data.listData.labId,
+                    'page':1,
+                }
+            })
+        }).then((res)=>{
+            this.setData({deviceList:res.data.data.deviceList})
+            var list = this.data.deviceList;
+            this.data.deviceList.map((item,index)=>{
+                wx.pro.request({
+                    url:'https://api.yumik.top/api/v1/device/online',
+                    method:'get',
+                    header:{
+                        'content-type':'application/x-www-form-urlencoded',
+                        'Authorization':wx.getStorageSync('token'),
+                    },
+                    data:{
+                        'deviceName':item.name,
+                    }
+                }).then((res)=>{
+                    console.log(res)
+                    list[index].icon = this.data.iconList[item.description];
+                    list[index].online = (res.data.data.online.online?'on':'off');
+                    this.setData({deviceList:list});
+                })
+            })
         })
     },
 
@@ -106,6 +125,10 @@ Page({
                 wx.pro.navigateTo({url:`/pages/index/labinfo/labkeylist/index?id=${this.data.listData.labId}`});
                 break;
         }
+    },
+    getDeviceDetail(e){
+        //console.log(e.currentTarget.dataset.name);
+        wx.pro.navigateTo({url:`/pages/index/labinfo/deviceinfo/index?name=${e.currentTarget.dataset.name}&description=${e.currentTarget.dataset.description}&type=${e.currentTarget.dataset.description.type}`})
     },
     deleteLab(){
         wx.pro.showModal({

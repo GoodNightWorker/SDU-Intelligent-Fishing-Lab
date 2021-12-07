@@ -13,8 +13,11 @@
         "pages/index/labinfo/labmember/index",
         "pages/index/labinfo/labkeylist/index",
         "pages/index/labinfo/labkeylist/addkey/index",
-        "pages/index/labinfo/labkeylist/labkeyinfo/index"
-        
+        "pages/index/labinfo/labkeylist/labkeyinfo/index",
+        "pages/index/labinfo/deviceinfo/index",
+        "pages/index/labinfo/deviceinfo/devicejson/index",
+        "pages/index/labinfo/deviceinfo/devicehistory/index",
+        "pages/index/labinfo/deviceinfo/changedeviceinfo/index"
     ],
     "tabBar":{
         "color":"#FFFFFF",

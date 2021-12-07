@@ -1,4 +1,4 @@
-<view class="title">名称</view>
+<view class="title">修改名称</view>
 <view class="list">
     <input class="list-item" placeholder="{{labName}}" bindinput="getInput" value="{{labName}}"/>
 </view>
