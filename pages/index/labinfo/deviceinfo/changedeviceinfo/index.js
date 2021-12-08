@@ -7,22 +7,35 @@ Page({
         min_danger:0,
         max_warning:0,
         min_warning:0,
+        index:0,
+        array:['正常','常开','常闭','仅管理员模式','禁止访客开门']
     },
     onLoad:function(option){
         this.setData({
             propsName:option.name,
             deviceName:option.deviceName,
             deviceVersion:option.deviceVersion,
-            max_danger:option.max_danger,
-            max_warning:option.max_warning,
-            min_danger:option.min_danger,
-            min_warning:option.min_warning
+            
         })
         setTimeout(()=>{
             if(this.data.propsName=='消息速率'){
                 this.setData({max_danger:0,max_warning:0})
             }
+            else if(this.data.propsName=='门禁状态'){
+                this.setData({index:option.type})
+            }
+            else{
+                this.setData({
+                    max_danger:option.max_danger,
+                    max_warning:option.max_warning,
+                    min_danger:option.min_danger,
+                    min_warning:option.min_warning
+                })
+            }
         },1000)
+    },
+    bindPickerChange: function(e) {
+        this.setData({index: e.detail.value})
     },
     getInput(e){
         switch(e.currentTarget.dataset.name){
@@ -67,6 +80,9 @@ Page({
                 case '消息速率':
                     string = `{"rate":{"rate_danger":${this.data.min_danger},"rate_warning":${this.data.min_warning}}}`
                     break;
+                case '门禁状态':
+                    string = `{"state":${this.data.index}}`
+                    break;
             }
             wx.pro.request({
                 url:'https://api.yumik.top/api/v1/device/parameter',
@@ -81,7 +97,7 @@ Page({
                     deviceVersion:this.data.deviceVersion
                 }
             }).then((res)=>{
-                console.log(res)
+                //console.log(res)
                 if(res.data.errCode===0){
                     wx.pro.showToast({
                         title:'修改参数成功，两秒后回到上一页',

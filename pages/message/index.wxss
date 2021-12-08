@@ -1,1 +1,56 @@
-/* pages/message/index.wxss */
+.footer {
+  display: flex;
+  margin-top: var(--margin-12);
+  margin-bottom: var(--margin-8);
+}
+
+.footer .left {
+  display: flex;
+  width: 50vw;
+  height: 32rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .left .text {
+  display: flex;
+  font-size: 28rpx;
+  color: var(--gray-2);
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .left .text .img {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.footer .right {
+  display: flex;
+  width: 50vw;
+  height: 32rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .right .text {
+  display: flex;
+  font-size: 28rpx;
+  color: var(--gray-2);
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .right .text .img {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.scroll {
+  height: 85vh;
+}
+
+.scroll .list {
+  margin-top: var(--margin-8);
+  margin-bottom: var(--margin-8);
+}

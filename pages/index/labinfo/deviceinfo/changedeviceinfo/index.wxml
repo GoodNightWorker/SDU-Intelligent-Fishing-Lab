@@ -1,4 +1,4 @@
-<view class="title">修改报警{{propsName}}</view>
+<view class="title">修改{{propsName}}</view>
 <view class="list" wx:if="{{propsName=='湿度'}}">
     <view class="list-item">
         <view class="name">填写数字，高于此湿度时报警</view>
@@ -43,6 +43,16 @@
     <view class="list-item">
         <view class="name">填写数字，低于此发送速率时警告</view>
         <input class="value" bindinput="getInput" data-name='min_warning'value="{{min_warning}}"/>
+    </view>
+</view>
+<view class="list" wx:if="{{propsName=='门禁状态'}}">
+    <view class="list-item">
+        <view class="name">请选择门禁状态</view>
+        <view class="value">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                {{array[index]}}
+            </picker>
+        </view>
     </view>
 </view>
 <button class="ai-button" bind:tap="changeProps">确认修改</button>

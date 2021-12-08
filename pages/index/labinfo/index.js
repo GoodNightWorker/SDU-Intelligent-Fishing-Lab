@@ -84,6 +84,7 @@ Page({
                 }
             })
         }).then((res)=>{
+            //console.log(res)
             this.setData({deviceList:res.data.data.deviceList})
             var list = this.data.deviceList;
             this.data.deviceList.map((item,index)=>{
@@ -98,7 +99,7 @@ Page({
                         'deviceName':item.name,
                     }
                 }).then((res)=>{
-                    console.log(res)
+                    //console.log(res)
                     list[index].icon = this.data.iconList[item.description];
                     list[index].online = (res.data.data.online.online?'on':'off');
                     this.setData({deviceList:list});
@@ -128,7 +129,7 @@ Page({
     },
     getDeviceDetail(e){
         //console.log(e.currentTarget.dataset.name);
-        wx.pro.navigateTo({url:`/pages/index/labinfo/deviceinfo/index?name=${e.currentTarget.dataset.name}&description=${e.currentTarget.dataset.description}&type=${e.currentTarget.dataset.description.type}`})
+        wx.pro.navigateTo({url:`/pages/index/labinfo/deviceinfo/index?name=${e.currentTarget.dataset.name}&description=${e.currentTarget.dataset.description}&type=${e.currentTarget.dataset.type}`})
     },
     deleteLab(){
         wx.pro.showModal({

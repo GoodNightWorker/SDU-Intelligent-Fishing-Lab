@@ -6,5 +6,9 @@
 }
 
 .scroll {
-  height: 90vh;
+  height: 80vh;
+}
+
+.scroll .list {
+  margin-top: var(--margin-8);
 }

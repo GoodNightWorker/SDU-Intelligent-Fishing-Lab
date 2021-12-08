@@ -27,7 +27,8 @@ Page({
     },
     changeProps(e){
         let data = e.currentTarget.dataset.data;
-        wx.pro.navigateTo({url:`/pages/index/labinfo/deviceinfo/changedeviceinfo/index?name=${e.currentTarget.dataset.name}&deviceName=${this.data.deviceName}&deviceVersion=${this.data.deviceInfo.version}&max_danger=${data.max_danger}&max_warning=${data.max_warning}&min_danger=${data.min_danger===undefined?data.rate_danger:data.min_danger}&min_warning=${data.min_warning===undefined?data.rate_warning:data.min_warning}`})
+        //console.log(data)
+        wx.pro.navigateTo({url:`/pages/index/labinfo/deviceinfo/changedeviceinfo/index?name=${e.currentTarget.dataset.name}&deviceName=${this.data.deviceName}&deviceVersion=${this.data.deviceInfo.version}&max_danger=${data.max_danger}&max_warning=${data.max_warning}&min_danger=${data.min_danger===undefined?data.rate_danger:data.min_danger}&min_warning=${data.min_warning===undefined?data.rate_warning:data.min_warning}&type=${data}`})
     },
     unbindDevice(){
         wx.pro.showModal({
