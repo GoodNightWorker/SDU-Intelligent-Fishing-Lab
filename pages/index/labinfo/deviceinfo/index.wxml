@@ -57,7 +57,7 @@
                 <image class="icon-pointright" src="/images/icon-pointright.svg"/>
             </view>
         </view>
-        <view class="list-item" wx:if="{{deviceInfo.state.reported.rate&&adminId！=selfId}}" data-data="{{deviceInfo.state.reported.rate}}" data-name="消息速率" bind:tap="changeProps">
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.rate&&adminId!=selfId}}" data-data="{{deviceInfo.state.reported.rate}}" data-name="消息速率" bind:tap="changeProps">
             <view class="name">报警消息速率</view>
             <view class="value">
                 <view class="red">低于 {{deviceInfo.state.reported.rate.rate_danger}}</view>
@@ -74,7 +74,7 @@
                 <image class="icon-pointright" src="/images/icon-pointright.svg"/>
             </view>
         </view>
-        <view class="list-item" wx:if="{{deviceInfo.state.reported.temperature&&adminId！=selfId}}" data-data="{{deviceInfo.state.reported.temperature}}" data-name="温度" bind:tap="changeProps">
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.temperature&&adminId!=selfId}}" data-data="{{deviceInfo.state.reported.temperature}}" data-name="温度" bind:tap="changeProps">
             <view class="name">报警温度</view>
             <view class="value">
                 <view class="red">高于 {{deviceInfo.state.reported.temperature.max_danger}}</view>
