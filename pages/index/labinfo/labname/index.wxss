@@ -10,9 +10,9 @@
 }
 
 .list .list-item {
-  display: flex;
   margin: var(--margin-12) var(--margin-16);
   border-radius: var(--radius-8);
+  padding-right: var(--margin-16);
   padding-left: var(--margin-16);
   height: 80rpx;
   font-size: var(--font-12);
