@@ -8,10 +8,6 @@
             <view class="academy">{{userInfo.academy}}</view>
         </view>
     </view>
-    <view class="scan">
-        <image class="scan-icon" src="/images/icon-adindex-scan.svg" />
-        <text class="scan-text">扫码</text>
-    </view>
 </view>
 <view class="num">
     <view class="warn">

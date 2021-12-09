@@ -29,6 +29,18 @@ Page({
                     wx.setStorageSync('token',token);
                     wx.setStorageSync('clientId',clientId);
                     console.log(token);
+                    // wx.pro.request({
+                    //   url:'https://api.yumik.top/api/v1/user/info',
+                    //   method:'get',
+                    //   header:{
+                    //       'content-type':'application/x-www-form-urlencoded',
+                    //       'Authorization':wx.getStorageSync('token')
+                    //   },
+                    // }).then((res)=>{
+                    //   this.setData({selfId:res.data.data.userInfo.id})
+                    // }).catch((e)=>{
+                    //   console.log(e)
+                    // })
                     if(wx.getStorageSync('flag')){
                       wx.pro.switchTab({url:'/pages/index/index'})
                     }

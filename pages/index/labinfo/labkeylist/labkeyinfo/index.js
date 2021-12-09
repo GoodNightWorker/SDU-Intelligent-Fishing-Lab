@@ -101,7 +101,7 @@ Page({
                 data:{
                     scene:scene,
                     envVersion:info.miniProgram.envVersion,
-                    page:'',
+                    page:'pages/welcome/index',
                 }
             })
         }).then((res)=>{
