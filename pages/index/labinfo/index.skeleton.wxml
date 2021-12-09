@@ -1,0 +1,67 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/12/9 下午11:11:13
+使用方法：
+在 E:\0.项目开发\WeApp\SDU智慧摸鱼实验室\SDU-Intelligent-Fishing-Lab\pages\index\labinfo\index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 E:\0.项目开发\WeApp\SDU智慧摸鱼实验室\SDU-Intelligent-Fishing-Lab\pages\index\labinfo\index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <scroll-view class="scroll" scroll-into-view="true" scroll-top="0" scroll-y="true">
+        <view class="title sk-transparent sk-text-14-2857-306 sk-text">实验室信息</view>
+        <view class="list">
+          <view class="list-item" data-name="名称">
+            <view class="name sk-transparent sk-text-0-0000-470 sk-text">名称</view>
+            <view class="value sk-transparent">卧槽之家
+              <image class="icon-pointright sk-image"></image>
+            </view>
+          </view>
+          <view class="list-item">
+            <view class="name sk-transparent sk-text-0-0000-410 sk-text">管理员</view>
+            <view class="value sk-transparent sk-text-0-0000-609 sk-text" style="background-position-x: 100%;">宇海</view>
+          </view>
+          <view class="list-item">
+            <view class="name sk-transparent sk-text-0-0000-536 sk-text">联系方式</view>
+            <view class="value sk-transparent sk-text-0-0000-185 sk-text" style="background-position-x: 100%;">12300000000</view>
+          </view>
+          <view class="list-item" data-name="成员">
+            <view class="name sk-transparent sk-text-0-0000-504 sk-text">成员</view>
+            <view class="value">
+              <image class="icon-pointright sk-image"></image>
+            </view>
+          </view>
+          <view class="list-item" data-name="密钥">
+            <view class="name sk-transparent sk-text-0-0000-740 sk-text">密钥</view>
+            <view class="value sk-transparent">2 临时密钥
+              <image class="icon-pointright sk-image"></image>
+            </view>
+          </view>
+        </view>
+        <view class="title sk-transparent sk-text-14-2857-427 sk-text">实验室设备</view>
+        <view class="device-list">
+          <view is="components/devicecard/index">
+            <view class="devicecard-index--container" style="border: none;">
+              <view class="devicecard-index--title sk-transparent sk-text-14-2857-130 sk-text">添加设备</view>
+              <image class="devicecard-index--icon sk-image"></image>
+            </view>
+          </view>
+        </view>
+        <button class="ai-button sk-transparent sk-button sk-pseudo sk-pseudo-circle">删除实验室</button>
+      </scroll-view>
+      <view is="components/footer/index">
+        <view class="footer-index--fish sk-transparent sk-text-14-2857-477 sk-text">智慧摸鱼实验室</view>
+      </view>
+    </view>
+  </view>
+</template>
