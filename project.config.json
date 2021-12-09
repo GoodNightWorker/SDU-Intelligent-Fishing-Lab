@@ -7,7 +7,7 @@
         "urlCheck": true,
         "es6": true,
         "enhance": true,
-        "postcss": true,
+        "postcss": false,
         "preloadBackgroundData": false,
         "minified": true,
         "newFeature": false,
@@ -20,7 +20,7 @@
         "checkInvalidKey": true,
         "checkSiteMap": true,
         "uploadWithSourceMap": true,
-        "compileHotReLoad": false,
+        "compileHotReLoad": true,
         "lazyloadPlaceholderEnable": false,
         "useMultiFrameRuntime": true,
         "useApiHook": true,
@@ -36,7 +36,9 @@
         "packNpmManually": false,
         "packNpmRelationList": [],
         "minifyWXSS": true,
-        "showES6CompileOption": false
+        "disableUseStrict": false,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.20.0",
