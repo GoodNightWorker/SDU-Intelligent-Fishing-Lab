@@ -4,9 +4,17 @@ Page({
         description:'',
         deviceInfo:[],
         type:'',
+        adminId:'',
+        selfId:''
     },
     onLoad:function(option){
-        this.setData({deviceName:option.name,description:option.description,type:option.type})
+        this.setData({
+            deviceName:option.name,
+            description:option.description,
+            type:option.type,
+            adminId:wx.pro.getStorageSync('adminId'),
+            userId:wx.pro.getStorageSync('userId')
+        })
     },
     onShow:function(){
         wx.pro.request({

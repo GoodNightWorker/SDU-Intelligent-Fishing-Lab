@@ -9,7 +9,9 @@ Page({
         keyImage:'',
         labName:'',
         shareName:'',
-        background:'/images/Subtract.png'
+        background:'/images/Subtract.png',
+        adminId:'',
+        userId:''
     },
     onLoad:function(option){
         this.setData({labId:option.id,key:option.key,type:option.type})

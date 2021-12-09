@@ -1,10 +1,16 @@
 Page({
     data:{
         labId:'',
-        keyList:[]
+        keyList:[],
+        adminId:'',
+        userId:'',
     },
     onLoad:function(option){
-        this.upData({labId:option.id})
+        this.setData({
+            labId:option.id,
+            adminId:wx.pro.getStorageSync('adminId'),
+            userId:wx.pro.getStorageSync('userId')
+        })
     },
     onShow:function(){
         wx.pro.request({

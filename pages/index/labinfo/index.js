@@ -37,6 +37,7 @@ Page({
             var list = this.data.listData;
             list.name = res.data.data.lab.name;
             list.adminId = res.data.data.lab.tableUserId;
+            wx.pro.setStorageSync('adminId',list.adminId)
             wx.pro.request({
                 url:'https://api.yumik.top/api/v1/user/info',
                 method:'get',

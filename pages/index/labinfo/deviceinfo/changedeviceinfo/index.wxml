@@ -37,11 +37,11 @@
 </view>
 <view class="list" wx:if="{{propsName=='消息速率'}}">
     <view class="list-item">
-        <view class="name">填写数字，低于此发送速率时报警</view>
+        <view class="name">填写数字，高于此发送速率时报警</view>
         <input class="value" bindinput="getInput" data-name='min_danger'value="{{min_danger}}"/>
     </view>
     <view class="list-item">
-        <view class="name">填写数字，低于此发送速率时警告</view>
+        <view class="name">填写数字，高于此发送速率时警告</view>
         <input class="value" bindinput="getInput" data-name='min_warning'value="{{min_warning}}"/>
     </view>
 </view>

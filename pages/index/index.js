@@ -21,7 +21,7 @@ Page({
         }).then((res) => {
             //获取用户头像
             this.upData({ userInfo: res.data.data.userInfo })
-            wx.setStorageSync('selfId',res.data.data.userInfo.id);
+            wx.setStorageSync('',res.data.data.userInfo.id);
             wx.pro.request({
                 url: 'https://api.yumik.top/api/v1/face/base64',
                 method: 'get',
