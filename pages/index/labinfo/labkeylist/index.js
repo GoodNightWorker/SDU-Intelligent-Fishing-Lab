@@ -32,6 +32,6 @@ Page({
         wx.pro.navigateTo({url:`/pages/index/labinfo/labkeylist/addkey/index?id=${this.data.labId}`});
     },
     getKeyInfo(e){
-        wx.pro.navigateTo({url:`/pages/index/labinfo/labkeylist/labkeyinfo/index?key=${e.currentTarget.id}&id=${this.data.labId}`});
+        wx.pro.navigateTo({url:`/pages/index/labinfo/labkeylist/labkeyinfo/index?key=${e.currentTarget.id}&id=${this.data.labId}&type=skip`});
     }
 })

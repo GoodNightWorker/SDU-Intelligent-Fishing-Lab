@@ -35,7 +35,7 @@ Page({
         })
     },
     changeInfo(){
-        wx.pro.navigateTo({url:`/pages/mine/changeinfo/index?name=${this.data.userInfo.name}&academy=${this.data.userInfo.academy}&telephone=${this.data.userInfo.telephone}&sduNumber=${this.data.userInfo.sduNumber}`})
+        wx.pro.navigateTo({url:`/pages/mine/changeinfo/index?name=${this.data.userInfo.name}&academy=${this.data.userInfo.academy}&telephone=${this.data.userInfo.telephone}&sduNumber=${this.data.userInfo.sduNumber}&role=${this.data.userInfo.role}`})
     },
     toPR(){
         wx.pro.navigateTo({url:"/pages/mine/pr/index"})

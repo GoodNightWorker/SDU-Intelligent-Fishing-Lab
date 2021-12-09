@@ -4,40 +4,20 @@ Page({
     data: {
         showModel: false,
         showDialog: false,
-        info:[
-            {
-                "icon":"/images/icon-msg-name.svg",
-                "placeholder":"请输入您的姓名",
-                "id":"name",
-                "value":"",
-            },
-            {
-                "icon":"/images/icon-msg-academy.svg",
-                "placeholder":"请输入您的学院",
-                "id":"academy",
-                "value":"",
-            },
-            {
-                "icon":"/images/icon-msg-telephone.svg",
-                "placeholder":"请输入您的联系方式",
-                "id":"telephone",
-                "value":"",
-            },
-            {
-                "icon":"/images/icon-msg-sduNumber.svg",
-                "placeholder":"请输入您的学号",
-                "id":"sduNumber",
-                "value":"",
-            },
-        ],
+        name:'',
+        academy:'',
+        telephone:'',
+        sduNumber:'',
+        role:'',
     },
     onLoad:function(option){
-        let info = this.data.info;
-        info[0].value = option.name;
-        info[1].value = option.academy;
-        info[2].value = option.telephone;
-        info[3].value = option.sduNumber;
-        this.upData({info:info})
+        this.setData({
+            name:option.name,
+            academy:option.academy,
+            telephone:option.telephone,
+            sduNumber:option.sduNumber,
+            role:option.role,
+        })
         const rules = {
             name:{
                 required:true,
@@ -78,11 +58,31 @@ Page({
         }
         Validate = new WxValidate(rules,message)
     },
+    getInput(e){
+        switch(e.currentTarget.dataset.name){
+            case 'name':
+                this.setData({name:e.detail.value});
+                break;
+            case 'academy':
+                this.setData({academy:e.detail.value});
+                break;
+            case 'telephone':
+                this.setData({telephone:e.detail.value});
+                break;
+            case 'sduNumber':
+                this.setData({sduNumber:e.detail.value})
+                break;
+        }
+    },
     submitList(e){
-        const form = e.detail.value;
+        const form = {
+            name:this.data.name,
+            academy:this.data.academy,
+            telephone:this.data.telephone,
+            sduNumber:this.data.sduNumber
+        }
         if(!Validate.checkForm(form)){
             let error = Validate.errorList[0]
-            console.log(error)
             wx.showToast({
                 icon:'none',
                 title:error.msg
@@ -91,19 +91,21 @@ Page({
         }
         wx.pro.request({
             url:"https://api.yumik.top/api/v1/user/info",
-            data:{
-              name:form['name'],
-              academy:form['academy'],
-              telephone:form['telephone'],
-              sduNumber:form['sduNumber'],
-              role:wx.getStorageSync('role'),
-            },
             method:'post',
             header:{
               'content-type':'application/x-www-form-urlencoded',
               'Authorization':wx.getStorageSync('token')
             },
+            data:
+            {
+                name:this.data.name,
+                academy:this.data.academy,
+                telephone:this.data.telephone,
+                sduNumber:this.data.sduNumber,
+                role:this.data.role,
+            },
         }).then((res)=>{
+            console.log(res)
             if(res.data.errCode == 0){
                 wx.pro.showToast({
                     title:'修改成功，两秒后返回上页',

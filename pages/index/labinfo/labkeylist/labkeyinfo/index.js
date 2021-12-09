@@ -2,6 +2,7 @@ Page({
     data:{
         labId:'',
         key:'',
+        type:'skip',
         keyList:[],
         tempFilePath: '',
 		isShow: false,
@@ -11,7 +12,8 @@ Page({
         background:'/images/Subtract.png'
     },
     onLoad:function(option){
-        this.setData({labId:option.id,key:option.key})
+        this.setData({labId:option.id,key:option.key,type:option.type})
+        wx.hideHomeButton()
     },
     onShow:function(){
         wx.pro.request({
@@ -238,6 +240,40 @@ Page({
             }
         }).catch((e)=>{
             console.log(e)
+        })
+    },
+    enterLab(){
+        wx.pro.request({
+            url:'https://api.yumik.top/api/v1/lab/user/insert',
+            method:'post',
+            header:{
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token'),
+            },
+            data:{
+                labId:this.data.labId,
+                secretKey:this.data.key
+            }
+        }).then((res)=>{
+            console.log(res)
+            if(res.data.errCode == -3){
+                wx.pro.showToast({
+                    title:'您已经是实验室成员，请勿重复添加，两秒后自动跳转到首页',
+                    icon:'none',
+                    duration:2000
+                })
+                setTimeout(()=>{
+                    wx.pro.switchTab({url:`/pages/index/index`})
+                },2000)
+            }
+            else if(res.data.errCode == 0){
+                wx.pro.showToast({
+                    title:'加入实验室成功，两秒后跳转到首页',
+                    icon:'none',
+                    duration:2000
+                })
+                wx.pro.switchTab({url:`/pages/index/index`})
+            }
         })
     }
 })

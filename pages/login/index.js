@@ -15,10 +15,6 @@ Page({
                 wx.setStorageSync('role',2);
                 wx.navigateTo({url:'/pages/userinfo/index'});
                 break;
-            // case 'Guest':
-            //     wx.setStorageSync('role',3); 
-            //     wx.navigateTo({url:'/pages/administrator/index'});
-            //     break;
         }
         
     }

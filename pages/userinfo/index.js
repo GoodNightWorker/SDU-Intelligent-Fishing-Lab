@@ -4,32 +4,10 @@ Page({
     data: {
         showModel: false,
         showDialog: false,
-        info:[
-            {
-                "icon":"/images/icon-msg-name.svg",
-                "placeholder":"请输入您的姓名",
-                "id":"name",
-                "value":"",
-            },
-            {
-                "icon":"/images/icon-msg-academy.svg",
-                "placeholder":"请输入您的学院",
-                "id":"academy",
-                "value":"",
-            },
-            {
-                "icon":"/images/icon-msg-telephone.svg",
-                "placeholder":"请输入您的联系方式",
-                "id":"telephone",
-                "value":"",
-            },
-            {
-                "icon":"/images/icon-msg-sduNumber.svg",
-                "placeholder":"请输入您的学号",
-                "id":"sduNumber",
-                "value":"",
-            },
-        ],
+        name:'',
+        academy:'',
+        telephone:'',
+        sduNumber:'',
     },
     onLoad:function(){
         const rules = {
@@ -72,11 +50,31 @@ Page({
         }
         Validate = new WxValidate(rules,message)
     },
+    getInput(e){
+        switch(e.currentTarget.dataset.name){
+            case 'name':
+                this.setData({name:e.detail.value});
+                break;
+            case 'academy':
+                this.setData({academy:e.detail.value});
+                break;
+            case 'telephone':
+                this.setData({telephone:e.detail.value});
+                break;
+            case 'sduNumber':
+                this.setData({sduNumber:e.detail.value})
+                break;
+        }
+    },
     submitList(e){
-        const form = e.detail.value;
+        const form = {
+            name:this.data.name,
+            academy:this.data.academy,
+            telephone:this.data.telephone,
+            sduNumber:this.data.sduNumber
+        }
         if(!Validate.checkForm(form)){
             let error = Validate.errorList[0]
-            console.log(error)
             wx.showToast({
                 icon:'none',
                 title:error.msg
@@ -85,22 +83,31 @@ Page({
         }
         wx.pro.request({
             url:"https://api.yumik.top/api/v1/user/info",
-            data:{
-              name:form['name'],
-              academy:form['academy'],
-              telephone:form['telephone'],
-              sduNumber:form['sduNumber'],
-              role:wx.getStorageSync('role'),
-            },
             method:'post',
             header:{
               'content-type':'application/x-www-form-urlencoded',
               'Authorization':wx.getStorageSync('token')
             },
+            data:
+            {
+                name:this.data.name,
+                academy:this.data.academy,
+                telephone:this.data.telephone,
+                sduNumber:this.data.sduNumber,
+                role:wx.getStorageSync('role')
+            },
         }).then((res)=>{
-            console.log(res)
-            wx.navigateTo({url:'/pages/uploadimage/index'});
-            wx.setStorageSync('flag',true);
+            if(res.data.errCode == 0){
+                wx.pro.showToast({
+                    title:'填写成功，两秒后跳转到上传照片页',
+                    icon:'none',
+                    duration:2000
+                })
+                setTimeout(()=>{
+                    wx.navigateTo({url:'/pages/uploadimage/index'});
+                },2000)
+                wx.setStorageSync('flag',true);
+            }
         }).catch((e)=>{
             console.log(e)
         })
