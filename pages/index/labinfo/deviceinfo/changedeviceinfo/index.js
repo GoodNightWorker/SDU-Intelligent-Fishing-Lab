@@ -15,24 +15,26 @@ Page({
             propsName:option.name,
             deviceName:option.deviceName,
             deviceVersion:option.deviceVersion,
-            
         })
-        setTimeout(()=>{
-            if(this.data.propsName=='消息速率'){
-                this.setData({max_danger:0,max_warning:0})
-            }
-            else if(this.data.propsName=='门禁状态'){
-                this.setData({index:option.type})
-            }
-            else{
-                this.setData({
-                    max_danger:option.max_danger,
-                    max_warning:option.max_warning,
-                    min_danger:option.min_danger,
-                    min_warning:option.min_warning
-                })
-            }
-        },1000)
+        if(option.name=='消息速率'){
+            this.setData({
+                max_danger:0,
+                max_warning:0,
+                min_danger:option.min_danger,
+                min_warning:option.min_warning
+            })
+        }
+        else if(option.name=='门禁状态'){
+            this.setData({index:option.type})
+        }
+        else{
+            this.setData({
+                max_danger:option.max_danger,
+                max_warning:option.max_warning,
+                min_danger:option.min_danger,
+                min_warning:option.min_warning
+            })
+        }
     },
     bindPickerChange: function(e) {
         this.setData({index: e.detail.value})
