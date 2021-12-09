@@ -1,0 +1,19 @@
+Page({
+    
+    getInput(e){
+        //console.log(e.detail.value)
+        this.upData({newLabName:e.detail.value});
+    },
+    submit(){
+        setTimeout(()=>{
+            wx.pro.showToast({
+                title:'已收到您的反馈，我们会尽快处理，谢谢！',
+                icon:'none',
+                duration:2000,
+            })
+        },100)
+        setTimeout(()=>{
+            wx.pro.navigateBack()
+        },2000)
+    }
+})

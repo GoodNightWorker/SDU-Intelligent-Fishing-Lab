@@ -54,7 +54,13 @@
   color: var(--gray-3);
 }
 
-.container .text-view .right-view .detail {
+.container .text-view .right-view .flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container .text-view .right-view .flex .detail {
+  margin-left: var(--margin-8);
   font-size: var(--font-14);
   font-weight: bold;
   font-style: normal;

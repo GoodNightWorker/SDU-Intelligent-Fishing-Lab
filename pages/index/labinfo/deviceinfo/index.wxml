@@ -9,7 +9,7 @@
             <view class="name">版本号</view>
             <view class="value">{{deviceInfo.version}}</view>
         </view>
-        <view class="list-item" wx:if="{{deviceInfo.state.desired.faceList}}" data-name="门禁状态" data-data="{{deviceInfo.state.reported.state}}" bind:tap="changeProps">
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.faceList}}" data-name="门禁状态" data-data="{{deviceInfo.state.reported.state}}" bind:tap="changeProps">
             <view class="name">状态</view>
             <view class="value" wx:if="{{deviceInfo.state.reported.state==0}}">正常<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
             <view class="value" wx:if="{{deviceInfo.state.reported.state==1}}">常开<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>

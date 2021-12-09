@@ -14,7 +14,7 @@
         <ai-noticeitem icon="/images/icon-userleft.svg" message="人员进入" time="{{eventList_item.time}}" wx:else detail="{{eventList_item.event.name}}" color="gray"/>
     </view>
     <view class="list" wx:for="{{eventList}}" wx:for-item="eventList_item" wx:if="{{type==2}}">
-        <ai-noticeitem icon="/images/icon-tem&hum.svg" message="温湿度异常" time="{{eventList_item.time}}" detail="湿度:{{eventList_item.event.humidity}}% 温度:{{eventList_item.event.temperature}}°C"/>
+        <ai-noticeitem icon="/images/icon-tem&hum.svg" message="{{eventList_item.event.type}}" time="{{eventList_item.time}}" detail="湿度:{{eventList_item.event.humidity}}%" color="{{eventList_item.event.color_hum}}" detail1="温度:{{eventList_item.event.temperature}}°C" color1="{{eventList_item.event.color_tem}}" isShow="" />
     </view>
 </scroll-view>
 <ai-footer/>

@@ -1,6 +1,6 @@
 Page({
     data:{
-        labId:59,
+        labId:'',
         userList:[],
         adminId:'',
         selfId:'',
@@ -104,7 +104,7 @@ Page({
             console.log(e)
         })
     },
-    unshowMessage(){
+    unShowMessage(){
         this.setData({isShow:false})
     },
     deleteMember(e){
@@ -122,17 +122,50 @@ Page({
                         'Authorization':wx.getStorageSync('token'),
                     },
                     data:{
-                        'id':e.currentTarget.id
+                        userId:e.currentTarget.id,
+                        labId:this.data.labId
                     }
                 }).then((res)=>{
-                    console.log(res)
                     if(res.data.errCode === 0){
                         wx.pro.showToast({
                             title:'删除成功',
                             icon:'success',
                             duration:2000
                         })
-                        this.unshowMessage();
+                        this.unShowMessage();
+                        wx.pro.request({
+                            url:'https://api.yumik.top/api/v1/lab/user/list',
+                            method:'get',
+                            header:{
+                                'content-type':'application/x-www-form-urlencoded',
+                                'Authorization':wx.getStorageSync('token'),
+                            },
+                            data:{
+                                'labId':this.data.labId,
+                                'page':1
+                            }
+                        }).then((res)=>{
+                            this.setData({userList:res.data.data.userList,adminId:res.data.data.userList[0].tableUserId});
+                            this.data.userList.map((item,index)=>{
+                                wx.pro.request({
+                                    url:'https://api.yumik.top/api/v1/face/base64',
+                                    method:'get',
+                                    header:{
+                                        'content-type':'application/x-www-form-urlencoded',
+                                        'Authorization':wx.getStorageSync('token')
+                                    },
+                                    data:{
+                                        'userId':item.tableUserId,
+                                        'min':true
+                                    }
+                                }).then((res)=>{
+                                    this.data.userList[index].img = res.data.data.base64;
+                                    this.upData({userList:this.data.userList});
+                                }).catch((e)=>{
+                                    console.log(e)
+                                })
+                            })
+                        })
                     }
                 }).catch((e)=>{
                     console.log(e);

@@ -7,23 +7,35 @@ Component({
     properties: {
         icon: {
             type: String,
-            value: "/images/icon-userleft.svg",
+            value: "",
         },
         message : {
             type : String,
-            value : "人员离开",
+            value : "",
         },
         time : {
             type : String,
-            value : "14:30",
+            value : "",
         },
         color: {
             type : String,
             value : "red",
         },
+        color1: {
+            type : String,
+            value : "red",
+        },
         detail : {
             type : String,
-            value : "22°C",
+            value : "",
+        },
+        detail1 : {
+            type : String,
+            value : "",
+        },
+        isShow:{
+            type:String,
+            value:"display:none"
         }
     },
 

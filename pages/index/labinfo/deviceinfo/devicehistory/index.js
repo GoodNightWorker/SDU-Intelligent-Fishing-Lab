@@ -5,6 +5,8 @@ Page({
         type:'',
         page:1,
         flag:1,
+        errorName:['正常','低','高','超低','超高'],
+        color:['green','yellow','yellow','red','red']
     },
     onLoad:function(option){
         this.setData({name:option.name,type:option.type})
@@ -47,10 +49,24 @@ Page({
                     }
                 }
                 else{
+                    let json = JSON.parse(item.json);
+                    list[index].event['color_tem'] = this.data.color[json.alarm[0]];
+                    list[index].event['color_hum'] = this.data.color[json.alarm[1]];
+                    if(json.alarm[0]==0&&json.alarm[1]==0){
+                        list[index].event['type']='温湿度正常'
+                    }
+                    else if(json.alarm[0]!=0&&json.alarm[1]!=0){
+                        list[index].event['type']='温湿度异常'
+                    }
+                    else if(json.alarm[0]==0&&json.alarm[1]!=0){
+                        list[index].event['type']='湿度异常'
+                    }
+                    else{
+                        list[index].event['type']='温度异常'
+                    }
                     this.setData({eventList:list})
                 }
             })
-            console.log(list)
             
         }).catch((e)=>{
             console.log(e)
@@ -114,6 +130,22 @@ Page({
                             }
                         }
                         else{
+                            let json = JSON.parse(item.json);
+                            list[index].event['color_tem'] = this.data.color[json.alarm[0]];
+                            list[index].event['color_hum'] = this.data.color[json.alarm[1]];
+                            if(json.alarm[0]==0&&json.alarm[1]==0){
+                                list[index].event['type']='温湿度正常'
+                            }
+                            else if(json.alarm[0]!=0&&json.alarm[1]!=0){
+                                list[index].event['type']='温湿度异常'
+                            }
+                            else if(json.alarm[0]==0&&json.alarm[1]!=0){
+                                list[index].event['type']='湿度异常'
+                            }
+                            else{
+                                list[index].event['type']='温度异常'
+                            }
+                            //this.setData({eventList:list})
                             this.data.eventList = this.data.eventList.concat(list)
                             this.setData({eventList:this.data.eventList})
                         }

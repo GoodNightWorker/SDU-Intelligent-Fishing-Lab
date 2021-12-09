@@ -11,6 +11,8 @@ Page({
         page:1,
         flag:1,
         lab_device:[],
+        errorName:['正常','低','高','超低','超高'],
+        color:['green','yellow','yellow','red','red']
     },
     onShow:function(){
         wx.pro.request({
@@ -27,6 +29,34 @@ Page({
             //根据列表获取实验室名称
             this.setData({ labList: res.data.data.labList })
             this.getLabInfo(this.data.labList, this.data.labList.length - 1, [])
+        })
+    },
+    getLabInfo(labList, i, list) {
+        let item = labList[i]
+        wx.pro.request({
+            url: 'https://api.yumik.top/api/v1/lab/get',
+            method: 'get',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Authorization': wx.getStorageSync('token'),
+            },
+            data: {
+                'labId': item['tableLabId']
+            }
+        }).then((res) => {
+            res.data.data.lab['tableLabId'] = item['tableLabId']
+            list = [res.data.data.lab, ...list]
+            this.data.array[0] = [res.data.data.lab.name,...this.data.array[0]];
+            if (i == 0) {
+                this.upData({ labListDetail: list })
+                this.upData({array:this.data.array})
+                this.getDeviceInfo(this.data.labList, this.data.labList.length - 1, [],[] )
+            } else {
+                this.getLabInfo(labList, i - 1, list)
+            }
+               
+        }).catch((e) => {
+            console.log(e)
         })
     },
     getDeviceInfo(labList,i,list,list2){
@@ -71,7 +101,6 @@ Page({
                         page:this.data.page,
                     }
                 }).then((res)=>{
-                    console.log(res)
                     var list = [];
                     res.data.data.eventList.map((item,index)=>{
                         list[index] = {'event':JSON.parse(item.json),'time':this.toTime(item.gmtOnline)}
@@ -99,7 +128,24 @@ Page({
                             }
                         }
                         else{
+                            let json = JSON.parse(item.json);
+                            //console.log(item)
+                            list[index].event['color_tem'] = this.data.color[json.alarm[0]];
+                            list[index].event['color_hum'] = this.data.color[json.alarm[1]];
+                            if(json.alarm[0]==0&&json.alarm[1]==0){
+                                list[index].event['type']='温湿度正常'
+                            }
+                            else if(json.alarm[0]!=0&&json.alarm[1]!=0){
+                                list[index].event['type']='温湿度异常'
+                            }
+                            else if(json.alarm[0]==0&&json.alarm[1]!=0){
+                                list[index].event['type']='湿度异常'
+                            }
+                            else{
+                                list[index].event['type']='温度异常'
+                            }
                             this.setData({eventList:list})
+                            //console.log(list)
                         }
                     })
                 })
@@ -135,7 +181,6 @@ Page({
                     page:this.data.page,
                 }
             }).then((res)=>{
-                console.log(res)
                 if(res.data.data.eventList.length==0){
                     this.setData({flag:0})
                 }
@@ -167,6 +212,21 @@ Page({
                             }
                         }
                         else{
+                            let json = JSON.parse(item.json);
+                            list[index].event['color_tem'] = this.data.color[json.alarm[0]];
+                            list[index].event['color_hum'] = this.data.color[json.alarm[1]];
+                            if(json.alarm[0]==0&&json.alarm[1]==0){
+                                list[index].event['type']='温湿度正常'
+                            }
+                            else if(json.alarm[0]!=0&&json.alarm[1]!=0){
+                                list[index].event['type']='温湿度异常'
+                            }
+                            else if(json.alarm[0]==0&&json.alarm[1]!=0){
+                                list[index].event['type']='湿度异常'
+                            }
+                            else{
+                                list[index].event['type']='温度异常'
+                            }
                             this.data.eventList = this.data.eventList.concat(list)
                             this.setData({eventList:this.data.eventList})
                         }
@@ -178,34 +238,6 @@ Page({
             })
         }
         else return;
-    },
-    getLabInfo(labList, i, list) {
-        let item = labList[i]
-        wx.pro.request({
-            url: 'https://api.yumik.top/api/v1/lab/get',
-            method: 'get',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'Authorization': wx.getStorageSync('token'),
-            },
-            data: {
-                'labId': item['tableLabId']
-            }
-        }).then((res) => {
-            res.data.data.lab['tableLabId'] = item['tableLabId']
-            list = [res.data.data.lab, ...list]
-            this.data.array[0] = [res.data.data.lab.name,...this.data.array[0]];
-            if (i == 0) {
-                this.upData({ labListDetail: list })
-                this.upData({array:this.data.array})
-                this.getDeviceInfo(this.data.labList, this.data.labList.length - 1, [],[] )
-            } else {
-                this.getLabInfo(labList, i - 1, list)
-            }
-               
-        }).catch((e) => {
-            console.log(e)
-        })
     },
     bindPickerChange(e){
         this.setData({index:e.detail.value,flag:1,page:1})
@@ -230,7 +262,6 @@ Page({
                 page:this.data.page,
             }
         }).then((res)=>{
-            console.log(res)
             var list = [];
             res.data.data.eventList.map((item,index)=>{
                 list[index] = {'event':JSON.parse(item.json),'time':this.toTime(item.gmtOnline)}
@@ -258,6 +289,21 @@ Page({
                     }
                 }
                 else{
+                    let json = JSON.parse(item.json);
+                    list[index].event['color_tem'] = this.data.color[json.alarm[0]];
+                    list[index].event['color_hum'] = this.data.color[json.alarm[1]];
+                    if(json.alarm[0]==0&&json.alarm[1]==0){
+                        list[index].event['type']='温湿度正常'
+                    }
+                    else if(json.alarm[0]!=0&&json.alarm[1]!=0){
+                        list[index].event['type']='温湿度异常'
+                    }
+                    else if(json.alarm[0]==0&&json.alarm[1]!=0){
+                        list[index].event['type']='湿度异常'
+                    }
+                    else{
+                        list[index].event['type']='温度异常'
+                    }
                     this.setData({eventList:list})
                 }
             })

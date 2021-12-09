@@ -4,7 +4,7 @@
             <view class="line-top"></view>
             <view class="message">
                 <image class="icon" src="{{info_item.icon}}"/>
-                <input class="input" placeholder-class="input-placeholder" placeholder="{{info_item.placeholder}}" name="{{info_item.id}}"/>
+                <input class="input" placeholder-class="input-placeholder" value="{{info_item.value}}" placeholder="{{info_item.placeholder}}" name="{{info_item.id}}"/>
             </view>
         </view>
     </view>

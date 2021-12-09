@@ -1,0 +1,24 @@
+<view class="container">
+        <view class="card">
+            <view class="img-box">
+                <image src="/images/LOGOLOGO.svg"/>
+            </view>
+            <view class="content-box">
+                <h2>耐克（NIKE）运动鞋</h2>
+                <view class="size">
+                    <h3>Size：</h3>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </view>
+                <view class="color">
+                    <h3>Color：</h3>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </view>
+                <a href="#">立即购买</a>
+            </view>
+        </view>
+    </view>

@@ -1,0 +1,5 @@
+<view class="title">意见反馈</view>
+<view class="list">
+    <input class="list-item" placeholder="请输入您的意见" bindinput="getInput"/>
+</view>
+<button class="ai-button" bind:tap="submit">确认提交</button>

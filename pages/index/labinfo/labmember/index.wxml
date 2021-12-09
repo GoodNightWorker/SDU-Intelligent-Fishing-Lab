@@ -16,4 +16,4 @@
         <image class="head-img" src="data:image/png;base64,{{userList_item.img}}" mode="aspectFill"/>
     </view>
 </view>
-<ai-memberinfo wx:if="{{isShow}}" bind:closeCallBack="unshowMessage" bind:deleteMember="deleteMember" academy="{{userInfo.academy}}" name="{{userInfo.name}}" sduNumber="{{userInfo.sduNumber}}" img="{{img}}" auth="{{auth}}" showDel="{{showDel}}" id="{{userInfo.tableUserId}}"/>
+<ai-memberinfo wx:if="{{isShow}}" bind:closeCallBack="unShowMessage" bind:deleteMember="deleteMember" academy="{{userInfo.academy}}" name="{{userInfo.name}}" sduNumber="{{userInfo.sduNumber}}" img="{{img}}" auth="{{auth}}" showDel="{{showDel}}" id="{{userInfo.tableUserId}}"/>

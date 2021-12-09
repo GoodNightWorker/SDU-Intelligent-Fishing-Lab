@@ -76,12 +76,17 @@ Page({
     addLab() {
         wx.pro.navigateTo({ url: '/pages/index/addlab/index' })
     },
-    enterLab() {
-        wx.pro.scanCode({
+    
+    btnShowDialog() {
+        this.upData({
+            showDialog: true,
+        });
+    },
 
-        }).then((res) => {
-            console.log(res)
-        })
+    dialogCloseCallBack() {
+        this.upData({
+            showDialog: false,
+        });
     },
 
     getLabDetail(e) {
