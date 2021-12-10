@@ -5,6 +5,7 @@
         "pages/login/index",
         "pages/mine/index",
         "pages/mine/changeinfo/index",
+        "pages/mine/changeimage/index",
         "pages/mine/pr/index",
         "pages/mine/about/index",
         "pages/message/index",

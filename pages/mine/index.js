@@ -42,5 +42,8 @@ Page({
     },
     toAbout(){
         wx.pro.navigateTo({url:"/pages/mine/about/index"})
+    },
+    changeImage(){
+        wx.pro.navigateTo({url:"/pages/mine/changeimage/index"})
     }
 })

@@ -1,5 +1,5 @@
 <view class="info">
-    <image class="info-img" src="data:image/png;base64,{{avatarUrl}}" mode="aspectFill"/>
+    <image class="info-img" src="data:image/png;base64,{{avatarUrl}}" mode="aspectFill" bind:tap="changeImage"/>
     <view class="info-text">
         <view class="name">{{userInfo.name}}</view>
         <view class="academy">{{userInfo.academy}}|{{userInfo.sduNumber}}</view>

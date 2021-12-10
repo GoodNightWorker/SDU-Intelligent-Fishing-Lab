@@ -4,9 +4,6 @@ Page({
         showDialog: false,
         filePath:"",
     },
-    upData(data) {
-        return this.setData(objToPath(data))
-    },
     chooseImage() {
         wx.pro.chooseImage({
             sizeType: ['compressed'],
@@ -46,8 +43,8 @@ Page({
                     this.upData({showDialog:true})
                     setTimeout(()=>{
                         this.upData({showDialog:false});
-                        wx.pro.switchTab({url:'/pages/index/index'});
-                    },800)
+                        wx.pro.navigateBack();
+                    },2000)
                 }
                 if(JSON.parse(res.data).errCode==40304){
                     wx.pro.showToast({
@@ -58,10 +55,10 @@ Page({
                 if(JSON.parse(res.data).errCode==40305){
                     wx.pro.showToast({
                         icon:'none',
-                        title:'已上传过图片，请勿重复上传！'
+                        title:'已上传过该照片，请勿重复上传！'
                     })
                     setTimeout(()=>{
-                        wx.pro.switchTab({url:'/pages/index/index'});
+                        wx.pro.navigateBack();
                     },2000)
                 }
                 if(JSON.parse(res.data).errCode==40102){
