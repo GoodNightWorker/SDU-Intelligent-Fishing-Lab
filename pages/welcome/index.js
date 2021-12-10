@@ -29,14 +29,14 @@ Page({
               wx.setStorageSync('token',token);
               console.log(token);
               //如果已经填写过信息，判断正常跳转还是扫码跳转
-              if(wx.getStorageSync('flag')){
-                if(option.scene){
-                  wx.pro.redirectTo({url:`/pages/index/labinfo/labkeylist/labkeyinfo/index?id=${this.data.labId}&key=${this.data.key}&type=scan`})
-                }
-                else wx.pro.switchTab({url:'/pages/index/index'})
-              }
-              //flag不存在，获取用户信息
-              else{
+              // if(wx.getStorageSync('flag')){
+              //   if(option.scene){
+              //     wx.pro.redirectTo({url:`/pages/index/labinfo/labkeylist/labkeyinfo/index?id=${this.data.labId}&key=${this.data.key}&type=scan`})
+              //   }
+              //   else wx.pro.switchTab({url:'/pages/index/index'})
+              // }
+              // //flag不存在，获取用户信息
+              // else{
                 wx.pro.request({
                   url:"https://api.yumik.top/api/v1/user/info",
                   method:'get',
@@ -45,7 +45,12 @@ Page({
                     'Authorization':wx.getStorageSync('token')
                   },
                 }).then((res)=>{
-                  if(res.data.data.userInfo.name){
+                  console.log(res)
+                  if(res.data.errCode==-3){
+                     //无信息登录
+                     wx.pro.redirectTo({url:'/pages/login/index'})
+                  }
+                  else{
                     //有信息跳转
                     wx.setStorageSync('flag',true);
                     if(option.scene){
@@ -53,15 +58,11 @@ Page({
                     }
                     else wx.pro.switchTab({url:'/pages/index/index'})
                   }
-                  else{
-                    //无信息登录
-                    wx.pro.redirectTo({url:'/pages/login/index'})
-                  }
                 }).catch((e)=>{
                   console.log(e)
                 })
               }
-            }
+            // }
           }).catch((e)=>console.log(e));
           }).catch((e)=>console.log(e))
         },3000)

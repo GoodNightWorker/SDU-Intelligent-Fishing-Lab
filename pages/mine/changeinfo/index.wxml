@@ -23,5 +23,6 @@
         </view>
     </view>
 </view>
+
 <button class="ai-button" bind:tap="submitList">确认修改</button>
 <ai-footer/>
