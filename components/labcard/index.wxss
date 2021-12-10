@@ -45,10 +45,14 @@
 }
 
 .container .title {
+  overflow: hidden;
   margin-top: var(--margin-12);
   margin-left: var(--margin-16);
+  width: 258rpx;
   font-size: var(--font-18);
   font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: white;
 }
 

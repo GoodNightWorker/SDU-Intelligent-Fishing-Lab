@@ -14,7 +14,13 @@ Page({
         userId:''
     },
     onLoad:function(option){
-        this.setData({labId:option.id,key:option.key,type:option.type})
+        this.setData({
+            labId:option.id,
+            key:option.key,
+            type:option.type,
+            adminId:wx.pro.getStorageSync('adminId'),
+            userId:wx.pro.getStorageSync('selfId')
+        })
         wx.hideHomeButton()
     },
     onShow:function(){

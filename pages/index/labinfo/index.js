@@ -162,7 +162,7 @@ Page({
                 }
                 if (res.data.errCode == 0) {
                     wx.showToast({
-                        title: '成功',
+                        title: '绑定设备成功',
                         icon: 'none',
                         duration: 2000
                     })

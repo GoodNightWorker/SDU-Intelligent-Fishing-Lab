@@ -25,7 +25,7 @@
         <view class="value">生成分享图</view>
     </view>
 </view>
-<button class="ai-button" style="background-color:var(--red)" bind:tap="deleteKey" wx:if="{{type=='skip'}}">删除密钥</button>
+<button class="ai-button" style="background-color:var(--red)" bind:tap="deleteKey" wx:if="{{type=='skip'&&adminId==selfId}}">删除密钥</button>
 <button class="ai-button" bind:tap="enterLab" wx:if="{{type=='scan'}}">加入实验室</button>
 
 <view class="result_paper" wx:if="{{isShow}}" catchtouchmove="moveHandle" bindtap="hidePaper" bind:longtap="shareImg">
