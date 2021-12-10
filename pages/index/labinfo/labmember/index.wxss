@@ -25,15 +25,17 @@
 }
 
 .head .head-border {
+  display: flex;
   margin: 40rpx 0 0 40rpx;
   border: rgba(37, 161, 255, 0.5) 0.5px solid;
   border-radius: 128rpx;
   width: 128rpx;
   height: 128rpx;
+  justify-content: center;
+  align-items: center;
 }
 
 .head .head-img {
-  margin: 8rpx;
   border-radius: 112rpx;
   width: 112rpx;
   height: 112rpx;

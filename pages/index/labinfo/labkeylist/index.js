@@ -9,7 +9,7 @@ Page({
         this.setData({
             labId:option.id,
             adminId:wx.pro.getStorageSync('adminId'),
-            userId:wx.pro.getStorageSync('userId')
+            userId:wx.pro.getStorageSync('selfId')
         })
     },
     onShow:function(){

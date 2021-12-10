@@ -13,7 +13,7 @@ Page({
             description:option.description,
             type:option.type,
             adminId:wx.pro.getStorageSync('adminId'),
-            userId:wx.pro.getStorageSync('userId')
+            selfId:wx.pro.getStorageSync('selfId')
         })
     },
     onShow:function(){
