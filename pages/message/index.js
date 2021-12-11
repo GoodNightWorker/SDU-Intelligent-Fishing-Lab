@@ -12,7 +12,8 @@ Page({
         flag:1,
         lab_device:[],
         errorName:['正常','低','高','超低','超高'],
-        color:['green','yellow','yellow','red','red']
+        color:['green','yellow','yellow','red','red'],
+        currentId:'',
     },
     onShow:function(){
         wx.pro.request({
@@ -27,7 +28,10 @@ Page({
             }
         }).then((res) => {
             //根据列表获取实验室名称
-            this.setData({ labList: res.data.data.labList })
+            let a = new Array();
+            a[0] = new Array();
+            a[1] = new Array();
+            this.setData({ labList: res.data.data.labList,array:a })
             this.getLabInfo(this.data.labList, this.data.labList.length - 1, [])
         })
     },
@@ -48,8 +52,8 @@ Page({
             list = [res.data.data.lab, ...list]
             this.data.array[0] = [res.data.data.lab.name,...this.data.array[0]];
             if (i == 0) {
-                this.upData({ labListDetail: list })
-                this.upData({array:this.data.array})
+                this.setData({ labListDetail: list })
+                this.setData({array:this.data.array})
                 this.getDeviceInfo(this.data.labList, this.data.labList.length - 1, [],[] )
             } else {
                 this.getLabInfo(labList, i - 1, list)
@@ -60,6 +64,7 @@ Page({
         })
     },
     getDeviceInfo(labList,i,list,list2){
+        const adminId = wx.pro.getStorageSync('adminId');
         let item = labList[i];
         wx.pro.request({
             url:'https://api.yumik.top/api/v1/device/list',
@@ -71,8 +76,16 @@ Page({
             data:{
                 'labId':item['tableLabId'],
                 'page':1,
+                'pageSize':2^16
             }
         }).then((res)=>{
+            console.log(res)
+            // if(!res.data.data.deviceList.length){
+            //     let arr = this.data.array;
+            //     arr[1]=['暂无设备']
+            //     this.setData({deviceListDetail:[],array:arr})
+            //     return ;
+            // }
             this.setData({deviceListDetail:res.data.data.deviceList})
             var arr = [];
             var arr2=[];
@@ -88,7 +101,7 @@ Page({
             }
             if (i == 0) {
                 this.data.array[1] = list[0]
-                this.upData({ deviceName:list,array:this.data.array,lab_device:list2})
+                this.setData({ deviceName:list,array:this.data.array,lab_device:list2})
                 return wx.pro.request({
                     url:'https://api.yumik.top/api/v1/device/event/list',
                     method:'get',
@@ -101,14 +114,21 @@ Page({
                         page:this.data.page,
                     }
                 }).then((res)=>{
+                    if(this.data.page == 1){
+                        this.setData({currentId:res.data.data.eventList[0].id})
+                    }
                     var list = [];
                     res.data.data.eventList.map((item,index)=>{
                         list[index] = {'event':JSON.parse(item.json),'time':this.toTime(item.gmtOnline)}
                         if(list[index].event.name!=undefined){
+                            this.setData({type:1})
                             if(list[index].event.name==0){
                                 list[index].event.name = '未知人员';
                             }
                             else{
+                                if(list[index].event.name==adminId){
+                                    list[index].event.isAdmin = 1;
+                                }
                                 wx.pro.request({
                                     url:'https://api.yumik.top/api/v1/user/info',
                                     method:'get',
@@ -128,6 +148,7 @@ Page({
                             }
                         }
                         else{
+                            this.setData({type:2})
                             let json = JSON.parse(item.json);
                             //console.log(item)
                             list[index].event['color_tem'] = this.data.color[json.alarm[0]];
@@ -166,6 +187,7 @@ Page({
         return str;
     },
     scrollToLower(){
+        const adminId = wx.pro.getStorageSync('adminId');
         if(this.data.flag){
             this.setData({page:this.data.page+1})
             var list = [];
@@ -192,6 +214,9 @@ Page({
                                 list[index].event.name = '未知人员';
                             }
                             else{
+                                if(list[index].event.name==adminId){
+                                    list[index].event.isAdmin = 1;
+                                }
                                 wx.pro.request({
                                     url:'https://api.yumik.top/api/v1/user/info',
                                     method:'get',
@@ -239,7 +264,17 @@ Page({
         }
         else return;
     },
+    scrollToUpper(e){
+        this.setData({page:1})
+        this.getDeviceInfo(this.data.labList, this.data.labList.length - 1, [],[] )
+    },
     bindPickerChange(e){
+        if(!this.data.deviceListDetail.length){
+            let arr = this.data.array;
+            arr[1]=['暂无设备']
+            this.setData({deviceListDetail:[],array:arr})
+            return ;
+        }
         this.setData({index:e.detail.value,flag:1,page:1})
         if(this.data.array[1][this.data.index[1]]=='实验室门禁'){
             this.setData({type:1})

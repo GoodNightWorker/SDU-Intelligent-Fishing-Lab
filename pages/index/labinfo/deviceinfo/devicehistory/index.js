@@ -6,9 +6,10 @@ Page({
         page:1,
         flag:1,
         errorName:['正常','低','高','超低','超高'],
-        color:['green','yellow','yellow','red','red']
+        color:['green','yellow','yellow','red','red'],
     },
     onLoad:function(option){
+        const adminId = wx.pro.getStorageSync('adminId');
         this.setData({name:option.name,type:option.type})
         wx.pro.request({
             url:'https://api.yumik.top/api/v1/device/event/list',
@@ -30,6 +31,9 @@ Page({
                         list[index].event.name = '未知人员';
                     }
                     else{
+                        if(list[index].event.name==adminId){
+                            list[index].event.isAdmin = 1;
+                        }
                         wx.pro.request({
                             url:'https://api.yumik.top/api/v1/user/info',
                             method:'get',
@@ -83,6 +87,7 @@ Page({
         return str;
     },
     scrollToLower(){
+        const adminId = wx.pro.getStorageSync('adminId');
         if(this.data.flag){
             this.setData({page:this.data.page+1})
             var list = [];
@@ -110,6 +115,9 @@ Page({
                                 list[index].event.name = '未知人员';
                             }
                             else{
+                                if(list[index].event.name==adminId){
+                                    list[index].event.isAdmin = 1;
+                                }
                                 wx.pro.request({
                                     url:'https://api.yumik.top/api/v1/user/info',
                                     method:'get',

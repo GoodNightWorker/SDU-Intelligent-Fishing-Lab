@@ -25,6 +25,9 @@ Page({
         }).catch((e) => { console.log(e) })
     },
     submitImage(){
+        wx.pro.showLoading({
+            title:'正在上传'
+        })
         wx.pro.uploadFile({
             url:'https://api.yumik.top/api/v1/face/upload',
             filePath:this.filePath,
@@ -34,7 +37,7 @@ Page({
                 'Authorization':wx.getStorageSync('token')
             },
         }).then((res)=>{
-                console.log(res);
+            wx.pro.hideLoading()
                 if(JSON.parse(res.data).errCode==0){
                     this.upData({showDialog:true})
                     setTimeout(()=>{
@@ -51,7 +54,7 @@ Page({
                 if(JSON.parse(res.data).errCode==40305){
                     wx.pro.showToast({
                         icon:'none',
-                        title:'已上传过该照片，请勿重复上传！'
+                        title:'与上次人脸不一致，请重新上传！'
                     })
                     setTimeout(()=>{
                         wx.pro.navigateBack();

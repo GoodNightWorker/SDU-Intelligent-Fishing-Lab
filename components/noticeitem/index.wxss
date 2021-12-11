@@ -79,3 +79,7 @@
 .green {
   color: var(--green);
 }
+
+.blue {
+  color: var(--blue);
+}
