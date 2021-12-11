@@ -3,6 +3,7 @@ Page({
         showModel: false,
         showDialog: false,
         filePath:"",
+        isShow:false,
     },
     upData(data) {
         return this.setData(objToPath(data))
@@ -12,24 +13,24 @@ Page({
             sizeType: ['compressed'],
             count: 1,
         }).then((res) => {
-            console.log(res)
+            //console.log(res)
             this.filePath = res.tempFilePaths[0];
             return wx.pro.getFileInfo({
                 filePath: this.filePath,
             })
         }).then((image) => {
-            console.log(image)
+            //console.log(image)
             return wx.pro.getFileInfo({
                 filePath: this.filePath,
             })
-        }).then((file) => {
-            console.log(file)
-            return wx.pro.saveImageToPhotosAlbum({
-                filePath: this.filePath,
+        }).then(() => {
+            this.setData({
+                filePath:this.filePath,
+                isShow:true
             })
-        }).then((success) => {
-            console.log(success)
-        }).catch((e) => { console.log(e) })
+        }).catch((e)=>{
+            console.log(e)
+        })
     },
     submitImage(){
         wx.pro.uploadFile({

@@ -3,7 +3,11 @@
         <view class="icon"><image class="icon-image" src="/images/icon-uploadimage-people.svg" /></view>
         <text class="icon-text">正确示例：五官清晰</text>
     </view>
-    <view class="camera"  bindtap="chooseImage">
+    <view class="camera" wx:if="{{isShow}}">
+        <view class="icon"><image class="icon-image" mode="aspectFill" src="{{filePath}}"/></view>
+        <text class="icon-text">预览照片</text>
+    </view>
+    <view class="camera"  bindtap="chooseImage" wx:else>
         <view class="icon"><image class="icon-image" src="/images/icon-uploadimage-camera.svg" /></view>
         <text class="icon-text">点击上传照片</text>
     </view>

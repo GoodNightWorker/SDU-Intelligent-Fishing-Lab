@@ -3,29 +3,25 @@ Page({
         showModel: false,
         showDialog: false,
         filePath:"",
+        isShow:false,
     },
     chooseImage() {
         wx.pro.chooseImage({
             sizeType: ['compressed'],
             count: 1,
         }).then((res) => {
-            console.log(res)
+            //console.log(res)
             this.filePath = res.tempFilePaths[0];
             return wx.pro.getFileInfo({
                 filePath: this.filePath,
             })
         }).then((image) => {
-            console.log(image)
+            //console.log(image)
             return wx.pro.getFileInfo({
                 filePath: this.filePath,
             })
-        }).then((file) => {
-            console.log(file)
-            return wx.pro.saveImageToPhotosAlbum({
-                filePath: this.filePath,
-            })
-        }).then((success) => {
-            console.log(success)
+        }).then(() => {
+            this.setData({filePath:this.filePath,isShow:true})
         }).catch((e) => { console.log(e) })
     },
     submitImage(){
