@@ -111,7 +111,7 @@ Page({
                         'Authorization':wx.getStorageSync('token'),
                     },
                     data:{
-                        name:this.data.lab_device[0][0],
+                        name:this.data.lab_device[this.data.index[0]][this.data.index[1]],
                         page:this.data.page,
                     }
                 }).then((res)=>{
