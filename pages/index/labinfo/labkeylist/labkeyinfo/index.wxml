@@ -20,7 +20,7 @@
         <view class="name">用户有效期</view>
         <view class="value">{{keyList.deadline}}</view>
     </view>
-    <view class="list-item" bind:tap="getPic">
+    <view class="list-item" bind:tap="getPic" wx:if="{{type=='skip'}}">
         <view class="name">分享实验室密钥</view>
         <view class="value">生成分享图</view>
     </view>

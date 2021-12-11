@@ -35,6 +35,7 @@ Page({
                 'labId':this.data.labId
             }
         }).then((res)=>{
+            console.log(res)
             var list = res.data.data[this.data.key];
             list.duration = this.toTime(list.duration);
             list.deadline = this.toTime(list.deadline);
