@@ -48,7 +48,6 @@
 
 .scroll {
   height: 85vh;
-  overflow-anchor: auto;
 }
 
 .scroll .list {

@@ -7,6 +7,7 @@ Page({
         flag:1,
         errorName:['正常','低','高','超低','超高'],
         color:['green','yellow','yellow','red','red'],
+        list:[],
     },
     onLoad:function(option){
         const adminId = wx.pro.getStorageSync('adminId');
@@ -130,8 +131,7 @@ Page({
                                     }
                                 }).then((res)=>{
                                     list[index].event.name=res.data.data.userInfo.name
-                                    this.data.eventList = this.data.eventList.concat(list)
-                                    this.setData({eventList:this.data.eventList})
+                                    this.setData({list:list})
                                 }).catch((e)=>{
                                     console.log(e)
                                 })
@@ -153,12 +153,11 @@ Page({
                             else{
                                 list[index].event['type']='温度异常'
                             }
-                            //this.setData({eventList:list})
-                            this.data.eventList = this.data.eventList.concat(list)
-                            this.setData({eventList:this.data.eventList})
+                            this.setData({list:list})
                         }
                     })
-                    
+                    this.data.eventList = this.data.eventList.concat(this.data.list)
+                    this.setData({eventList:this.data.eventList})
                 }
             }).catch((e)=>{
                 console.log(e)

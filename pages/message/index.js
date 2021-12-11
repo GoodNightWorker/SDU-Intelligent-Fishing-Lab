@@ -14,6 +14,7 @@ Page({
         errorName:['正常','低','高','超低','超高'],
         color:['green','yellow','yellow','red','red'],
         currentId:'',
+        list:[],
     },
     onShow:function(){
         wx.pro.request({
@@ -114,9 +115,6 @@ Page({
                         page:this.data.page,
                     }
                 }).then((res)=>{
-                    if(this.data.page == 1){
-                        this.setData({currentId:res.data.data.eventList[0].id})
-                    }
                     var list = [];
                     res.data.data.eventList.map((item,index)=>{
                         list[index] = {'event':JSON.parse(item.json),'time':this.toTime(item.gmtOnline)}
@@ -190,7 +188,6 @@ Page({
         const adminId = wx.pro.getStorageSync('adminId');
         if(this.data.flag){
             this.setData({page:this.data.page+1})
-            var list = [];
             wx.pro.request({
                 url:'https://api.yumik.top/api/v1/device/event/list',
                 method:'get',
@@ -207,6 +204,7 @@ Page({
                     this.setData({flag:0})
                 }
                 else{
+                    var list = [];
                     res.data.data.eventList.map((item,index)=>{
                         list[index] = {'event':JSON.parse(item.json),'time':this.toTime(item.gmtOnline)}
                         if(list[index].event.name!=undefined){
@@ -229,8 +227,7 @@ Page({
                                     }
                                 }).then((res)=>{
                                     list[index].event.name=res.data.data.userInfo.name
-                                    this.data.eventList = this.data.eventList.concat(list)
-                                    this.setData({eventList:this.data.eventList})
+                                    this.setData({list:list})
                                 }).catch((e)=>{
                                     console.log(e)
                                 })
@@ -252,11 +249,11 @@ Page({
                             else{
                                 list[index].event['type']='温度异常'
                             }
-                            this.data.eventList = this.data.eventList.concat(list)
-                            this.setData({eventList:this.data.eventList})
+                            this.setData({list:list})
                         }
                     })
-                    
+                    this.data.eventList = this.data.eventList.concat(this.data.list)
+                    this.setData({eventList:this.data.eventList})
                 }
             }).catch((e)=>{
                 console.log(e)
