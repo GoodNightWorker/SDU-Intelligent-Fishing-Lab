@@ -83,3 +83,7 @@
 .blue {
   color: var(--blue);
 }
+
+.yellow {
+  color: var(--yellow);
+}

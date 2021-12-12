@@ -1,5 +1,5 @@
 .scroll {
-  height: 90vh;
+  height: auto;
 }
 
 .userinfo {
