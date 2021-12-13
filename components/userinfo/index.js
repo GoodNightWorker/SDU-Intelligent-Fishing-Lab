@@ -11,11 +11,17 @@ Component({
                 placeholder:{
                     type:String,
                     value:"请输入您的姓名",
+                },
+                value:{
+                    type:String,
+                    value:"",
                 }
             },
         ]
     },
-    data:{},
+    data:{
+
+    },
     methods:{
         upData(data) {
             return this.setData(objToPath(data));
@@ -32,5 +38,9 @@ Component({
         closeModel() {
             this.triggerEvent("closeCallBack");
         },
+        submitList(e){
+            const value = e.detail.value;
+            this.triggerEvent('submitList',{value},{})
+        }
     }
 })

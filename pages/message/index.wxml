@@ -1,0 +1,24 @@
+<picker mode="multiSelector" bindchange="bindPickerChange" bindcolumnchange="bindPickerColumnChange" value="{{index}}" range="{{array}}">
+    <view class="footer">
+        <view class="left">
+            <view class="text">{{array[0][index[0]]}}<image class="img" src="/images/icon-point-down.svg"/></view>
+        </view>
+        <view class="right">
+            <view class="text">{{array[1][index[1]]}}<image class="img" src="/images/icon-point-down.svg"/></view>
+        </view>
+    </view>
+</picker>
+<scroll-view class="scroll" scroll-y="true" bindscrolltolower="scrollToLower" bindscrolltoupper="scrollToUpper" upper-threshold="10">
+    <view class="list" wx:for="{{eventList}}" wx:for-item="eventList_item" wx:if="{{type==1}}">
+        <ai-noticeitem icon="/images/icon-userleft.svg" message="人员进入" time="{{eventList_item.time}}" wx:if="{{eventList_item.event.name=='未知人员'}}" detail="{{eventList_item.event.name}}" color="red"/>
+        <ai-noticeitem icon="/images/icon-userleft.svg" message="人员进入" time="{{eventList_item.time}}" wx:elif="{{eventList_item.event.isAdmin}}" detail="{{eventList_item.event.name}}" color="green"/>
+        <ai-noticeitem icon="/images/icon-userleft.svg" message="人员进入" time="{{eventList_item.time}}" wx:else detail="{{eventList_item.event.name}}" color="blue"/>
+    </view>
+    <view class="list" wx:for="{{eventList}}" wx:for-item="eventList_item" wx:if="{{type==2}}">
+        <ai-noticeitem icon="/images/icon-tem&hum.svg" message="{{eventList_item.event.type}}" time="{{eventList_item.time}}" detail="湿度:{{eventList_item.event.humidity}}%" color="{{eventList_item.event.color_hum}}" detail1="温度:{{eventList_item.event.temperature}}°C" color1="{{eventList_item.event.color_tem}}" isShow="" />
+    </view>
+    <view class="list" wx:for="{{eventList}}" wx:for-item="eventList_item" wx:if="{{type==3}}">
+        <ai-noticeitem icon="/images/icon-air.svg" message="{{eventList_item.event.type}}" time="{{eventList_item.time}}" detail="空气质量:{{eventList_item.event.air}}" color="{{eventList_item.event.color}}"/>
+    </view>
+</scroll-view>
+<ai-footer/>

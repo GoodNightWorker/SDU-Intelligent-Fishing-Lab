@@ -1,0 +1,5 @@
+<view class="title">新建实验室</view>
+<view class="list">
+    <input class="list-item" placeholder="请输入实验室名称" bindinput="getInput"/>
+</view>
+<button class="ai-button" bind:tap="addLab">确认新建</button>

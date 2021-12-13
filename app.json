@@ -1,12 +1,68 @@
 {
-    "pages": ["pages/index/index"],
+    "pages": [
+        "pages/welcome/index",
+        "pages/index/index",
+        "pages/login/index",
+        "pages/mine/index",
+        "pages/mine/changeinfo/index",
+        "pages/mine/changeimage/index",
+        "pages/mine/pr/index",
+        "pages/mine/about/index",
+        "pages/message/index",
+        "pages/uploadimage/index",
+        "pages/userinfo/index",
+        "pages/index/addlab/index",
+        "pages/index/labinfo/index",
+        "pages/index/labinfo/labname/index",
+        "pages/index/labinfo/labmember/index",
+        "pages/index/labinfo/labkeylist/index",
+        "pages/index/labinfo/labkeylist/addkey/index",
+        "pages/index/labinfo/labkeylist/labkeyinfo/index",
+        "pages/index/labinfo/deviceinfo/index",
+        "pages/index/labinfo/deviceinfo/devicejson/index",
+        "pages/index/labinfo/deviceinfo/devicehistory/index",
+        "pages/index/labinfo/deviceinfo/changedeviceinfo/index"
+    ],
+    "tabBar":{
+        "color":"#FFFFFF",
+        "selectedColor":"#25A1FF",
+        "borderStyle":"white",
+        "list":[
+            {
+                "selectedIconPath": "/images/icon-index-sel.png",  
+                "iconPath": "images/icon-index.png",  
+                "pagePath": "pages/index/index",  
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "/images/icon-message-sel.png",  
+                "iconPath": "images/icon-message.png",  
+                "pagePath": "pages/message/index",  
+                "text": "通知"
+            },
+            {
+                "selectedIconPath": "/images/icon-mine-sel.png",  
+                "iconPath": "images/icon-mine.png",  
+                "pagePath": "pages/mine/index",  
+                "text": "我的"
+            }
+        ]
+    },
     "usingComponents": {
         "ai-userSelectCard": "/components/userselectcard/index",
         "ai-loading": "/components/loading/index",
         "ai-popupdialog": "/components/popupdialog/index",
         "ai-noticeitem" : "/components/noticeitem/index",
         "ai-userinfo":"/components/userinfo/index",
-        "ai-lablabel":"/components/lablabel/index"
+        "ai-lablabel":"/components/lablabel/index",
+        "ai-bindsuccess":"/components/bindsuccess/index",
+        "ai-labcard":"/components/labcard/index",
+        "ai-labcard-gray":"/components/labcard_gray/index",
+        "ai-footer":"/components/footer/index",
+        "ai-switch":"/components/switch/index",
+        "ai-devicecard":"/components/devicecard/index",
+        "ai-bird":"/components/bird/index",
+        "ai-memberinfo":"/components/memberinfo/index"
     },
     "window": {
         "backgroundTextStyle": "light",
@@ -14,6 +70,5 @@
         "navigationBarTitleText": "SDU智慧摸鱼实验室",
         "navigationBarTextStyle": "black"
     },
-
     "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,112 @@
+.title
+{
+    margin: var(--margin-24) var(--margin-16);
+
+    font-size: var(--font-24);
+    font-weight: 600;
+
+    color: var(--gray-1);
+}
+
+.list
+{
+    margin-top: var(--margin-12);
+
+    .list-item
+    {
+        display: flex;
+
+        margin: var(--margin-12) var(--margin-16);
+        border-radius: var(--radius-8);
+        height: 80rpx;
+
+        background-color: var(--blue-background);
+
+        align-items: center;
+
+        .name
+        {
+            margin-left: var(--margin-16);
+
+            font-size: var(--font-14);
+            line-height: var(--font-14);
+
+            color: var(--gray-2);
+        }
+
+        .value
+        {
+            margin-right: var(--margin-16);
+
+            font-size: var(--font-12);
+            line-height: var(--font-12);
+            text-align: right;
+
+            color: var(--gray-3);
+
+            flex: 1;
+        }
+    }
+
+    .qrcode
+    {
+        text-align: center;
+
+        .img
+        {
+            width: 500rpx;
+            height: 500rpx;
+        }
+    }
+}
+
+.ai-button
+{
+    margin-top: var(--margin-24);
+}
+
+.result_paper
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+
+    width: 100vw;
+    min-height: 100%;
+
+    color: #fff;
+    background: rgba(0, 0, 0, .6);
+
+    .paper_content
+    {
+        overflow: auto;
+
+        position: relative;
+        z-index: 98;
+
+        width: 100vw;
+        height: 100vh;
+
+        text-align: center;
+
+        #canvas_image
+        {
+            margin-top: 24%;
+        }
+    }
+}
+
+.paper_canvas
+{
+    overflow: hidden;
+
+    position: absolute;
+    bottom: -5000rpx;
+    left: 0;
+
+    width: 704rpx;
+    height: 732rpx;
+
+    text-align: center;
+}

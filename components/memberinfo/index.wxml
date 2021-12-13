@@ -1,0 +1,24 @@
+<view class="mask" catch:tap="tap" catch:touchmove="touchMove"></view>
+<view class="container">
+    <view class="info">
+        <image class="info-img" src="data:image/png;base64,{{img}}" mode="aspectFill"/>
+        <view class="info-text">
+            <view class="name">{{name}}</view>
+            <view class="info-list">
+                <image class="list-img" src="/images/icon-info-number.svg"/>
+                <view class="list-text">{{sduNumber}}</view>
+            </view>
+            <view class="info-list">
+                <image class="list-img" src="/images/icon-info-academy.svg"/>
+                <view class="list-text">{{academy}}</view>
+            </view>
+            <view class="info-list">
+                <image class="list-img" src="/images/icon-info-auth.svg"/>
+                <view class="list-text">{{auth}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="del" wx:if="{{showDel}}">
+        <button class="ai-button" catch:tap="delete">删除成员</button>
+    </view>
+</view>

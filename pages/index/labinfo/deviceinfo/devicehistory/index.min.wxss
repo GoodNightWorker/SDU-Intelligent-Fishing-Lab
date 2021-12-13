@@ -1,0 +1,1 @@
+.title{margin:var(--margin-24) var(--margin-16);font-size:var(--font-24);font-weight:600;color:var(--gray-1)}.scroll{height:80vh}.scroll .list{margin-top:var(--margin-8)}

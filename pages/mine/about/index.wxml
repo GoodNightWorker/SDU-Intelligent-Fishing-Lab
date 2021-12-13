@@ -1,0 +1,16 @@
+<view class="container">
+    <view class="card">
+        <view class="img-box">
+            <image src="/images/LOGOLOGO.svg"/>
+        </view>
+        <view class="content-box">
+            <view class="title">智慧摸鱼实验室</view>
+            <view class="size">
+                 Copyright © 2021 SDU-Intelligent-Fishing-Lab. 
+            </view>
+            <view class="color">
+                All rights reserved.
+            </view>
+        </view>
+    </view>
+</view>

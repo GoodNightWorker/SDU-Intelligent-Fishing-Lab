@@ -1,0 +1,3 @@
+<view class="bg">
+    <ai-bird class="bird"/>
+</view>

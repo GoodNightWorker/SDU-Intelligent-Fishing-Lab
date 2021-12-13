@@ -1,64 +1,92 @@
 Page({
     data: {
-        showModel: false,
+        userInfo: {},
+        avatarUrl: "",
+        labCount: 0,
+        labList: [],
+        labListDetail: [],
         showDialog: false,
-        info:[
-            {
-                "icon":"/images/icon-msg-user.svg",
-                "placeholder":"请输入您的姓名",
-            },
-            {
-                "icon":"/images/icon-msg-master.svg",
-                "placeholder":"请输入您的专业",
-            },
-            {
-                "icon":"/images/icon-msg-idnum.svg",
-                "placeholder":"请输入您的学号",
-            },
-        ],
-        message:[
-            {
-                "label":"区域",
-                "detail":"实验室 N5-101",
-                "color":"gray"
-            },
-            {
-                "label":"报警温度",
-                "detail":"28C",
-                "color":"red"
-            },
-            {
-                "label":"目前状态",
-                "detail":"设备正常",
-                "color":"green"
-            }
-        ]
     },
-
-    btnUserSelectCard(e) {
-        switch (e.currentTarget.dataset.role) {
-            case "Administrator":
-                console.log("Administrator");
-                break;
-            case "User":
-                console.log("User");
-                break;
-            case "Guest":
-                console.log("Guest");
-                break;
-        }
+    color: ["yellow", "green", "blue"],
+    onShow: function () {
+        wx.hideHomeButton(); //隐藏小房子
+        //获取用户的名字、学号、学院
+        wx.pro
+            .request({
+                url: "https://api.yumik.top/api/v1/user/info",
+                method: "get",
+                header: {
+                    "content-type": "application/x-www-form-urlencoded",
+                    Authorization: wx.getStorageSync("token"),
+                },
+            })
+            .then((res) => {
+                //获取用户头像
+                this.upData({ userInfo: res.data.data.userInfo });
+                wx.setStorageSync("selfId", res.data.data.userInfo.tableUserId);
+                wx.pro
+                    .request({
+                        url: "https://api.yumik.top/api/v1/face/base64",
+                        method: "get",
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded",
+                            Authorization: wx.getStorageSync("token"),
+                        },
+                        data: {
+                            userId: res.data.data.userInfo.tableUserId,
+                            min: true,
+                        },
+                    })
+                    .then((res) => {
+                        this.upData({ avatarUrl: res.data.data.base64 });
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        //获取实验室个数
+        wx.pro
+            .request({
+                url: "https://api.yumik.top/api/v1/lab/user/count",
+                method: "get",
+                header: {
+                    "content-type": "application/x-www-form-urlencoded",
+                    Authorization: wx.getStorageSync("token"),
+                },
+            })
+            .then((res) => {
+                this.upData({ labCount: res.data.data.count });
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        //获取实验室列表
+        wx.pro
+            .request({
+                url: "https://api.yumik.top/api/v1/lab/lab/list",
+                method: "get",
+                header: {
+                    "content-type": "application/x-www-form-urlencoded",
+                    Authorization: wx.getStorageSync("token"),
+                },
+                data: {
+                    page: 1,
+                },
+            })
+            .then((res) => {
+                //根据列表获取实验室名称
+                this.setData({ labList: res.data.data.labList });
+                this.getLabInfo(res.data.data.labList, this.data.labList.length - 1, []);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     },
-
-    btnShowModel() {
-        this.upData({
-            showModel: true,
-        });
-    },
-
-    modelCloseCallBack() {
-        this.upData({
-            showModel: false,
-        });
+    addLab() {
+        wx.pro.navigateTo({ url: "/pages/index/addlab/index" });
     },
 
     btnShowDialog() {
@@ -71,5 +99,38 @@ Page({
         this.upData({
             showDialog: false,
         });
+    },
+
+    getLabDetail(e) {
+        wx.pro.navigateTo({ url: `/pages/index/labinfo/index?id=${e.currentTarget.id}` });
+    },
+
+    getLabInfo(labList, i, list) {
+        let item = labList[i];
+        wx.pro
+            .request({
+                url: "https://api.yumik.top/api/v1/lab/get",
+                method: "get",
+                header: {
+                    "content-type": "application/x-www-form-urlencoded",
+                    Authorization: wx.getStorageSync("token"),
+                },
+                data: {
+                    labId: item["tableLabId"],
+                },
+            })
+            .then((res) => {
+                res.data.data.lab["tableLabId"] = item["tableLabId"];
+                res.data.data.lab["color"] = this.color[i % 3];
+                list = [res.data.data.lab, ...list];
+                if (i == 0) {
+                    this.setData({ labListDetail: list });
+                } else {
+                    this.getLabInfo(labList, i - 1, list);
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     },
 });

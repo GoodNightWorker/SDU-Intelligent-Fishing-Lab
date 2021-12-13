@@ -1,0 +1,25 @@
+Page({
+    data:{
+        name:'',
+        json:'',
+    },
+    onLoad:function(option){
+        this.setData({name:option.name})
+        wx.pro.request({
+            url:'https://api.yumik.top/api/v1/device/parameter',
+            method:'get',
+            header:{
+                'content-type':'application/x-www-form-urlencoded',
+                'Authorization':wx.getStorageSync('token'),
+            },
+            data:{
+                'deviceName':option.name
+            }
+        }).then((res)=>{
+            this.setData({json:res.data.data.shadow.json})
+            console.log(typeof res.data.data.shadow.json)
+        }).catch((e)=>{
+            console.log(e);
+        })
+    },
+})

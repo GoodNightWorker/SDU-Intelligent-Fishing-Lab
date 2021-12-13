@@ -1,16 +1,40 @@
-<ai-userSelectCard color="blue" title="我是实验室管理" subtitle="Administrator" image="/images/icon-administrator.svg" bind:tap="btnUserSelectCard" data-role="Administrator"/>
-<ai-userSelectCard color="green" title="我是实验室成员" subtitle="User" image="/images/icon-user.svg" bind:tap="btnUserSelectCard" data-role="User"/>
-<ai-userSelectCard color="yellow" title="我是临时来访" subtitle="Guest" image="/images/icon-guest.svg" bind:tap="btnUserSelectCard" data-role="Guest"/>
-
-<button class="ai-button" catch:tap="btnShowModel">btnShowModel</button>
-<button class="ai-button" catch:tap="btnShowDialog">btnShowDialog</button>
-
-<ai-noticeitem icon="/images/icon-userleft.svg" message="人员离开" time="2:30" color="red" detail="狗十三"/>
-
-<ai-userinfo info="{{info}}" />
-
-<ai-lablabel message="{{message}}"/>
-
-<!-- Functions -->
-<ai-loading wx:if="{{showModel}}" bind:closeCallBack="modelCloseCallBack" />
-<ai-popupdialog wx:if="{{showDialog}}" bind:closeCallBack="dialogCloseCallBack" />
+<scroll-view class="scroll" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="userinfo">
+        <image class="img" src="data:image/png;base64,{{avatarUrl}}" mode="aspectFill" />
+        <view class="text">
+            <text class="name">{{userInfo.name}}</text>
+            <view class="info">
+                <view class="idnum">{{userInfo.sduNumber}}</view>
+                <view class="academy">{{userInfo.academy}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="num">
+        <view class="warn">
+            <view class="warn-num">0</view>
+            <view class="warn-text">告警</view>
+        </view>
+        <view class="line"></view>
+        <view class="lab">
+            <view class="lab-num">{{labCount}}</view>
+            <view class="lab-text">实验室</view>
+        </view>
+    </view>
+    <view class="mylab">
+        <view class="title">
+            <view class="title-text">我的实验室</view>
+        </view>
+        <view class="card">
+            <view wx:for="{{labListDetail}}" wx:for-item="labListDetail_item">
+                <ai-labcard bind:tap="getLabDetail" wx:key="{{labListDetail_item.tableLabId}}"
+                    id="{{labListDetail_item.tableLabId}}" title="{{labListDetail_item.name}}"
+                    color="{{labListDetail_item.color}}" subtitle="一切安好" image="/images/icon-noticeoff.svg" />
+            </view>
+            <ai-labcard-gray title="新建实验室" bind:tap="addLab" />
+            <ai-popupdialog wx:if="{{showDialog}}" bind:closeCallBack="dialogCloseCallBack" title="请使用微信 [扫一扫] "
+                subtitle="扫描实验室成员分享的二维码" />
+            <ai-labcard-gray title="加入实验室" bind:tap="btnShowDialog" />
+        </view>
+    </view>
+</scroll-view>
+<ai-footer />

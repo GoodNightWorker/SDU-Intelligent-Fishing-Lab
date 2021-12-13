@@ -1,0 +1,44 @@
+.container
+{
+    display: flex;
+
+    margin-top: var(--margin-12);
+    margin-left: var(--margin-12);
+    border: 1rpx solid var(--gray-4);
+    border-radius: var(--radius-8);
+    width: 331rpx;
+    height: 160rpx;
+
+    background-color: var(--blue-background);
+
+    .title
+    {
+        margin-top: 20rpx;
+        margin-left: var(--margin-12);
+        width: 120rpx;
+
+        font-size: var(--font-12);
+        text-align: center;
+
+        color: var(--gray-2);
+    }
+
+    .icon
+    {
+        margin-top: 40rpx;
+
+//margin-left: 6rpx;
+        width: 80rpx;
+        height: 80rpx;
+    }
+
+    .button
+    {
+        margin-top: 112rpx;
+        margin-left: 26rpx;
+        width: 64rpx;
+        height: 32rpx;
+
+        pointer-events: none;
+    }
+}

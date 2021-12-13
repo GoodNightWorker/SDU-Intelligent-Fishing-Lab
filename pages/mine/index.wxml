@@ -1,0 +1,28 @@
+<view class="info">
+    <image class="info-img" src="data:image/png;base64,{{avatarUrl}}" mode="aspectFill" bind:tap="changeImage"/>
+    <view class="info-text">
+        <view class="name">{{userInfo.name}}</view>
+        <view class="academy">{{userInfo.academy}}|{{userInfo.sduNumber}}</view>
+    </view>
+    <view class="info-edit" bind:tap="changeInfo">
+        <image src="/images/icon-mine-edit.svg"></image>
+    </view>
+</view>
+<view class="list">
+    <view class="list-item">
+        <view class="name">
+            <image class="icon" src="/images/icon-mine-suggestion.svg"/>
+            <view class="text">意见反馈</view>
+        </view>
+        <image class="icon" src="/images/icon-mine-right.svg" />
+    </view>
+    <button class="btn" open-type="feedback">1</button>
+    <view class="list-item" bind:tap="toAbout">
+        <view class="name">
+            <image class="icon" src="/images/icon-mine-about.svg"/>
+            <view class="text">关于软件</view>
+        </view>
+        <image class="icon" src="/images/icon-mine-right.svg" />
+    </view>
+</view>
+<ai-footer/>

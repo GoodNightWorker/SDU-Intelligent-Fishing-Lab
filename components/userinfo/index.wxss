@@ -38,3 +38,30 @@
 .container .info .message .input-placeholder {
   color: var(--gray-3);
 }
+
+.ai-button {
+  display: flex;
+  overflow: hidden;
+  margin: var(--margin-4) var(--margin-16);
+  border-radius: var(--radius-8);
+  height: 80rpx;
+  font-size: var(--font-14);
+  font-weight: bold;
+  font-style: normal;
+  line-height: 100%;
+  color: var(--white);
+  background: var(--blue);
+  box-shadow: var(--box-shadow-small);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-button::after {
+  border: 0;
+  border-radius: var(--radius-8);
+}
+
+.ai-button:active {
+  text-decoration: underline;
+}

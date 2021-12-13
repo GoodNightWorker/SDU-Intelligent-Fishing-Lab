@@ -1,0 +1,99 @@
+<view class="container">
+    <view class="title">{{description}}</view>
+    <view class="list">
+        <view class="list-item">
+            <view class="name">名称</view>
+            <view class="value">{{description}}</view>
+        </view>
+        <view class="list-item">
+            <view class="name">版本号</view>
+            <view class="value">{{deviceInfo.version}}</view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.faceList&&adminId==selfId}}" data-name="门禁状态" data-data="{{deviceInfo.state.reported.state}}" bind:tap="changeProps">
+            <view class="name">状态</view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==0}}">正常<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==1}}">常开<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==2}}">常闭<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==3}}">仅管理员模式<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==4}}">禁止访客开门<image class="icon-pointright" src="/images/icon-pointright.svg"/></view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.faceList&&adminId!=selfId}}">
+            <view class="name">状态</view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==0}}">正常</view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==1}}">常开</view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==2}}">常闭</view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==3}}">仅管理员模式</view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state==4}}">禁止访客开门</view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.humidity}}">
+            <view class="name">状态</view>
+            <view class="value" wx:if="{{deviceInfo.state.reported.state}}">已开启</view>
+            <view class="value" wx:else>已关闭</view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.humidity&&adminId==selfId}}" data-name="湿度" data-data="{{deviceInfo.state.reported.humidity}}" bind:tap="changeProps">
+            <view class="name">报警湿度</view>
+            <view class="value">
+                <view class="red">高于 {{deviceInfo.state.reported.humidity.max_danger}}</view>
+                <view class="red">低于 {{deviceInfo.state.reported.humidity.min_danger}}</view>
+                <view class="yellow">高于 {{deviceInfo.state.reported.humidity.max_warning}}</view>
+                <view class="yellow">低于 {{deviceInfo.state.reported.humidity.min_warning}}</view>
+                <image class="icon-pointright" src="/images/icon-pointright.svg"/>
+            </view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.humidity&&adminId!=selfId}}" data-name="湿度" data-data="{{deviceInfo.state.reported.humidity}}">
+            <view class="name">报警湿度</view>
+            <view class="value">
+                <view class="red">高于 {{deviceInfo.state.reported.humidity.max_danger}}</view>
+                <view class="red">低于 {{deviceInfo.state.reported.humidity.min_danger}}</view>
+                <view class="yellow">高于 {{deviceInfo.state.reported.humidity.max_warning}}</view>
+                <view class="yellow">低于 {{deviceInfo.state.reported.humidity.min_warning}}</view>
+            </view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.rate&&adminId==selfId}}" data-data="{{deviceInfo.state.reported.rate}}" data-name="消息速率" bind:tap="changeProps">
+            <view class="name">报警消息速率</view>
+            <view class="value">
+                <view class="red">{{deviceInfo.state.reported.rate.rate_danger}}</view>
+                <view class="yellow">{{deviceInfo.state.reported.rate.rate_warning}}</view>
+                <image class="icon-pointright" src="/images/icon-pointright.svg"/>
+            </view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.rate&&adminId!=selfId}}" data-data="{{deviceInfo.state.reported.rate}}" data-name="消息速率">
+            <view class="name">报警消息速率</view>
+            <view class="value">
+                <view class="red">{{deviceInfo.state.reported.rate.rate_danger}}</view>
+                <view class="yellow">{{deviceInfo.state.reported.rate.rate_warning}}</view>
+            </view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.temperature&&adminId==selfId}}" data-data="{{deviceInfo.state.reported.temperature}}" data-name="温度" bind:tap="changeProps">
+            <view class="name">报警温度</view>
+            <view class="value">
+                <view class="red">高于 {{deviceInfo.state.reported.temperature.max_danger}}</view>
+                <view class="red">低于 {{deviceInfo.state.reported.temperature.min_danger}}</view>
+                <view class="yellow">高于 {{deviceInfo.state.reported.temperature.max_warning}}</view>
+                <view class="yellow">低于 {{deviceInfo.state.reported.temperature.min_warning}}</view>
+                <image class="icon-pointright" src="/images/icon-pointright.svg"/>
+            </view>
+        </view>
+        <view class="list-item" wx:if="{{deviceInfo.state.reported.temperature&&adminId!=selfId}}" data-data="{{deviceInfo.state.reported.temperature}}" data-name="温度">
+            <view class="name">报警温度</view>
+            <view class="value">
+                <view class="red">高于 {{deviceInfo.state.reported.temperature.max_danger}}</view>
+                <view class="red">低于 {{deviceInfo.state.reported.temperature.min_danger}}</view>
+                <view class="yellow">高于 {{deviceInfo.state.reported.temperature.max_warning}}</view>
+                <view class="yellow">低于 {{deviceInfo.state.reported.temperature.min_warning}}</view>
+            </view>
+        </view>
+    </view>
+    <button class="ai-button" style="background-color:var(--red)" bind:tap="unbindDevice" wx:if="{{adminId==selfId}}">解绑设备</button>
+    <view class="footer">
+        <view class="left">
+            <view class="text" bind:tap="getDeviceJson"><image class="img" src="/images/icon-device.svg"/> 设备参数</view>
+        </view>
+        <view class="right">
+            <view class="text" bind:tap="getHistory"><image class="img" src="/images/icon-history.svg"/> 历史记录</view>
+        </view>
+    </view>
+    <ai-footer/>
+</view>
+
+

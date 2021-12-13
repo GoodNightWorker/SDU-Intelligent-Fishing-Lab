@@ -1,0 +1,22 @@
+<view class="iconclass">
+    <view class="people">
+        <view class="icon"><image class="icon-image" src="/images/icon-uploadimage-people.svg" /></view>
+        <text class="icon-text">正确示例：五官清晰</text>
+    </view>
+    <view class="camera" wx:if="{{isShow}}">
+        <view class="icon"><image class="icon-image" mode="aspectFill" src="{{filePath}}"/></view>
+        <text class="icon-text">预览照片</text>
+    </view>
+    <view class="camera"  bindtap="chooseImage" wx:else>
+        <view class="icon"><image class="icon-image" src="/images/icon-uploadimage-camera.svg" /></view>
+        <text class="icon-text">点击上传照片</text>
+    </view>
+</view>
+<view class="line"></view>
+<view class="warn">
+    <text class="warn-text">提示：请保持五官清晰以方便系统识别</text>
+    <text class="warn-text">不清晰的照片会影响您实验室的正常出入</text>
+</view>
+<button class="ai-button" loading="{{loading}}" bindtap="submitImage">修改个人照片</button>
+<ai-bindsuccess wx:if="{{showDialog}}" />
+<ai-footer/>

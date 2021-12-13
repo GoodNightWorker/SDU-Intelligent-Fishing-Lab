@@ -1,0 +1,19 @@
+<view class="title">
+    <view class="circle"></view>
+    <view class="text">管理员</view>
+</view>
+<view class="head">
+    <view class="head-border">
+        <image class="head-img" src="data:image/png;base64,{{userList[0].img}}" mode="aspectFill" bind:tap="showMessage" id="{{adminId}}"/>
+    </view>
+</view>
+<view class="title">
+    <view class="circle"></view>
+    <view class="text">成员</view>
+</view>
+<view class="head">
+    <view class="head-border" wx:for="{{userList}}" wx:for-item="userList_item" wx:if="{{userList_item.tableUserId != adminId}}" bind:tap="showMessage" id="{{userList_item.tableUserId}}">
+        <image class="head-img" src="data:image/png;base64,{{userList_item.img}}" mode="aspectFill"/>
+    </view>
+</view>
+<ai-memberinfo wx:if="{{isShow}}" bind:closeCallBack="unShowMessage" bind:deleteMember="deleteMember" academy="{{userInfo.academy}}" name="{{userInfo.name}}" sduNumber="{{userInfo.sduNumber}}" img="{{img}}" auth="{{auth}}" showDel="{{showDel}}" id="{{userInfo.tableUserId}}"/>

@@ -1,0 +1,27 @@
+<view class="title">修改个人信息</view>
+<view class="subtitle">您的信息将会保存，以用于绑定实验室信息</view>
+<view class="container">
+    <view class="info">
+        <view class="message">
+            <image class="icon" src="/images/icon-msg-name.svg"/>
+            <input class="input" bindinput="getInput" placeholder-class="input-placeholder" placeholder="请输入您的姓名" value="{{name}}" data-name="name"/>
+        </view>
+        <view class="line-top"></view>
+        <view class="message">
+            <image class="icon" src="/images/icon-msg-academy.svg"/>
+            <input class="input" bindinput="getInput" placeholder-class="input-placeholder" placeholder="请输入您的学院" value="{{academy}}" data-name="academy"/>
+        </view>
+        <view class="line-top"></view>
+        <view class="message">
+            <image class="icon" src="/images/icon-msg-telephone.svg"/>
+            <input class="input" bindinput="getInput" placeholder-class="input-placeholder" placeholder="请输入您的联系方式" value="{{telephone}}" data-name="telephone"/>
+        </view>
+        <view class="line-top"></view>
+        <view class="message">
+            <image class="icon" src="/images/icon-msg-sduNumber.svg"/>
+            <input class="input" bindinput="getInput" placeholder-class="input-placeholder" placeholder="请输入您的学号" value="{{sduNumber}}" data-name="sduNumber"/>
+        </view>
+    </view>
+</view>
+<button class="ai-button" bind:tap="submitList">确认修改</button>
+<ai-footer/>

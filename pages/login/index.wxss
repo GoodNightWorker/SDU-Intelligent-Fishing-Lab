@@ -1,0 +1,18 @@
+.title {
+  margin-top: var(--margin-19);
+  margin-bottom: var(--margin-12);
+  margin-left: var(--margin-17_5);
+  font-size: var(--font-24);
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-bottom: var(--margin-22);
+  margin-left: var(--margin-17_5);
+  font-size: var(--font-14);
+  color: var(--gray-2);
+}
+
+.select {
+  min-height: 100%;
+}

@@ -1,0 +1,38 @@
+<view class="title">临时密钥详情</view>
+<view class="list">
+    <view class="list-item">
+        <view class="name">管理员姓名</view>
+        <view class="value">{{keyList.userName}}</view>
+    </view>
+    <view class="list-item">
+        <view class="name">管理员电话</view>
+        <view class="value">{{keyList.telephone}}</view>
+    </view>
+    <view class="list-item" bind:longtap="copyKey" id="{{key}}">
+        <view class="name">密钥</view>
+        <view class="value">{{key}}</view>
+    </view>
+    <view class="list-item">
+        <view class="name">密钥有效期</view>
+        <view class="value">{{keyList.duration}}</view>
+    </view>
+    <view class="list-item">
+        <view class="name">用户有效期</view>
+        <view class="value">{{keyList.deadline}}</view>
+    </view>
+    <view class="list-item" bind:tap="getPic" wx:if="{{type=='skip'}}">
+        <view class="name">分享实验室密钥</view>
+        <view class="value">生成分享图</view>
+    </view>
+</view>
+<button class="ai-button" style="background-color:var(--red)" bind:tap="deleteKey" wx:if="{{type=='skip'&&adminId==userId}}">删除密钥</button>
+<button class="ai-button" bind:tap="enterLab" wx:if="{{type=='scan'}}">加入实验室</button>
+
+<view class="result_paper" wx:if="{{isShow}}" catchtouchmove="moveHandle" bindtap="hidePaper" bind:longtap="shareImg">
+    <view class="paper_content" wx:if="{{tempFilePath}}">
+        <image src="{{tempFilePath}}" style="height:366px; width:352px;position: relative;z-index: 999;"id="canvas_image" catchtap="hidePaper"/>
+    </view>
+    <view style="width:0px;height:0px;overflow: hidden;">
+        <canvas canvas-id="canvas" class="paper_canvas" id="canvas"></canvas>
+    </view>
+</view>

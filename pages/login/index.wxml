@@ -1,0 +1,7 @@
+<view class="title">请选择您的身份</view>
+<view class="subtitle">选择您的相关身份，以准确为您提供身份验证服务</view>
+<view class="select">
+    <ai-userSelectCard color="blue" title="我是实验室管理" subtitle="Administrator" image="/images/icon-administrator.svg" bind:tap="btnUserSelectCard" data-role="Administrator"/>
+    <ai-userSelectCard color="green" title="我是实验室成员" subtitle="User" image="/images/icon-user.svg" bind:tap="btnUserSelectCard" data-role="User"/>
+</view>
+<ai-footer/>

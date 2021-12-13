@@ -1,0 +1,5 @@
+<view class="title">实验室密钥</view>
+<view class="device-list">
+    <ai-devicecard wx:for="{{keyList}}" wx:for-item="keyList_item" id="{{keyList_item.key}}"  wx:key="title" title="临时密钥" image="/images/icon-temkey.svg" style_switch="display:none" bind:tap="getKeyInfo"/>
+    <ai-devicecard wx:if="{{adminId==userId}}" title="申请密钥" image="/images/icon-addkey.svg" style_switch="display:none" bind:tap="addKey"/>
+</view>
