@@ -145,7 +145,7 @@ Page({
                                 })
                             }
                         }
-                        else{
+                        else if(list[index].event.alarm){
                             this.setData({type:2})
                             let json = JSON.parse(item.json);
                             //console.log(item)
@@ -165,6 +165,20 @@ Page({
                             }
                             this.setData({eventList:list})
                             //console.log(list)
+                        }
+                        else{
+                            this.setData({type:3})
+                            if(list[index].event.air==0){
+                                list[index].event['type']='空气质量优',
+                                list[index].event['color'] = 'green',
+                                list[index].event.air = '优'
+                            }
+                            else{
+                                list[index].event['type']='空气质量差',
+                                list[index].event['color'] = 'red',
+                                list[index].event.air = '差'
+                            }
+                            this.setData({eventList:list})
                         }
                     })
                 })
@@ -233,7 +247,7 @@ Page({
                                 })
                             }
                         }
-                        else{
+                        else if(list[index].event.alarm){
                             let json = JSON.parse(item.json);
                             list[index].event['color_tem'] = this.data.color[json.alarm[0]];
                             list[index].event['color_hum'] = this.data.color[json.alarm[1]];
@@ -248,6 +262,20 @@ Page({
                             }
                             else{
                                 list[index].event['type']='温度异常'
+                            }
+                            this.setData({list:list})
+                        }
+                        else{
+                            let json = JSON.parse(item.json);
+                            if(list[index].event.air==0){
+                                list[index].event['type']='空气质量优',
+                                list[index].event['color'] = 'green',
+                                list[index].event.air = '优'
+                            }
+                            else{
+                                list[index].event['type']='空气质量差',
+                                list[index].event['color'] = 'red',
+                                list[index].event.air = '差'
                             }
                             this.setData({list:list})
                         }
@@ -279,8 +307,8 @@ Page({
         else if(this.data.array[1][this.data.index[1]]=='温湿度传感器'){
             this.setData({type:2})
         }
-        else{
-            this.setData({type:0})
+        else if(this.data.array[1][this.data.index[1]]=='空气质量传感设备'){
+            this.setData({type:3})
         }
         wx.pro.request({
             url:'https://api.yumik.top/api/v1/device/event/list',
@@ -294,6 +322,7 @@ Page({
                 page:this.data.page,
             }
         }).then((res)=>{
+            //console.log(res)
             var list = [];
             res.data.data.eventList.map((item,index)=>{
                 list[index] = {'event':JSON.parse(item.json),'time':this.toTime(item.gmtOnline)}
@@ -320,7 +349,7 @@ Page({
                         })
                     }
                 }
-                else{
+                else if(list[index].event.alarm){
                     let json = JSON.parse(item.json);
                     list[index].event['color_tem'] = this.data.color[json.alarm[0]];
                     list[index].event['color_hum'] = this.data.color[json.alarm[1]];
@@ -335,6 +364,19 @@ Page({
                     }
                     else{
                         list[index].event['type']='温度异常'
+                    }
+                    this.setData({eventList:list})
+                }
+                else{
+                    if(list[index].event.air==0){
+                        list[index].event['type']='空气质量优',
+                        list[index].event['color'] = 'green',
+                        list[index].event.air = '优'
+                    }
+                    else{
+                        list[index].event['type']='空气质量差',
+                        list[index].event['color'] = 'red',
+                        list[index].event.air = '差'
                     }
                     this.setData({eventList:list})
                 }

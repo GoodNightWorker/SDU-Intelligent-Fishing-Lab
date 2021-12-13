@@ -18,7 +18,8 @@ Page({
             "湿度计": "/images/icon-humidity.svg",
             "有害气体": "/images/icon-nose.svg",
             "实验室门禁": "/images/icon-door.svg",
-            "温湿度传感器": "/images/icon-tem&hum.svg"
+            "温湿度传感器": "/images/icon-tem&hum.svg",
+            "空气质量传感设备":"/images/icon-air.svg"
         }
     },
     onLoad: function (option) {
@@ -105,9 +106,12 @@ Page({
                         'deviceName': item.name,
                     }
                 }).then((res) => {
-                    //console.log(res)
+                    console.log(res)
                     list[index].icon = this.data.iconList[item.description];
-                    list[index].online = (res.data.data.online.online ? 'on' : 'off');
+                    if(res.data.data.online){
+                        list[index].online = (res.data.data.online.online ? 'on' : 'off');
+                    }
+                   
                     this.setData({ deviceList: list });
                 })
             })

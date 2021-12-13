@@ -8,5 +8,8 @@
     <view class="list" wx:for="{{eventList}}" wx:for-item="eventList_item" wx:if="{{type==2}}">
         <ai-noticeitem icon="/images/icon-tem&hum.svg" message="{{eventList_item.event.type}}" time="{{eventList_item.time}}" detail="湿度:{{eventList_item.event.humidity}}%" color="{{eventList_item.event.color_hum}}" detail1="温度:{{eventList_item.event.temperature}}°C" color1="{{eventList_item.event.color_tem}}" isShow="" />
     </view>
+    <view class="list" wx:for="{{eventList}}" wx:for-item="eventList_item" wx:if="{{type==3}}">
+        <ai-noticeitem icon="/images/icon-air.svg" message="{{eventList_item.event.type}}" time="{{eventList_item.time}}" detail="空气质量:{{eventList_item.event.air}}" color="{{eventList_item.event.color}}"/>
+    </view>
 </scroll-view>
 <ai-footer/>
