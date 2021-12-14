@@ -36,6 +36,19 @@
   flex: 1;
 }
 
+.list .list-item .picker {
+  display: flex;
+  margin-right: var(--margin-16);
+  padding-right: 0;
+  font-size: var(--font-12);
+  line-height: var(--font-12);
+  text-align: right;
+  color: var(--gray-3);
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .ai-button {
   margin-top: var(--margin-24);
 }

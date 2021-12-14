@@ -48,7 +48,7 @@
 <view class="list" wx:if="{{propsName=='门禁状态'}}">
     <view class="list-item">
         <view class="name">请选择门禁状态</view>
-        <view class="value">
+        <view class="picker">
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
                 {{array[index]}}
             </picker>
