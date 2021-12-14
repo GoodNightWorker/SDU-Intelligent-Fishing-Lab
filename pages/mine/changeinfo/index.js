@@ -9,6 +9,7 @@ Page({
         telephone:'',
         sduNumber:'',
         role:'',
+        check:false
     },
     onLoad:function(option){
         this.setData({
@@ -75,50 +76,63 @@ Page({
         }
     },
     submitList(e){
-        const form = {
-            name:this.data.name,
-            academy:this.data.academy,
-            telephone:this.data.telephone,
-            sduNumber:this.data.sduNumber
-        }
-        if(!Validate.checkForm(form)){
-            let error = Validate.errorList[0]
-            wx.showToast({
+        if(!this.data.check){
+            wx.pro.showToast({
+                title:'请先阅读并同意用户协议！',
                 icon:'none',
-                title:error.msg
+                duration:2000
             })
-            return false;
         }
-        wx.pro.request({
-            url:"https://api.yumik.top/api/v1/user/info",
-            method:'post',
-            header:{
-              'content-type':'application/x-www-form-urlencoded',
-              'Authorization':wx.getStorageSync('token')
-            },
-            data:
-            {
+        else{
+            const form = {
                 name:this.data.name,
                 academy:this.data.academy,
                 telephone:this.data.telephone,
-                sduNumber:this.data.sduNumber,
-                role:this.data.role,
-            },
-        }).then((res)=>{
-            console.log(res)
-            if(res.data.errCode == 0){
-                wx.pro.showToast({
-                    title:'修改成功，两秒后返回上页',
-                    icon:'none',
-                    duration:2000
-                })
-                setTimeout(()=>{
-                    wx.pro.navigateBack();
-                },2000)
-                wx.setStorageSync('flag',true);
+                sduNumber:this.data.sduNumber
             }
-        }).catch((e)=>{
-            console.log(e)
-        })
+            if(!Validate.checkForm(form)){
+                let error = Validate.errorList[0]
+                wx.showToast({
+                    icon:'none',
+                    title:error.msg
+                })
+                return false;
+            }
+            wx.pro.request({
+                url:"https://api.yumik.top/api/v1/user/info",
+                method:'post',
+                header:{
+                  'content-type':'application/x-www-form-urlencoded',
+                  'Authorization':wx.getStorageSync('token')
+                },
+                data:
+                {
+                    name:this.data.name,
+                    academy:this.data.academy,
+                    telephone:this.data.telephone,
+                    sduNumber:this.data.sduNumber,
+                    role:this.data.role,
+                },
+            }).then((res)=>{
+                console.log(res)
+                if(res.data.errCode == 0){
+                    wx.pro.showToast({
+                        title:'修改成功，两秒后返回上页',
+                        icon:'none',
+                        duration:2000
+                    })
+                    setTimeout(()=>{
+                        wx.pro.navigateBack();
+                    },2000)
+                    wx.setStorageSync('flag',true);
+                }
+            }).catch((e)=>{
+                console.log(e)
+            })
+        }
+        
+    },
+    changeCheck(e){
+        this.setData({check:!this.data.check})
     }
 });

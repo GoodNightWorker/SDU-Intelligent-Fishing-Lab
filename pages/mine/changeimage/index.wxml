@@ -15,7 +15,10 @@
 <view class="line"></view>
 <view class="warn">
     <text class="warn-text">提示：请保持五官清晰以方便系统识别</text>
-    <text class="warn-text">不清晰的照片会影响您实验室的正常出入</text>
+    <text class="warn-text">该照片仅用于实验室人脸识别，不做其它用途</text>
+    <view class="check-view">
+        <radio class="check" checked="{{check}}" bind:tap="changeCheck"/><text class="warn-text">阅读并同意以上协议</text>
+    </view>
 </view>
 <button class="ai-button" loading="{{loading}}" bindtap="submitImage">修改个人照片</button>
 <ai-bindsuccess wx:if="{{showDialog}}" />

@@ -1,6 +1,8 @@
 {
     "pages": [
         "pages/welcome/index",
+        "pages/userinfo/index",
+        "pages/uploadimage/index",
         "pages/index/index",
         "pages/login/index",
         "pages/mine/index",
@@ -9,8 +11,6 @@
         "pages/mine/pr/index",
         "pages/mine/about/index",
         "pages/message/index",
-        "pages/uploadimage/index",
-        "pages/userinfo/index",
         "pages/index/addlab/index",
         "pages/index/labinfo/index",
         "pages/index/labinfo/labname/index",

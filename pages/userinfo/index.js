@@ -8,6 +8,7 @@ Page({
         academy:'',
         telephone:'',
         sduNumber:'',
+        check:false
     },
     onLoad:function(){
         const rules = {
@@ -67,49 +68,62 @@ Page({
         }
     },
     submitList(e){
-        const form = {
-            name:this.data.name,
-            academy:this.data.academy,
-            telephone:this.data.telephone,
-            sduNumber:this.data.sduNumber
-        }
-        if(!Validate.checkForm(form)){
-            let error = Validate.errorList[0]
-            wx.showToast({
+        if(!this.data.check){
+            wx.pro.showToast({
+                title:'请先阅读并同意用户协议！',
                 icon:'none',
-                title:error.msg
+                duration:2000
             })
-            return false;
         }
-        wx.pro.request({
-            url:"https://api.yumik.top/api/v1/user/info",
-            method:'post',
-            header:{
-              'content-type':'application/x-www-form-urlencoded',
-              'Authorization':wx.getStorageSync('token')
-            },
-            data:
-            {
+        else{
+            const form = {
                 name:this.data.name,
                 academy:this.data.academy,
                 telephone:this.data.telephone,
-                sduNumber:this.data.sduNumber,
-                role:wx.getStorageSync('role')
-            },
-        }).then((res)=>{
-            if(res.data.errCode == 0){
-                wx.pro.showToast({
-                    title:'填写成功，两秒后跳转到上传照片页',
-                    icon:'none',
-                    duration:2000
-                })
-                setTimeout(()=>{
-                    wx.navigateTo({url:'/pages/uploadimage/index'});
-                },2000)
-                wx.setStorageSync('flag',true);
+                sduNumber:this.data.sduNumber
             }
-        }).catch((e)=>{
-            console.log(e)
-        })
+            if(!Validate.checkForm(form)){
+                let error = Validate.errorList[0]
+                wx.showToast({
+                    icon:'none',
+                    title:error.msg
+                })
+                return false;
+            }
+            wx.pro.request({
+                url:"https://api.yumik.top/api/v1/user/info",
+                method:'post',
+                header:{
+                  'content-type':'application/x-www-form-urlencoded',
+                  'Authorization':wx.getStorageSync('token')
+                },
+                data:
+                {
+                    name:this.data.name,
+                    academy:this.data.academy,
+                    telephone:this.data.telephone,
+                    sduNumber:this.data.sduNumber,
+                    role:wx.getStorageSync('role')
+                },
+            }).then((res)=>{
+                if(res.data.errCode == 0){
+                    wx.pro.showToast({
+                        title:'填写成功，两秒后跳转到上传照片页',
+                        icon:'none',
+                        duration:2000
+                    })
+                    setTimeout(()=>{
+                        wx.navigateTo({url:'/pages/uploadimage/index'});
+                    },2000)
+                    wx.setStorageSync('flag',true);
+                }
+            }).catch((e)=>{
+                console.log(e)
+            })
+        }
+        
+    },
+    changeCheck(e){
+        this.setData({check:!this.data.check})
     }
 });
