@@ -46,6 +46,8 @@ Page({
                     'Authorization':wx.getStorageSync('token')
                 },
             }).then((res)=>{
+                console.log(this.filePath)
+                console.log(res)
                 wx.pro.hideLoading()
                     if(JSON.parse(res.data).errCode==0){
                         this.upData({showDialog:true})
