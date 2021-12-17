@@ -55,6 +55,16 @@
   text-align: center;
 }
 
+.check-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-view .check {
+  transform: scale(0.7, 0.7);
+}
+
 .warn-text {
   display: block;
   font-size: var(--font-12);

@@ -1,5 +1,4 @@
 <view class="title">填写个人信息</view>
-<view class="subtitle">您的信息将会保存，以用于绑定实验室信息</view>
 <view class="container">
     <view class="info">
         <view class="message">
@@ -21,6 +20,12 @@
             <image class="icon" src="/images/icon-msg-sduNumber.svg"/>
             <input class="input" bindinput="getInput" placeholder-class="input-placeholder" placeholder="请输入您的学号" value="{{sduNumber}}" data-name="sduNumber"/>
         </view>
+    </view>
+</view>
+<view class="warn">
+    <text class="warn-text">该信息仅用于绑定实验室信息，不做其它用途</text>
+    <view class="check-view">
+        <radio class="check" checked="{{check}}" bind:tap="changeCheck"/><text class="warn-text">阅读并同意以上协议</text>
     </view>
 </view>
 <button class="ai-button" bind:tap="submitList">确认提交</button>

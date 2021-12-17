@@ -72,6 +72,19 @@
     text-align: center;
 }
 
+.check-view
+{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    .check
+    {
+        transform: scale(.7,.7);
+    }
+}
+
 .warn-text
 {
     display: block;

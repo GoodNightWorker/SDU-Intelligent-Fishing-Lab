@@ -64,3 +64,35 @@
         }
     }
 }
+
+.warn
+{
+    margin-top: 64rpx;
+    margin-bottom: 64rpx;
+
+    text-align: center;
+}
+
+.check-view
+{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    .check
+    {
+        transform: scale(.7,.7);
+    }
+}
+
+.warn-text
+{
+    display: block;
+
+    font-size: var(--font-12);
+    font-weight: 400;
+    line-height: 48rpx;
+
+    color: var(--gray-2);
+}
